@@ -1,0 +1,3430 @@
+\documentclass[10pt]{article}
+\linespread{0.5} 
+\usepackage{extsizes}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{stmaryrd}
+\usepackage{ mathrsfs }
+\usepackage{ mathtools}
+\usepackage{enumerate}
+\usepackage{bbm}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{stix}
+\usepackage{tikz-cd} 
+\usetikzlibrary{arrows}
+\newcommand{\midarrow}{\tikz \draw[-triangle 90] (0,0) -- +(.1,0);}
+\newcommand{\hookdoubleheadrightarrow}{%
+  \hookrightarrow\mathrel{\mspace{-15mu}}\rightarrow
+}
+\tikzset{commutative diagrams/.cd,
+mysymbol/.style={start anchor=center,end anchor=center,draw=none}
+}
+\newcommand\comsymb[2][\circlearrowleft]{%
+  \arrow[mysymbol]{#2}[description]{#1}}
+
+\newtheorem{theorem}{Theorem} [section] 
+\newtheorem{proposition}{Proposition}[section] 
+\newtheorem{definition}{Definition}[section] 
+\newtheorem{lemma}{Lemma}[section] 
+\newtheorem{notation}{Notation}[section] 
+\newtheorem{remark}{Remark}[section] 
+\newtheorem{corollary}{Corollary} [section] 
+\newtheorem{terminology}{Terminology}[section] 
+\newtheorem{fact}{Fact}[section] 
+\newtheorem{claim}{Claim}[proposition]
+\newtheorem{example}{Example}[section] 
+\newtheorem{exercise}{Exercise}[section] 
+\numberwithin{equation}{theorem}
+
+\DeclareMathOperator{\Hilb}{Hilb}
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\Cob}{Cob}
+\DeclareMathOperator{\rev}{rev}
+\DeclareMathOperator{\TQFT}{TQFT}
+\DeclareMathOperator{\st}{s.t.}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\chr}{char}
+\DeclareMathOperator{\alggrp}{alg-grp}
+\DeclareMathOperator{\Simple}{Simple}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\len}{len}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\triv}{triv}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Irr}{Irr}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Orth}{O}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Spin}{Spin}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\trdeg}{trdeg}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Homk}{Hom_{k-alg}}
+\DeclareMathOperator{\Ker}{ker}
+\DeclareMathOperator{\Image}{im}
+\DeclareMathOperator{\image}{im}
+\DeclareMathOperator{\Coker}{Coker}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\MaxSpec}{MaxSpec}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id} 
+\DeclareMathOperator{\op}{op} 
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\Adj}{Adj}
+\DeclareMathOperator{\ConcAffVar}{ConcAffVar}
+\DeclareMathOperator{\AbsAffVar}{AbsAffVar}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Comod}{Comod}
+\DeclareMathOperator{\Free}{Free}
+\DeclareMathOperator{\indec}{indec}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Set}{Set}
+\DeclareMathOperator{\SVect}{SVect}
+\DeclareMathOperator{\FSet}{FSet}
+\DeclareMathOperator{\Top}{Top}
+\DeclareMathOperator{\Sk}{Sk}
+\DeclareMathOperator{\coev}{coev}
+\DeclareMathOperator{\Ver}{Ver}
+\DeclareMathOperator{\ComAlg}{ComAlg}
+\DeclareMathOperator{\Grp}{Grp}
+\DeclareMathOperator{\PGL}{PGL}
+%\newcommand*{\name}[\num_arguments][default values]{{\color{#1}\Large #2}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\norm}[1]{\Vert #1 \Vert}
+\newcommand{\opNorm}[2]{\norm{#1}_{#2\to#2}}
+\newcommand{\normL}[3]{\norm{#1}_{L^{#2}(#3)}}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\m}[0]{\mathfrak{m}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Ouv}[0]{\mathcal{O}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\bQ}[0]{\mathbb{Q}}
+\newcommand{\F}[0]{\mathbb{F}}
+\newcommand{\G}[0]{\mathbb{G}}
+\newcommand{\A}[0]{\mathbb{A}}
+\newcommand{\Para}[0]{\mathbb{P}}
+\newcommand{\K}[0]{\mathbb{K}}
+\newcommand{\cat}[0]{\mathscr{C}}
+\newcommand{\catd}[0]{\mathscr{D}}
+\newcommand{\M}[0]{\mathbb{M}}
+\newcommand{\Lie}[0]{\mathcal{L}}
+\newcommand{\torus}[0]{\mathbb{T}}
+\newcommand{\g}[0]{\mathfrak{g}}
+\newcommand{\tl}[0]{\mathfrak{t}}
+\newcommand{\gl}[0]{\mathfrak{gl}}
+\newcommand{\spl}[0]{\mathfrak{sl}}
+\newcommand{\so}[0]{\mathfrak{so}}
+\newcommand{\spg}[0]{\mathfrak{sp}}
+\newcommand{\sep}[0]{\:|\:}
+\newcommand{\card}[1]{\vert #1\vert}
+\newcommand{\smat}[1][n]{\Mat_{#1\times #1}}
+\newcommand{\I}[1][n]{\mathcal{I}}
+\newcommand{\disum}[1][n]{\stackrel{\subseteq}{\oplus}}
+\newcommand{\summand}[0]{\stackrel{\subseteq}{\oplus}}
+\newcommand{\fib}[1]{%
+  \mathbin{\mathop{\times}\limits_{#1}}%
+}
+\newcommand{\tens}[1]{%
+  \mathbin{\mathop{\otimes}\displaylimits_{#1}}%
+}
+
+\title{Algebraic Groups}
+\author{So Murata}
+\date{WiSe 25/26, University of Bonn}
+
+
+\begin{document}
+\maketitle
+
+\section{Preliminaries}
+
+\subsection{Varieties}
+
+In this section, we denote $k=\overline{k}$, an algebraically closed field. We will mostly be working with $k=\C$. 
+
+\begin{definition}
+Let $\A^n=k^n$ be the affine $n$-space. We denote $\mathcal{O}(\A^n)=k[T_1,\cdots,T_n]$, the ring of polynomial functions on $\A^n$. 
+\end{definition}
+
+\begin{definition}
+Let $S\subseteq\mathcal{O}(\A^n)$ be a subset. We define the vanishing set of $S$ to be $V(S)=\{x\in\A^n\:|\: \forall f\in S, f(x) = 0\}$.
+\end{definition}
+
+\begin{remark}
+We have, $V(S)=V((S))$ where $(S)$ is an ideal generated by $S$. Moreover, for any ideal $I$ we have,
+\begin{equation*}
+V(I) = V\left(\sqrt{I}\right).
+\end{equation*}
+\end{remark}
+
+\begin{definition}
+We introduce a topology on $\A^n$ by setting $\{V(I)\}_{I\subseteq \mathcal{O}(\A^n)\text{ ideals.}}$ to be the closed sets. We call this topology the Zariski topology.
+\end{definition}
+
+\begin{remark}
+All points in $\A^n$ are closed. Indeed, for $a\in \A^n$, and the ideal $\mathfrak{m}_a = (x_1-a_1,\cdots,x_n-a_n)$. We have $V(\mathfrak{m}_a) = \{a\}$. \label{points_all_closed}
+\end{remark}
+
+\begin{definition}
+Let $X\subseteq\A^n$, then we define 
+\begin{equation*}
+I(X) = \{f\in\mathcal{O}(\A^n)\:|\:\forall x\in X, f(x) = 0\}.
+\end{equation*}
+\end{definition}
+
+\begin{theorem}[Hilbert Nullstellen Satz]
+For all $X\subset \A^n$ and $I\subseteq\mathcal{O}(\A^n)$ ideal, we have
+\begin{equation*}
+V(I(X)) = \overline{X},\quad I(V(I))=\sqrt{I}.
+\end{equation*}
+\end{theorem}
+
+\begin{corollary}
+Both function $I,V$ reverse inclusion relations. Furthermore, they are inverse to one another between the sets
+\begin{center}
+\begin{tikzcd}
+\{S\subseteq \A^n\:|\:S=\overline{S}\} \arrow[r, "I"] & \{I\subseteq \mathcal{O}(\A^n)\:|\: I = \sqrt{(I)}\} \arrow[l] \arrow[l, "V"]
+\end{tikzcd}
+\end{center}
+\end{corollary}
+
+\begin{corollary}
+We have the following bijections.
+\begin{equation*}
+\A^n\stackrel{I}{\leftrightarrow}\MaxSpec(\mathcal{O}(\A^n))\leftrightarrow\Homk(\mathcal{O}(\A^n),k),
+\end{equation*}
+where $\MaxSpec(\Ouv(\A^n))$ is the set of maximal ideals and $\Homk(\mathcal{O}(\A^n),k)$ is the set of all evaluation maps.
+\end{corollary}
+\begin{proof}
+For the first bijection, $\A^n\to \MaxSpec(\Ouv(O)\A^n)$ is given by Remark\ref{points_all_closed}. It remains to show that $I$ maps points to maximal ideals. Since $I$ reverses the inclusion and $\{a\}$ is minimal closed set, $I(\{a\})$ is the maximal ideal which contains $\mathfrak{m}_a$. By the maximality of $\mathfrak{m}_a$, they are equal.
+\par For the second bijection, we observe that for any $\varphi\in\Homk(\mathcal{O}(\A^n),k)$,
+\begin{equation*}
+\mathcal{O}(\A^n)/\Ker\varphi \cong k.
+\end{equation*}
+This means that $\Ker\varphi$ is maximal ideal. Since $k$ is algebraically closed, all the maximal ideal is generated by $n$ many degree $1$ polynomials. We conclude 
+\begin{equation*}
+\varphi = \ev_a
+\end{equation*}
+for some $a\in\A^n$.
+\end{proof}
+
+\begin{definition}
+A concrete affine variety is a closed subset $X$ of some affine space $\A^n$ equipped with the subspace topology of the Zariski topology on $\A^n$.
+\end{definition}
+
+\begin{definition}
+Let $X\subseteq\A^n$ and $Y\subseteq\A^m$ be affine varieties. A morphism of affine varieties between $X$ and $Y$ is a map $f:X\to Y$ such that there exist $f_1,\cdots,f_m\in\mathcal{O}(\A^n)$ with 
+\begin{equation*}
+f(x) = (f_1(x),\cdots,f_m(x)).
+\end{equation*}
+A morphism of affine varieties is called an isomorphism if there exist another morphism of affine varieties $g:Y\to X$ satisfying
+\begin{equation*}
+g\circ f=\id_X,\quad f\circ g=\id_Y.
+\end{equation*}
+\end{definition}
+
+\begin{example}Following subsets of $\A^n$ are affine varieties.
+\begin{enumerate}[1).]
+\item $\A^n$ itself as $\A^n=V(\emptyset)$.
+\item A finite set of points $\{a_1,\cdots,a_m\}=V(\m_{a_1}\cdots\m_{a_m})$.
+\item Any finite union and any possibly infinite intersection of affine varieties are again affine varieties.
+\end{enumerate}
+\end{example}
+
+\begin{definition}
+\item Let $X=V(S)\subseteq\A^n,Y=V(T)\subseteq\A^m$. We define $X\times Y = V(S\coprod T)\subseteq\A^{n+m}$ where we regard,
+\begin{equation*}
+S\subseteq k[x_1,\cdots,x_n]\subseteq k[x_1,\cdots,x_{n+m}]
+\end{equation*}
+and 
+\begin{equation*}
+T\subseteq k[x_{n+1},\cdots,x_{n+m}]\subseteq k[x_1,\cdots,x_{n+m}].
+\end{equation*}
+Observe that $X\times Y$ is an affine variety.
+\end{definition}
+\begin{lemma}
+A morphism $f:X\to Y$ of affine varieties is continuous with respect to Zariski topology.
+\end{lemma}
+
+\begin{proof}
+Since $X,Y$ have the subspace topologies, we can assume $X=\A^n$ and $Y=\A^m$. And the continuity amounts to show that any closed subsets of $\A^m$ has a closed preimage. Let $S\subseteq\mathcal{O}(\A^m)$, then by the definition of morphisms of affine varieties,
+\begin{equation*}
+a\in f^{-1}(V(S))\Rightarrow \forall\varphi\in S, \varphi\circ f(a) = 0.
+\end{equation*}
+Therefore
+\begin{equation*}
+f^{-1}(V(S)) = V(\{\varphi\circ f\:|\: \varphi\in S\}).
+\end{equation*}
+\end{proof}
+
+\begin{definition}
+Let $X\subseteq\A^n$ be an affine variety. The ring of regular polynomial functions on $X$ is 
+\begin{equation*}
+\mathcal{O}(X)\defeq\mathcal{O}(\A^n)/I(X).
+\end{equation*}
+\label{definition_1_8}
+\end{definition}
+
+\begin{proposition}
+The ring of regular polynomial functions is a finitely generated $k$-algebra. If we consider the set $\Map(X,k)$ of maps from $X\to k$ as a $k$-algebra by letting point-wise sum and product as the addition and the multiplication, then $\mathcal{O}(X)$ can be
+viewed as a sub-algebra of $\Map(X,k)$. 
+\end{proposition}
+\begin{proof}
+The first claim is obvious as $\mathcal{O}(\A^n)$ is finitely generated. For the second claim, let us consider the evaluation map
+\begin{equation*}
+\mathcal{O}(\A^n)\ni f\mapsto [x\mapsto f(x)]\in\Map(X,k).
+\end{equation*}
+Then its kernel is $I(X)$. Therefore,
+\begin{equation*}
+\mathcal{O}(X)\hookrightarrow \Map(X,k).
+\end{equation*}
+\end{proof}
+
+\begin{definition}
+A topological space $X$ is called irreducible if it cannot be written as a union of two proper closed subsets.
+\end{definition}
+
+\begin{example}
+The only irreducible sets in $\R^n$ are the points.
+\end{example}
+
+\begin{lemma}We have the following statements
+\begin{enumerate}[(1).]
+\item An affine variety $X$ is irreducible if and only if $\mathcal{O}(X)$ is an integral domain.
+\item An affine variety $X$ is connected if and only if $\mathcal{O}(X)$ does not contain a non-trivial idempotent.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Suppose $\Ouv(X)$ is not an integral domain, then there are non-zero zero-divisors $f,g\in\Ouv(X)$ such that $fg=0$. Observe that,
+\begin{equation*}
+  V(f)\cup V(g) = V(fg) = V(0) = X.
+\end{equation*}
+As $f,g$ are not $0$, $X$ is not irreducible. The converse also follows as all closed subsets are of the form $V(I)$ and $V$ reverses the inclusions.
+\par For the second assertion, let $e\in\Ouv(X)$ be an idempotent then $e(1-e)=0$. Therefore $X = D(e)\sqcup D(1-e)$. If $e$ can be taken as a non-trivial element, then $X$ is disconected. 
+For the converse, suppose $\Ouv(X)$ does not admit a non-trivial idempotent but $X$ is disconnected thus $X=U\sqcup V$ for some proper open sets. Then there are $I,J\subseteq k[x_1,\cdots,x_n]$ such that $X\cap V(I)=U,X\cap V(J) = V$. Since $U,V$ are disjoint, $I+V = k[x_1,\cdots,x_n]$.
+Therefore there is $a\in I,b\in J$ with $a+b = 1$. Note that $ab = 0$ therefore $b^2 = b(1-a) = b$. In particular $a,b\in \{0,1\}$. 
+\end{proof}
+
+\begin{definition}
+Let $X$ be an affine variety and $a\in X$. We define the maximal ideal $\m_a$ to be such that 
+\begin{equation*}
+\m_a \defeq \{f\in\mathcal{O}(X)\:|\: f(x) = 0\} = \Ker(\ev_a:\mathcal{O}(X)\to k).
+\end{equation*}
+\end{definition}
+
+\begin{corollary}
+  \label{corollary_1_3}
+For an affine variety $X$, we have the following bijections.
+\begin{equation*}
+X\leftrightarrow\MaxSpec(\mathcal{O}(X)) \leftrightarrow \Homk(\Ouv(X),k).
+\end{equation*}
+\end{corollary}
+
+\begin{proof}
+Observe that we have
+\begin{equation*}
+X = V(I(X))
+\end{equation*}
+and 
+\begin{equation*}
+\MaxSpec(\Ouv(X)) = \{\m\in\MaxSpec(\Ouv(\A^n))\:|\: I(X)\subseteq \m\}.
+\end{equation*}
+Since $V$ is inclusion reversing. 
+\begin{equation*}
+V(\m_a)=\{a\}\subseteq V(I(X)) \Leftrightarrow \m_a\subseteq I(X).
+\end{equation*}
+For the second bijection, obviously any kernel of $k$-algebra homomorphism $\varphi:\Ouv(X)\to k$ is maximal. %later
+\end{proof}
+
+\begin{definition}
+An (abstract) affine variety is a pair $(X,\Ouv(X))$ where $X$ is a set and $\Ouv(X)$ is a finitely generated $k$-subalgebra of $\Map(X,k)$ such that 
+\begin{equation*}
+X\to\Homk(\Ouv(X),k),\quad x\mapsto \ev_x
+\end{equation*}
+is a bijection.
+\end{definition}
+
+\begin{definition}
+A morphism of abstract affine varieties is a map $f:X\to Y$ such that the map
+\begin{equation*}
+f^\#:\Map(Y,k)\to\Map(X,k),\quad \varphi\mapsto \varphi\circ f
+\end{equation*}
+restricts to an $k$-algebra homomorphism
+\begin{equation*}
+f^\#:\Ouv(Y)\to\Ouv(X).
+\end{equation*}
+\end{definition}
+
+\begin{definition}
+  A ring is reduced if $0$ is the only nilpotent of it.
+\end{definition}
+
+\begin{remark}
+Note that $k$ is a field therefore reduced, we have $\Map(X,k)$ is reduced as a $k$-algebra and so is $\mathcal{O}(X)$.
+\end{remark}
+
+\begin{notation}
+We denote the categories of concrete and abstract affine varieties as $\ConcAffVar$ and $\AbsAffVar$.
+\end{notation}
+
+\begin{lemma}
+Any concrete affine variety $X$ defines an abstract affine variety $(X,\Ouv(X))$. Furthermore, this gives an equivalence of categories
+\begin{equation*}
+(\ConcAffVar)X\stackrel{\sim}{\mapsto}(X,\Ouv(X))(\AbsAffVar).
+\end{equation*}
+\end{lemma}
+
+\begin{proof}
+First we need to show that the functor is well-defined. Indeed with Definition \ref{definition_1_8}, we already know that $\Ouv(X)$ is a finitely generated $k$-subalgebra of $\Map(X,k)$.
+Furthermore, a morphism of concrete affine varieties $f:X\to Y$ gives a morphism between $\Ouv(Y)\to\Ouv(X)$ by 
+\begin{equation*}
+  \Ouv(Y)\ni g\mapsto g\circ f\in\Ouv(X).
+\end{equation*}
+This is faithful by looking at the images of $y_1,\cdots,y_n$ where $Y\subseteq \A^n_k$ under $f^\#$. Given $\varphi:\Ouv(Y)\to\Ouv(X)$, set
+\begin{equation*}
+  f(x) = (\varphi(y_1)(x),\cdots,\varphi(y_n)(x)),
+\end{equation*}
+then this gives a morphism of concrete affine varieties.
+\par Finally for the essentially surjectivity, it is clear that for $\Ouv(X)\cong k[x_1,\cdots,x_n]/I$, then $V(I)\subseteq\A_k^n$ gives the right preimage for the finitely generated $k$-algebra part. On the set part, it is clear from Corollary \ref{corollary_1_3}.
+\end{proof}
+
+From now on, we will refer to both concrete and abstract varieties simply as affine varieties.
+\begin{remark}
+Let $X$ be an affine variety. Then $\Ouv(X)$ is Noetherian since it is a finitely generated $k$-algebra.
+\end{remark}
+
+\begin{definition}
+A topological space $X$ is Noetherian if any descending chain of closed subsets eventually stabilizes.
+\end{definition} 
+
+\begin{remark}
+An affine variety is Noetherian.
+\end{remark}
+
+\begin{definition}
+A maximal closed irreducible subset of a topological space is called its irreducible component.
+\end{definition}
+
+\begin{lemma}
+Any Noetherian topological space $X$ can be written as a finite union 
+\begin{equation*}
+X = X_1\cup\cdots\cup X_m
+\end{equation*}
+where each $X_i$ is closed and irreducible with $X_i\subseteq X_j\Rightarrow i=j$ (ie. they are irreducible components of $X$). Furthermore, such $(X_i)_{i=1,\cdots,m}$ is unique up to reordering.
+\end{lemma}
+
+\begin{proof}
+Follows directly from the definition of Noetherian spaces.
+\end{proof}
+
+\begin{example}
+Consider $X=V(x_1,x_2)\subseteq\A^2$. Then $X=\A^1\times\{0\}\cup\{0\}\times\A^1$ where each factor is an irreducible component.
+\end{example}
+
+\begin{lemma}
+Let $X$ be irreducible topological space and $U\subseteq X$ be a non-empty open subset. Then $U$ is dense in $X$.
+\end{lemma}
+
+\begin{proof}
+We can decompose $X=\overline{U}\cup(X\backslash U)$ where each factor is closed. Since $X\backslash U \not = X$, we conclude $\overline{U}=X$.
+\end{proof}
+\subsection{Algebraic Groups}
+
+\begin{definition}
+ Let $X$ be a topological space. The dimension $\dim X$ of $X$ to be 
+ \begin{equation*}
+  \dim X = \max\left\{i\in\N\:\bigg{|}\: \substack{\exists \emptyset\subsetneqq V_0\subsetneqq \cdots\subsetneqq V_d\subseteq X, \\\st \text{$\{V_i\}_{i}$ are irreducible closed subsets}}\right\}.
+ \end{equation*}
+\end{definition}
+
+\begin{definition}
+Let $X$ be an affine variety. We define
+\begin{equation*}
+  k(X) = \Frac(\mathcal{O}(X)).
+\end{equation*}
+\end{definition}
+
+\begin{theorem}
+  Let $X$ be an irreducible variety. Then we have
+  \begin{equation*}
+  \dim X = \trdeg(k(X)/k).
+  \end{equation*}
+\end{theorem}
+\begin{example}
+  Let $X=\A^n$, we have 
+  \begin{equation*}
+    k(\A^n) = \Frac(k[x_1,\cdots,x_n])=k(x_1,\cdots,x_n).
+  \end{equation*}
+  Thus we obtain,
+  \begin{equation*}
+    \dim\A^n = \trdeg(k(x_1,\cdots,x_n)/k) = n.
+  \end{equation*}
+\end{example}
+\begin{example}
+  Let $f\in k[x_1,\cdots,x_n]=\mathcal{O}(\A^n)$ be non-zero element. Let $X=V(fy-1)\subset\A^{n+1}$. Observe that
+  \begin{equation*}
+    fy-1 \in\mathcal{O}(\A^n)[y] \cong\mathcal{O}(\A^{n+1}).
+  \end{equation*}
+  Therefore we have,
+  \begin{equation*}
+    \mathcal{O}(X) = \mathcal{O}(\A^{n+1})/(fy-1) \cong\mathcal{O}(\A^n)[f^{-1}]\subseteq\Frac(\mathcal{O}(\A^n)).
+  \end{equation*}
+  In particular, $k(X)=k(\A^n)$, therefore
+  \begin{equation*}
+    \dim X = n.
+  \end{equation*}
+\end{example}
+\begin{definition}
+An affine algebraic group $G$ is an affine variety together with a group structure.
+\begin{equation*}
+m:G\times G\to G, m(g,h)=gh,\quad i:G\to G, i(g) = g^{-1},
+\end{equation*}
+which are morphisms of varieties.
+\end{definition}
+\begin{definition}
+  A morphism of algebraic groups is a map $f:G\to H$ which is a morphism of varieties that is also a group homomorphism.
+\end{definition}
+\begin{definition}
+A closed subset $H\subseteq G$ of an algebraic group $G$ is called a closed subgroup if it is a subgroup. In particular, a closed subgroup is again an algebraic group.
+\end{definition}
+\begin{example}
+Any finite group is an algebraic group by embedding $G\subset\A^1$ since finite sets are always closed.
+\end{example}
+\begin{remark}
+Products of algebraic groups are again algebraic groups.
+\end{remark}
+\begin{definition}
+  An additive group is $\mathbb{G}_a= \A^1$ which is a group under addition
+\end{definition}
+\begin{definition}
+  A multiplicative group $\mathbb{G}_m = V(xy-1)\subset\A^2$ is an algebraic group such that 
+  \begin{enumerate}
+    \item the multiplication is $m:\mathbb{G}_m \times\mathbb{G}_m \to\mathbb{G}_m , (x_1,y_1)(x_2,y_2) = (x_1x_2,y_1y_2)$
+    \item the inversion is $i:\mathbb{G}_m \to\mathbb{G}_m , i(x_1,y_1) = (y_1,x_1)$.
+  \end{enumerate}
+\end{definition}
+\begin{remark}
+  \begin{equation*}
+  \Ouv(\G_m) = k[x,y]/(xy-1)\cong k[x,x^{-1}].
+  \end{equation*}
+\end{remark}
+Recall from Linear Algebra, that we have for any matrix $A\in \Mat_{n\times n}(k)$, 
+\begin{equation*}
+  A\Adj(A) = \det A\cdot I_n.
+\end{equation*}
+Both $\Adj,\det$ are defined in terms of polynomials. By viewing $n$-square matrices as a $n^2$-dimensional vectorspace, we define following algebraic groups which are compatible with the classical ones.
+\begin{definition}
+  The special linear group is
+  \begin{equation*}
+    \SL_n = \{A\in\Mat_{n\times n}\:|\: \det(A) = 1\} = V(\det(A) -1)\subset \A^{n\times n}.
+  \end{equation*}
+  The matrix multiplication is given in polynomial form. Moreover, from above fact from Linear Algebra, we see 
+  \begin{equation*}
+    A^{-1} = \Adj(A).
+  \end{equation*}
+  Thus the inverse is also givein in polynomials.
+\end{definition}
+\begin{definition}
+  The general linear group is 
+  \begin{equation*}
+    \GL_n \defeq \{A\in\Mat_{n\times n}\:|\: \det A \not=0\} = \{(A,y)\in\Mat_{n\times n}\times\A^1\:|\: \det A\cdot y = 1\}.
+  \end{equation*}
+  The multiplication is $(A,a)(B,b) = (AB,ab)$ thus in polynomials. The inverse is 
+  \begin{equation*}
+    (A,a)^{-1} = (a\Adj(A),\det A).
+  \end{equation*}
+  Thus given in polynomials.
+  \par As an abstract variety, we have
+  \begin{equation*}
+    (V(\det(x_{ij})_{ij}\cdot y -1),k[x_{ij}]_{ij}[\det(x_{ij})^{-1}]).
+  \end{equation*}
+\end{definition}
+\begin{definition}
+  Let $J\in\GL_n$ then we define an algebraic group,
+  \begin{equation*}
+    G(J) = \{A\in\Mat_{n\times n}\sep A^tJA = J\}. 
+  \end{equation*}
+\end{definition}
+\begin{proposition}
+  Let $J\in\smat$ be a symmetric matrix. Then we have,
+  \begin{equation*}
+    G(J)\cong \Orth_n.
+  \end{equation*}
+\end{proposition}
+\begin{proof}
+Any symmetric matrix of complex coefficients are congruent to one another.
+\end{proof}
+\begin{proposition}
+  Let $J\in\smat$ be a skew symmetric matrix. Then we have,
+  \begin{equation*}
+    G(J) \cong \Sp_{2n}.
+  \end{equation*}
+\end{proposition}
+
+\begin{remark}
+  It can be shown that for any $J\in\GL_n$ we have, 
+  \begin{equation*}
+    G(J)\cong\Orth_n\text{ or }\Sp_{2n}.
+  \end{equation*}
+\end{remark}
+
+\begin{definition}
+  If $H\subseteq G$ is a closed subgroup, then we define the centralizer of $G$ to be 
+  \begin{equation*}
+    C_G(H) \defeq \{x\in G\sep \forall h\in Hxh = hx\}.
+  \end{equation*}
+  and the normalizer of $G$ to be
+  \begin{equation*}
+    N_G(H) \defeq \{x\in\G\sep xHx^{-1} = H\}.
+  \end{equation*}
+\end{definition}
+
+\begin{proposition}
+  $C_G(H),N_G(H)$ are closed subgroups of $G$.
+\end{proposition}
+\begin{proof}
+  We will only give a proof for the centralizers.
+  Let $h\in G$ then 
+  \begin{equation*}
+    C_G(\{h\}) = c_h^{-1}(\{h\})
+  \end{equation*}
+  where 
+  \begin{equation*}
+    c_h(g) = ghg^{-1}.
+  \end{equation*}
+  $c_h$ is indeed a morphism of algebraic groups as,
+  \begin{equation*}
+    c_h(\cdot) = m(m(\cdot,h),i(\cdot)).
+  \end{equation*}
+  Furthermore,
+  \begin{equation*}
+    C_G(H) = \bigcap_{h\in H}C_G(\{h\}),
+  \end{equation*}
+  thus closed.
+\end{proof}
+
+\begin{remark}
+  Any connected $1$-dimensional affine algebraic group is isomorphic to either $\G_a$ or $\G_m$. 
+\end{remark}
+
+\begin{theorem}
+  Any affine algebraic groups is a closed subgroup of $\GL_n$ for some $n\in \N$.
+\end{theorem}
+\begin{proof}
+  Foundation course.
+\end{proof}
+
+\begin{example}
+  We give explicit embedding of the above theorem for following two groups.
+  \begin{enumerate}
+    \item $\SL_n\hookrightarrow\GL_n,A\mapsto(A,1)$.
+    \item $\G_a\hookrightarrow\GL_2,a\mapsto\begin{pmatrix}
+      1&a\\ 0&1
+    \end{pmatrix}.$
+  \end{enumerate}
+\end{example}
+\begin{definition}
+  Let $G$ be an algebraic group. $G^0$ denotes the connected component of $G$ which contains the identity.
+\end{definition}
+
+\begin{lemma}
+For an algebraic group $G$, we have
+\begin{enumerate}[1).]
+  \item $G^0$ is a closed normal subgroup of finite index.
+  \item For any $g\in G$, the coset $gG^0$ is connected and irreducible component of $G$.
+  \item Each closed subgroup $H$ of $G$ of finite index contains $G^0$. In other words, $G^0$ is a minimal subgroup of finite index.
+\end{enumerate}
+\end{lemma}
+
+\begin{lemma}
+  Let $\varphi:G\to H$ be a morphism of algebraic groups. We have,
+  \begin{enumerate}[1).]
+    \item $\Ker\varphi,\Image\varphi$ are closed subgroups.
+    \item $\varphi(G^0) = \varphi(G)^0.$
+    \item $\dim G = \dim\Ker\varphi+\dim\Image\varphi$.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  Foundation course.%later
+\end{proof}
+
+\begin{definition}
+  Let $G$ be an algebraic group and $X$ be a variety. An algebraic action of $G$ on $X$ is an abstract group action such that the action map
+  \begin{equation*}
+    a:G\times X\to X
+  \end{equation*}
+ is a morphism of varieties.
+\end{definition}
+\begin{definition}
+  Let $G$ be an algebraic group. A finite dimensional representation of $G$ is an algebraic action of $G$ on $\A^n$ for some $n\in\N$ which is $k$-linear. 
+\end{definition}
+\begin{definition}
+  A rational represenattion of an algebraic group $G$ is a representation $(\pi,V)$ of $G$ (as an abstract group) such that $V$ is a union of finite dimensional algebraic subrepresentations.
+\end{definition}
+From now on, we refer an algebraic representation simply as a representation.
+\begin{example}
+Linear transformations $\GL_n\times k^n\to k^n$ is a finite dimensional representations. Similarly for $\SL_n,\Orth_n,\Sp_{2n}$ and the symmetric group $\mathfrak{S}_n$ as transpositions can be expressed using matrices.
+\end{example}
+\begin{example}
+If $V$ is a $G$-representation then $V^*$ is a $G$-representation via, 
+\begin{equation*}
+  \forall f\in V^*, g\in G, v\in V, (g\cdot f)(v) = f(g^{-1}v).
+\end{equation*}
+\end{example}
+\begin{example}
+  Let $V,W$ be $G$-representations, then $V\tens{k}W$ is a $G$-representation via.
+  \begin{equation*}
+    \forall g\in G,v\in V,w\in W, g(v\otimes w) = gv\otimes gw.
+  \end{equation*}
+\end{example}
+
+\begin{definition}
+  A morphism of $G$-representations is a $k$-linear map $f:V\to W$ such that 
+  \begin{equation*}
+    \forall g\in G,v\in V, g\cdot f(v) = f(g\cdot v).
+  \end{equation*}
+\end{definition}
+\begin{example}
+  For a morphism $f:V\to W$ of $G$ representation, $\Ker f,\Image f, \mathrm{coker} f$ are sub-$G$-representations.
+\end{example}
+\begin{example}
+  Let $G_1,G_2$ be algebraic groups and $V_1,V_2$ be representations of $G_1,G_2$, respectively. We define a $G_1\times G_2$-representation via
+  \begin{equation*}
+    \forall v_1\in V_1,v_2\in V_2,\forall (g_1,g_2)\in G_1\times G_2, (g_1,g_2)(v_1\otimes v_2) = g_1v_1\otimes g_2v_2.
+  \end{equation*}
+  We call this an exterior product of $V_1$ and $V_2$ for $G_1\times G_2$-representation and denote it as $V_1\boxtimes V_2$.
+\end{example}
+\begin{definition}
+  We can consider an action of $G\times G$ on $\Ouv(G)$ via 
+  \begin{equation*}
+    ((g_1,g_2)f)(x) = f(g_1^{-1}xg_2).
+  \end{equation*}
+\end{definition}
+
+\begin{remark}
+  Above representation is well-defined (shown in the foundation course). Furthermore, this is a rational $G\times G$-representation.
+\end{remark}
+
+\begin{definition}
+A representaion is said to be semi-simple if it is a direct sum of irreducible representations.
+\end{definition}
+
+\begin{definition}
+An algebraic group $G$ is called linearly reductive if the category of representations $\Rep(G)$ of $G$ is semi-simple (i.e. any finite dimensional representation of $G$ is semi-simple).
+\end{definition}
+
+\begin{definition}[Vandermonde Matrix]
+  A Vandermonde matrix is a function $V:\R^{m+1}\to\Mat_{m+1\times n+1}$ such that 
+  \begin{equation*}
+    V(x_0,\cdots,x_m) = 
+    \begin{pmatrix}
+      1 & x_0 & x_0^2 & \cdots & x_0^n \\
+      1 & x_1 & x_1^2 & \cdots & x_1^n \\
+      1 & x_2 & x_2^2 & \cdots & x_2^n \\
+      \vdots & \vdots & \vdots & \ddots & \vdots \\
+      1 & x_m & x_m^2 & \cdots & x_m^n \\
+    \end{pmatrix}.
+  \end{equation*}
+\end{definition}
+
+\begin{proposition}
+  For $m = n$ in the above case we have 
+  \begin{equation*}
+    \deg(V(x_0,\cdots,x_m)) = \prod_{0\leq i < j \leq m}(x_j-x_i).
+  \end{equation*}
+  \label{vandermonde_determinant}
+\end{proposition}
+
+\begin{proposition}
+  $\G_m$ is linearly reductive. Furthermore, there is an irreducible $\G_m$-representation $k_n$ of dimension $1$ for each $n\in\Z$ such that 
+  \begin{equation*}
+    \forall v\in k_n,x\in\G_m, x\cdot v = x^nv.
+  \end{equation*}
+  The set $\{k_n\sep n\in\Z\}$ is a complete list of pairwise non-isomorphic irreducible $\G_m$-representations.
+\end{proposition}
+%current Current
+\begin{proof}
+  Let $V$ be a $\G_m$-representation and also we denote 
+  \begin{equation*}
+    V_n = \{v\in V\sep \forall x\in G_m, xv = x^nv\}.
+  \end{equation*}
+  We will first show that 
+  \begin{equation*}
+    V = \bigoplus_{n\in \Z}V_n.
+  \end{equation*}
+  Indeed, let $v\in V_n\cap V_m$, then
+  \begin{equation*}
+   \forall x\in\G_m, x^nv = x^mv.
+  \end{equation*}
+  Thus $v = 0$. By a similar argument, we get, for any finite set $S\subseteq \Z$ and $n\in\Z$,
+  \begin{equation*}
+    \left(\sum_{m\in S}V_m\right)\cap V_n = \{0\}.
+  \end{equation*}
+  Now we want to show 
+  \begin{equation*}
+    \sum_{n\in\Z}V_n = V.
+  \end{equation*}
+  Let us fix $v\in V$, then we get a morphism of varieties 
+  \begin{equation*}
+    \G_m\ni x\mapsto xv\in V.
+  \end{equation*}
+  By definition there exists $f_1(t),\cdots,f_n(t) \in \Ouv(\G_m) = k[t,t^{-1}]$ such that 
+  \begin{equation*}
+    tv = \sum_{i=1}^n f_i(t)e_i,
+  \end{equation*}
+  where $\{e_i\}_{i=1,\cdots,n}$ is the standard basis. The above equation can also be written as 
+  \begin{equation*}
+    tv = \sum_{i=-N}^M t^i v_i,
+  \end{equation*}
+  for some $v_n\in V$ (Observe that the action is expressed as a polynomial thus this makes sense). We want to show 
+  $v_i\in V_i$ for each $-N\leq i\leq M$.
+  \par For any $s,t\in\G_m$, we have 
+  \begin{equation*}
+    st\cdot v = \sum_{i=-N}^M(st)^iv_i = \sum_{i=-N}^M t^i (s^i v_i).
+  \end{equation*}
+  On the other hand,
+  \begin{equation*}
+    st\cdot v = s\cdot(t\cdot v) = s\cdot\left(\sum_{i=-N}^Mt^iv_i \right)= \sum_{i=-N}^M t^i (s\cdot v_i).
+  \end{equation*}
+  Let $t_1,\cdots,t_{N+M+1}\in\G_m$ be distinct, then 
+  \begin{equation*}
+    \begin{pmatrix}
+      t_1^{-N}& \cdots & t_1^M\\
+      \vdots & \ddots & \vdots\\
+      t_{N+M+1}^{-N} & \cdots & t_{N+M+1}^{M}
+    \end{pmatrix}
+    \begin{pmatrix}
+      s^{-N}v_{-N}-s\cdot v_{-N}\\
+      \vdots \\
+      s^{M}v_{M}-s\cdot v_{M}
+    \end{pmatrix}
+    =0.
+  \end{equation*}
+  By Proposition \ref{vandermonde_determinant}, we get 
+  \begin{equation*}
+    \det \begin{pmatrix}
+      t_1^{-N}& \cdots & t_1^M\\
+      \vdots & \ddots & \vdots\\
+      t_{N+M+1}^{-N} & \cdots & t_{N+M+1}^{M}
+    \end{pmatrix}
+    = (t_1\cdots t_{N+M+1})^{-N}\prod_{i<j}(t_j-t_i)\not = 0.
+  \end{equation*}
+  Thus we conclude for each $s$ 
+  \begin{equation*}
+    s\cdot v_i = s^iv_i.
+  \end{equation*}
+  In particular, for any $v\in V$,
+  \begin{equation*}
+    v = 1\cdot v = \sum_{i=-N}^M v_i.
+  \end{equation*}
+  Let $w\in V_i$ then we have for any $t\in G_m$, 
+  \begin{equation*}
+    t\cdot w = t^n w.
+  \end{equation*}
+  Therefore, we have 
+  \begin{equation*}
+    (k_i,\langle w\rangle)
+  \end{equation*}
+  is an irreducible representation. In particular,
+  \begin{equation*}
+    V_i = \cong (k_n)^{\oplus\dim V_i}.
+  \end{equation*}
+  Therefore, we conclude all $G_m$-representations are a distinct sum of the $k_i$-s. Thus any irreducible representation is isomorphic to some $k_i$.
+\end{proof}
+\begin{proposition}
+  Let $V$ be a finite dimensional vector space and $G$ be an algebraic group. Then any morphisms algebraic grouops 
+  \begin{equation*}
+    \rho:G\to\GL(V)
+  \end{equation*}
+  defines a representation via 
+  \begin{equation*}
+    G\times V\stackrel{\rho}{\to}\GL(V)\times V\to V.
+  \end{equation*}
+  Furthermore, this defines a bijection,
+  \begin{equation*}
+    \Mor(G,\GL(V))\leftrightarrow \{\text {$G$-representations on $V$}\}.
+  \end{equation*}
+\end{proposition}
+From now on, we will freely use both notions interchangebly.
+\begin{proposition}
+  The group $\G_a$ has a unique irreducible representation, namely the trivial representation. Furthermore, $\G_a$ is not irreducible.
+\end{proposition}
+\begin{proof}
+  Let $V$ be a $\G_a$-representation corresponding to $\rho:G\to\GL(V)$. 
+  Explicitly,
+  \begin{equation*}
+    \G_a\stackrel{\rho}{\to}\GL(V)\subseteq\End(V)\cong\A^{(\dim V)^2}.
+  \end{equation*}
+  Pick a basis $\{v_1,\cdots,v_n\}\subset V$.
+  \par By the definition of morphisms of varieties, we have 
+  \begin{equation*}
+    \rho(t) = \sum_{1\leq i,j\leq n} f_{ij}(t)E_{ij}
+  \end{equation*}
+  for some polynomials $\{f_ij\}_{1\leq i,j\leq n}$. Order by the degree of the monomials we get 
+  \begin{equation*}
+    \rho(t) = \sum_{i=0}^\infty t^i \varphi_i
+  \end{equation*}
+  for soem $\{\varphi_n\}\subset\End(V)$, which is independent of the choice of element $t$. 
+  Note that for $n>>0$, $\varphi_n = 0$. By plugging in $t = 0\in G_a$, we get 
+  \begin{equation*}
+    v = 0\cdot v = \varphi_0(v).
+  \end{equation*}
+  Thus $\varphi_0=\id_V$. Let $s,t\in\G_a$, and consider 
+  \begin{equation*}
+    s\cdot(t\cdot v) = s\cdot\left(\sum_{n=0}^\infty t^n\varphi_n(v)\right) = \sum_{n=0}^\infty t^ns\varphi_n(v) = \sum_{n,m=0}^\infty t^ns^m\varphi_m\circ\varphi_n(v). 
+  \end{equation*}
+  Since $G_a\curvearrowright V$, thus we have 
+  \begin{equation*}
+    s\cdot(t\cdot v) = (s+t)\cdot v.
+  \end{equation*}
+  From this we get 
+  \begin{equation*}
+    (s+t)\cdot v = \sum_{n,m=0}^\infty { n+m \choose n}s^mt^n\varphi_{m+n}(v).
+  \end{equation*}
+  Using Vandermonde's matrix again, we see, 
+  \begin{equation*}
+    {n+m \choose n}s^mt^n  \varphi_{m+n}(v) = t^ns^m\varphi_m\circ\varphi_n(v).
+  \end{equation*}
+  THus for any $v\in V$, we have 
+  \begin{equation*}
+    {n+m \choose n}\varphi_{m+n}(v) = \varphi_m\circ\varphi_n(v).
+  \end{equation*}
+  We will use this fact to compute $(t-1)^kv$. We will prove the following assertion.\\
+  \par $\forall l\geq 1$, we have 
+    \begin{equation*}
+      (t-1)^kv = \sum_{n=l}^\infty p_n^{(l)}(t)\varphi_n(v),
+    \end{equation*}
+    where $p_n^{(l)}(t)\in k[t]$.
+    \par Indeed for $l=1$, we had $\varphi_0 = \id_V$.
+    \par For the induction part $l\to l+1$, we have 
+    \begin{align*}
+      (t-1)^{l+1}v & = (t-1)((t-1)^lv),\\
+      & = (t-1)\left(\sum_{n=l}^\infty p^{(l)}_n(t)\varphi_n(v)\right),\\
+      & = \sum_{n=l}^\infty p_n^{(l)}(t),\\
+      & = \sum_{n=l}^\infty \sum_{m=1}^\infty p_n^{(l)}(t)t^m{m+n \choose n}\varphi_{m+n}(v),\\
+      & = \sum_{p=q+1}^\infty p_p^{(q+1)}(t)\varphi_l(v),
+    \end{align*}
+    where $p_p^{(q+1)} = \sum_{\substack{m+n=p\\ n\geq q\\ m\geq 1}}{m+n \choose n}p_n^{(q)}t^m$.
+    \par Recall that $\varphi_n=0$ for $n>>0$. With the claim we have 
+    \begin{equation*}
+      n>>0\Rightarrow (t-1)^nv = 0.
+    \end{equation*}
+    Let $v\not=0$ and $m$ be the maximum of such that $(t-1)^mv \not =0$. Let $w = (t-1)^mv$. Then 
+    \begin{equation*}
+      (t-1)w = 0\Rightarrow \forall t\in\ G_a, tw = w.
+    \end{equation*}
+    In other words, $\langle w\rangle\subset V$ is a copy of the trivial representation.
+    \par Thus if $V$ is irreducible then $V$ is a trivial representation.\\
+    \par To see that $\G_a$ is not linearly reductive. Consider,
+    \begin{equation*}
+      \G_a\ni t\mapsto\begin{pmatrix}
+        1 & t\\
+        0 & 1
+      \end{pmatrix}\in\GL_2.
+    \end{equation*}
+    The only $\G_a$ stable subspaces are 
+    \begin{equation*}
+      \{0\},\langle e_1\rangle, k^2.
+    \end{equation*}
+    But $\langle e_1\rangle$ does not admit a $\G_a$-stable complement in $k^2$. Thus $k^2$ is not semisimple.
+\end{proof}
+\begin{lemma}
+  Let $G_1,G_2$ be affine algebraic groups then there exists a bijection between 
+  \begin{equation*}
+    \Irr(G_1)\times \Irr(G_2)\leftrightarrow\Irr(G_1\times G_2),
+  \end{equation*} 
+  such that 
+  \begin{equation*}
+    (V_1,V_2)\mapsto(V_1\boxtimes V_2).
+  \end{equation*}
+  \label{irreducible_representation_bijection}
+\end{lemma}
+\begin{proof}
+  Exercise.
+\end{proof}
+\begin{lemma}
+  If $G_1,G_2$ are linearly reductive so is $G_1\times G_2$.
+  \label{produc_linearly_reductive}
+\end{lemma}
+\begin{proof}
+  Exercise.
+\end{proof}
+We have seen that all irreducible $\G_m$ representations are $1$-dimensional. Hence we have a bijection, 
+\begin{equation*}
+  \Irr(\G_m)\leftrightarrow\Mor_{\text{Alg-Grps}}(\G_m,\G_m).
+\end{equation*}
+\begin{definition}
+  Let $G$ be an algebraic group. A character of $G$ is a morphism of algebraic group 
+  \begin{equation*}
+    G\to\G_m=\GL_1.
+  \end{equation*}
+  The set of all characters is denoted by $X^*(G)$. 
+\end{definition}
+\begin{remark}
+  $X^*(G)$ forms a group via 
+  \begin{equation*}
+    \lambda,\mu\in X^*(G), (\lambda\cdot\mu)(g) = \lambda(g)\mu(g).
+  \end{equation*}
+\end{remark}
+Let $V$ be an irreducible representation of $\G_a$. Then for $t\in \G_a$, we have 
+\begin{equation*}
+  n>>0\Rightarrow (t-1)^nV = 0.
+\end{equation*}
+In particular, $(t-1)V$ is a proper $\G_a$-subrepresentation of $V$. But $V$ is irreducible thus 
+\begin{equation*}
+  (t-1)V = \{0\}\Rightarrow \forall t\in\G_a\forall v\in V, t\cdot v = v.
+\end{equation*}
+\begin{lemma}
+  Let $G_1,G_2$ be affine algebraic gruops. Then 
+  \begin{equation*}
+    X^*(G_1\times G_2) = X^*(G_1)\times X^*(G_2).
+  \end{equation*}
+\end{lemma}
+\begin{proof}
+  Let us consider the following maps,
+  \begin{equation*}
+    C_1:G_1\hookrightarrow(G_1\times G_2), g\mapsto (g,e_{G_2}),
+  \end{equation*}
+  and 
+  \begin{equation*}
+    C_2:G_2\hookrightarrow(G_1\times G_2), g\mapsto (e_{G_1},g).
+  \end{equation*}
+  Given a character $\chi:G_1\times G_2\to \G_m$, we get another character by 
+  \begin{equation*}
+    \chi\circ C_1:G_1\to\G_m,\quad \chi\circ C_2:G_2\to\G_m.
+  \end{equation*}
+  This defines a map 
+  \begin{equation*}
+    X^*(G_1\times G_2)\ni\chi\mapsto (\chi\circ C_1,\chi\circ C_2)\in X^*(G_1)\times X^*(G_2).
+  \end{equation*}
+  Let $\lambda\in X^*(G_1)$, and $\mu\in X^*(G_2)$, then 
+  \begin{equation*}
+    (\lambda,\mu)(g_1,g_2) = \lambda(g_1)\mu(g_2),
+  \end{equation*}
+  this defines a map from $X^*(G_1)\times X^*(G_2)$ to $X^*(G_1\times G_2)$. The maps 
+  \begin{equation*}
+    [\chi\mapsto (\chi\circ C_1,\chi\circ C_2)],[(\lambda,\mu)\mapsto[(g_1,g_2)\mapsto \lambda(g_1)\mu(g_2)]]
+  \end{equation*}
+  are inverse to one another.
+\end{proof}
+\begin{definition}
+  An algebraic grup $T$ is a torus if $T\cong\G_m^n$ for some $n\geq 0$. 
+\end{definition}
+\begin{corollary}
+  Let $T$ bea torus then $T$ is linearly reductive and we have a bijection
+  \begin{equation*}
+    X^*(T)\ni\chi\mapsto k_\chi\in\Irr(T).
+  \end{equation*}
+\end{corollary}
+\begin{proof}
+  By Lemma \ref{produc_linearly_reductive} and $\G_m$ is linearly reductive, $T$ is linearly reducitve. Similarly by Lemma \ref{irreducible_representation_bijection}, we have 
+  \begin{equation*}
+    \Irr(T) = \Irr(\G_m)^n.
+  \end{equation*}
+\end{proof}
+\begin{remark}
+  Since each irreducible representations of $\G_m$ are exactly its character. We have 
+  \begin{equation*}
+    X^*(T) = X^*(\G_m)^n.
+  \end{equation*}
+  In other words, any $T$-representation $V$ has a canonical decomposition 
+  \begin{equation*}
+  V = \bigoplus_{\lambda\in X^*(T)}V_\lambda,
+  \end{equation*}
+  where 
+  \begin{equation*}
+    V_\lambda = \{v\in V\sep \forall t\in T, tv = \lambda(t)v\}.
+  \end{equation*}
+\end{remark}
+\begin{theorem}
+  Let $k=\C$, and $G\subset\GL_n$ be a closed subgroup. 
+  \par It is linearly reductive if it is stable under the involution $A\mapsto A^* \defeq \overline{A}^T$.\\
+  \par Let $V$ be an irreducible $G$-representation. Then for $N>>0$, $V\otimes \det^{\otimes N}$ is a direct summand of $V^{\otimes r}$ for some $r\geq0$ where $\det$ is the one dimensional $G$-representation,
+  \begin{equation*}
+  G\hookrightarrow\GL_n\stackrel{\det}{\to}\C,
+  \end{equation*}
+  \and $V=k^n$ is the standard $GL_n$-representation (the action is the linear transform by a matrix).
+\end{theorem}
+\begin{proof}
+  (Foundation course).
+\end{proof}
+\begin{theorem}[Peter-Weyl]$\:$\\
+  Let $G$ be a linearly reductive algebrai group. Then we have 
+  \begin{equation*}
+    \mathcal{O}(G) \cong\bigoplus_{V\Irr(G)}V^*\boxtimes V,
+  \end{equation*}
+  where the inclusion $V^*\boxtimes V\hookrightarrow\Ouv(G)$ is given by,
+  \begin{equation*}
+    f\otimes v\mapsto(g\mapsto f(g^{-1}v)).
+  \end{equation*}
+  \label{peter_weyl}
+\end{theorem}
+\begin{proof}
+Foundation course.
+\end{proof}
+\begin{example}
+Let $G= \G_m=\GL_1$ and the action of $G\times G$ on $\Ouv(G)=k[t,t^{-1}]$ is given by 
+\begin{equation*}
+  (t_1,t_2)\cdot T^n = t_1^{-n}t_2^nT^n.
+\end{equation*}
+Then $k\cdot T^n$ is isomorphic to $k_{-n}\boxtimes k_n\cong k_n^*\boxtimes k_n$ as $\G_m\times \G_m$-representation.
+Therefore 
+\begin{equation*}
+  \Ouv(\G_m) = \bigoplus_{n\in\Z}k\cdot T^n \cong \bigoplus{n\in\Z}k_n^*\boxtimes k_n.
+\end{equation*}
+\end{example}
+\begin{example}
+  Let $G$ be an affine algebraic group and $V$ be a finite dimensional $G$-representation. Define a function,
+  \begin{equation*}
+    \chi_V:G\to k, g\mapsto\tr(g|_V).
+  \end{equation*}
+  Explicity, this is the composition 
+  \begin{center}
+    \begin{tikzcd}
+G \arrow[r, "\rho"] & \GL(V) \arrow[r, "\tr"] & k
+\end{tikzcd}
+  \end{center}
+  This lies in $\mathcal{O}^G$, where $G$ acts on $\Ouv(G)$ via 
+  \begin{equation*}
+    (gf)(x) = f(g^{-1}xg).
+  \end{equation*}
+\end{example}
+\begin{example}
+  Let $V=k^n$ be the standard $\GL_n$-representation. Then we define 
+  \begin{equation*}
+    \chi_{\det}(g) = \deg(g).
+  \end{equation*}
+\end{example}
+\begin{lemma}
+  Let $U,U_1,U_2$ be $G$-representations. We have 
+  \begin{enumerate}[1).]
+    \item $\chi_{U_1\oplus U_2} = \chi_{U_1}+\chi_{U_2}$
+    \item $\chi_{U_1\otimes U_2} = \chi_{U_1}\chi_{U_2}$
+  \end{enumerate}
+  Let $C:G\to G$ be such that $i(g) = g^{-1}$ then 
+  \begin{equation*}
+    \chi_{U^*} = \chi_U\circ i.
+  \end{equation*}
+  If $G$ is a finite group and $k=\C$, then 
+  \begin{equation*}
+  \chi_{U^*}(g) = \overline{\chi_U(g)}.
+  \end{equation*}
+\end{lemma}
+\begin{proof}
+  First two statements are assigned as exercises.
+  \par If $G$ is finite then we have 
+  \begin{equation}
+    g^{\vert G\vert} = e.
+  \end{equation}
+  Under the representation, we get $\pi(g)$ is a matrix whose minimal polynomial divides $T^{\ord(g)}-1$. 
+  In particular, $\pi(g)$ has distinct eigenvalues. In other words, it is diagonalizable.
+  \begin{equation*}
+  \pi(g)\sim\begin{pmatrix}
+    \lambda_1&0 &\cdots &0\\
+    0 & \lambda_2 & \cdots &0\\
+    \vdots & \vdots &\ddots & \vdots\\
+    0 & 0 & \cdots & \lambda_n
+  \end{pmatrix}.
+  \end{equation*}
+  For each $i$ we have $\lambda_i^{\ord(g)} = 1$. Therefore, 
+  \begin{equation}
+    \lambda_i^{-1} = \overline{\lambda}_i.
+  \end{equation}
+  Thus we obtain 
+  \begin{equation*}
+  \chi_{U^*}(g) = \chi(g^{-1})=\tr(g^{-1}) = \sum_{i=1}^n \lambda_i^{-1} = \overline{\sum_{i=1}^n \lambda_i} = \overline{\chi_U(g)}.
+  \end{equation*}
+\end{proof}
+\begin{theorem}
+  Let $G$ be a linearly reductive group. Then the characters of the irreducible $G$-representations form a basis of $\Ouv(G)^G$. 
+\end{theorem}
+\begin{proof}
+  By Theorem \ref{peter_weyl}, we have 
+  \begin{equation*}
+    \Ouv(G)^G = \left(\bigoplus_{U\in\Irr(G)} U^*\boxtimes U\right)^G \cong\bigoplus_{U\in\Irr(G)}\Hom_G(U,U).
+  \end{equation*}
+  By Schur's lemma, we get 
+  \begin{equation*}
+    \Ouv(G)^G \cong \bigoplus_{U\in\Irr(G)}\Hom_G(U,U) = k\id_n.
+  \end{equation*}
+  Let $\{u_i\}_{i=1,\cdots,n}$ be a basis of $U$, then 
+  \begin{equation*}
+    tr(g|_U) = \chi_U(g) = (g\mapsto \sum_{i=1}^n u_i^*(g\cdot u_i))\mapsfrom \sum_{i=1}^n u_i^*\boxtimes u_i\mapsfrom u\id_u.
+  \end{equation*}
+  We conclude $\chi_U$ forms a basis of $\Ouv(G)^G$.
+\end{proof}
+\begin{corollary}
+  Let $V,V'$ be representation of a linearly reductive group $G$. Then we have 
+  \begin{equation*}
+    V\cong V' \Leftrightarrow \chi_U = \chi_{U'}.
+  \end{equation*}
+\end{corollary}
+\begin{proof}
+  Let $V = \bigoplus_{U\in\Irr(G)}U^{\oplus d_U}$, and $V' = \bigoplus_{U\in\Irr(G)}U^{\oplus d_U'}$. Then 
+  \begin{equation*}
+    \chi_V = \sum_{U\in\Irr(G)}d_U\cdot \chi_U, \quad \chi_{V'} = \sum_{U\in\Irr(G)}d_U'\cdot \chi_U,
+  \end{equation*}
+  By the previous theorem, we get 
+  \begin{equation*}
+    \chi_V =\chi_{V'}\Leftrightarrow \forall U\in\Irr(G), d_U = d_U' \Leftrightarrow V\cong V'.
+  \end{equation*}
+\end{proof}
+
+Let $G$ be a finite group and $k=\C$, Note that $G$ is linearly reductive as we have $G\hookrightarrow\mathfrak{S}_N\hookrightarrow\GL_N$.
+Hence we get 
+\begin{equation*}
+  \vert\Irr(G)\vert = \dim\Ouv(G)^G = \dim\{\theta:X^*(G)\to\C\} = \vert X^*(G)\vert.
+\end{equation*}
+\begin{example}
+  Let $G=\mathfrak{S}_3$, then it has the following irreducible representations.
+  \begin{equation*}
+    \triv,\sgn,\nu=\C^3/\triv,
+  \end{equation*}
+  Where $V_\nu = \{(x_1,x_2,x_3)\sep x_1+x_2+x_3 = 0\}$. And $\chi_{\C^3}$ is a trace. We have the following table,
+
+  \begin{center}
+\centering
+\begin{tabular}{l|l|l|l}
+        & $\chi_{\triv}$ & $\chi_{\sgn}$ & $\chi_\nu$ \\ \hline
+$e$     & $1$            & $1$           & $2$        \\ \hline
+$(12)$  & $1$            & $-1$          & $0$        \\ \hline
+$(123)$ & $1$            & $1$           & $-1$      
+\end{tabular}
+\end{center}
+Explicitly we have 
+\begin{equation*}
+  \chi_\nu = \chi_{\C^3}-\chi_{\triv}
+\end{equation*}
+\end{example}
+Let $G$ be finite and $k=\C$, we can define a hermitian inner product on $\Ouv(G)^G$ by 
+\begin{equation*}
+  \langle b_1,b_2\rangle = {\frac 1 {\vert G\vert}}\sum_{g\in G}b_1(g)\overline{b_2(g)}.
+\end{equation*}
+
+\begin{lemma}
+  If $G$ is finite and $k=\C$, Let $V$ be a finite dimensional representation. Then we have 
+  \begin{equation*}
+    \dim V^G = \langle \chi_\nu,\chi_{\triv}\rangle.
+  \end{equation*}
+\end{lemma}
+\begin{proof}
+  Let $\pi:V\to V$ be such that 
+  \begin{equation*}
+    \pi(v) = {\frac 1 {\vert G\vert}}\sum_{g\in G}g\cdot v.
+  \end{equation*}
+  Observe that $\pi|_{V^G} = \id_{V^G}$ and $\Image\pi\subseteq V^G$. In other words, $\pi$ is a projection onto $V^G$( with complement $\sum_{\substack{W\subseteq V\text{ irreducible.}\\ W\not=\triv}} W$). Thus 
+  \begin{equation*}
+    \dim V^G = \tr(\pi) = {\frac 1 {\card{G}}}\sum_{g\in G}\tr(g|_V) = \langle\chi_\nu,\chi_{\triv}\rangle.
+  \end{equation*}
+  The first equality follows from that if $V=W_1\oplus W_2$ and $\rho:V\twoheadrightarrow W_1\hookrightarrow V$ then $\tr(\rho) = \dim W_1$.
+\end{proof}
+\begin{proposition}
+  Let $G$ be a finite group and $k=\C$. If $U_1,U_2\in\Irr(G)$, then 
+  \begin{equation*}
+    \langle \chi_{U_1},\chi_{U_2}\rangle = \begin{cases}
+      1\quad (U_1\cong U_2)\\
+      0\quad (U_1\not\cong U_2)
+    \end{cases}.
+  \end{equation*}
+  In other words, the characters of the irreducible $G$-representations form an orthonormal basis of $\Ouv(G)^G$.
+\end{proposition}
+\begin{proof}
+  By Schur's lemma, we know 
+  \begin{equation*}
+    \Hom_G(U_1,U_2) = \begin{cases}
+      1\quad (U_1\cong U_2)\\
+      0\quad (U_1\not\cong U_2)
+    \end{cases}.
+  \end{equation*}
+  Note that $b_1,b_2,b_3\in\Ouv(G)^G$, we have 
+  \begin{equation*}
+    \langle b_1b_2,b_3\rangle = \langle b_1,\overline{b_2}b_3\rangle.
+  \end{equation*}
+  By using the previous lemma, we get 
+  \begin{align*}
+    \dim\Hom_G(U_1,U_2) & = (U_2\tens{\C}U_1^*)^G,\\
+    & = \langle\chi_{U_2\otimes U_1^*},\chi_{\triv}\rangle,\\
+    & = \langle \chi_{U_2}\chi_{U_1^*},\chi_{\triv}\rangle,\\
+    & = \langle \chi_{U_2},\chi_{U_1}\rangle.
+  \end{align*}
+\end{proof}
+\begin{theorem}
+  \label{theorem_restriction_along_torus}
+  Let $G=\GL_n$ and $k=\C$. Let 
+  \begin{equation*}
+    T \defeq \left\{\begin{pmatrix}
+      \ast & 0 & \cdots & 0\\
+      0 & \ast & \cdots & 0\\
+      \vdots & \vdots & \ddots & \vdots\\
+      0 & 0 & \cdots & \ast
+    \end{pmatrix}
+    \right\}
+    subseteq \GL_n
+  \end{equation*}
+  be a torus consisting of diagonal matrices. By restricting along $T\hookrightarrow \GL_n$, we get 
+  \begin{equation*}
+    \Ouv(\GL_n)^{\GL_n}\hookrightarrow \Ouv(T)^{\mathfrak{S}_n},
+  \end{equation*}
+where $\mathfrak{S}_n$ acts on $T$ by permuting the diagonal entries.
+\end{theorem}
+\begin{proof}
+  We will first show that 
+  \begin{equation*}
+    \varphi:\Ouv(\GL_n)^{\GL_n}\to\Ouv(T)
+  \end{equation*}
+  is injective. 
+  \par Assume $\varphi(b) = 0$ but $b\not\equiv0$. Let $A\in\GL_n$ be such that $b(A) \not = 0$. 
+  \par Since $b$ is $\GL_n$ invariant and any element of $\GL_n$ is conjugate toan upper triangular matrix, we may assume that $A$ is also upper triangular such that 
+  \begin{equation*}
+    A = \begin{pmatrix}
+      a_{11} & a_{12} & \cdots & a_{1n}\\
+      a_{21} & a_{22} & \cdots & a_{2n}\\
+      \vdots & \vdots & \ddots & \vdots\\
+      a_{n1} & a_{n2} & \cdots & a_{nn}\\
+    \end{pmatrix}.
+  \end{equation*}
+  \par Let 
+  \begin{equation*}
+    D_t = \begin{pmatrix}
+      t^n & 0& \cdots & 0 \\
+      0 & t^{n-1}& \cdots &0\\
+      \vdots & \vdots & \ddots & \vdots\\
+      0 & 0 & \cdots & t
+    \end{pmatrix}.
+  \end{equation*} 
+  Then $0\not=b(A) = b(D_tAD_t^{-1})$. Note that 
+  \begin{equation*}
+    D_t A D_t^{-1} = 
+    \begin{pmatrix}
+      a_{11} & a_{12}t & \cdots & a_{1n}t^{n-1}\\
+      0 & a_{22} & \cdots & a_{2n}t^{n-2}\\
+      \vdots & \vdots & \ddots & \vdots\\
+      0 & 0 & \cdots & a_{nn}
+    \end{pmatrix}.
+  \end{equation*}
+  Taking $t\to 0$, we get 
+  \begin{equation*}
+    \lim_{t\to 0}D_tAD_t^{-1} = \begin{pmatrix}
+      a_{11} & 0&\cdots& 0 \\
+      0 & a_{22} & \cdots& 0 \\
+      \vdots & \vdots & \ddots & \vdots\\
+      0 & 0 & \cdots & a_{nn}
+  \end{pmatrix}.
+  \end{equation*}
+  Since. $b\in\Ouv(\GL_n)^{\GL_n}$ is a polynomial function, hence $b$ is continuous in $t$. Therefore 
+  \begin{equation*}
+    0\not= b(A).
+  \end{equation*}
+  In particular, we get 
+  \begin{equation*}
+    b\left(\begin{pmatrix}
+      a_{11} & 0&\cdots& 0 \\
+      0 & a_{22} & \cdots& 0 \\
+      \vdots & \vdots & \ddots & \vdots\\
+      0 & 0 & \cdots & a_{nn}
+  \end{pmatrix}\right)= b(\lim_{t\to0}D_tAD_t^{-1}) = \lim_{t\to 0}b(D_tAD_t^{-1})=\lim_{t\to 0}b(A) = b(A) \not =0.
+  \end{equation*}
+  This contradicts to the choice of $b$, more explicitly,
+  \begin{equation*}
+    0 = \varphi(b) = b|_T.
+  \end{equation*}
+  Thus we have proven the injectivity $\Ouv(\GL_n)^{\GL_n}\hookrightarrow \Ouv(T)$.
+  \par Since for any $D_1,D_2\in T$, if $D_1\sim D_2$ in $T$ so are in $\GL_n$. In particular, $D\in T$ is fixed by $\GL_n$ then so by $\mathfrak{S}_n$. Thus we have 
+  \begin{equation*}
+    \Image\varphi\subseteq\Ouv(T)^{\mathfrak{S}_n}.
+  \end{equation*}
+\end{proof}
+\begin{corollary}
+  Let $k=\C$ and $U_1,U_2$ be $\GL_n$-representations. They are isomorphic as $\GL_n$-representation if and only if they are isomorphic as $T$-representation.
+\end{corollary}
+\begin{proof}
+  Any representation ofa linearly reductive group (such as $\GL_n(\C)$ or $T$) is uniquely determined by its charactes. We have 
+  \begin{equation*}
+    U_1\stackrel{\GL_n}{\cong} U_2\Rightarrow U_1\stackrel{T}{\cong} U_2
+  \end{equation*}
+  On the other hand,
+  \begin{equation*}
+    U_1\stackrel{T}{\cong} U_2\Rightarrow \chi_{U_1}|_T=\chi_{U_2}|_T\Rightarrow \chi_{U_1}=\chi_{U_2}\Rightarrow U_1\stackrel{\GL_n}{\cong} U_2.
+  \end{equation*}
+\end{proof}
+\section{Symmetric Polynomials}
+\begin{remark}
+  We have 
+  \begin{equation*}
+    \Ouv(T) = \C[T_1^{\pm1},\cdots,T_n^{\pm 1}].
+  \end{equation*}
+  With this, we observe that 
+  \begin{equation*}
+    \Ouv(T)^{\mathfrak{S}_n} = \C[T_1^{\pm1},\cdots,T_n^{\pm 1}]^{\mathfrak{S}_n} = \C[T_1,\cdots,T_n][(T_1\cdots T_n)^{-1}].
+  \end{equation*}
+  For the last equality, observe that $T_i = (T_1\cdots T_n)^{-1}(T-1\cdots T_{i-1}T_{i+1}\cdots T_n)$.
+\end{remark}
+\begin{notation}
+  \begin{equation*}
+    \Lambda_n\defeq\Z[T_1,\cdots, T_n]^{\mathfrak{S}_n},\quad \Lambda_n^r = \{p\in\Lambda_n\sep \text{$p$ is homogeneous of degree $r$}\}.
+  \end{equation*}
+\end{notation}
+\begin{remark}
+  $\Lambda_n$ has a graded algebra by 
+  \begin{equation*}
+    \Lambda_n = \bigoplus_{r\in\N}\Lambda_n^r.
+  \end{equation*}
+\end{remark}
+\begin{definition}
+  A decreasing sequence (ie. for any $i\in\N$, $\lambda_i\geq \lambda_{i+1}$) of non-negative integers $\lambda = (\lambda_i)_{i\in\N}$ is called a partition. 
+  \par We call $\lambda$ is partition of $n$ if $n = \sum_{i\in\N} \lambda_i$. 
+  \par If $i+1$ is minimal index such that $\lambda_{i+1}=0$, then we say $\lambda$ has $i$-parts.
+\end{definition}
+\begin{notation}
+  For a given partition $\lambda$, we write $\lambda = (1^{\alpha_1}2^{\alpha_2}\cdots)$ where $\alpha_i$ denotes the number of times the number $i$ appears in the term of the sequence.
+\end{notation}
+\begin{example}
+  For $(4,4,2,1)$, we write $(124^2)$. 
+\end{example}
+\begin{definition}
+  For a partition $\lambda$ which has $i$ parts, the Young's diagram of $\lambda$ is a diagram such that 
+  \begin{center}
+\begin{tabular}{lllllllllll}
+\cline{2-11}
+\multicolumn{1}{l|}{$\lambda_1$}     & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \cline{2-11} 
+\multicolumn{1}{l|}{$\lambda_2$}     & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &                       &                       &                       \\ \cline{2-8}
+\multicolumn{1}{l|}{$\lambda_3$}     & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &                       &                       &                       &                       &                       \\ \cline{2-6}
+                                     & $\vdots$              & $\vdots$              & $\vdots$              & $\vdots$              & $\vdots$              &                       &                       &                       &                       &                       \\ \cline{2-3}
+\multicolumn{1}{l|}{$\lambda_{i-1}$} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &                       &                       &                       &                       &                       &                       &                       &                       \\ \cline{2-3}
+\multicolumn{1}{l|}{$\lambda_i$}     & \multicolumn{1}{l|}{} &                       &                       &                       &                       &                       &                       &                       &                       &                       \\ \cline{2-2}
+\end{tabular}
+  \end{center}
+\end{definition}
+\begin{example}
+  For $(4,4,2,1)$, its Young diagram is 
+  \begin{center}
+    \begin{tabular}{|l|lll}
+\hline
+ & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+ & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+ & \multicolumn{1}{l|}{} &                       &                       \\ \cline{1-2}
+ &                       &                       &                       \\ \cline{1-1}
+\end{tabular}
+  \end{center}
+\end{example}
+\begin{definition}
+  For any $k\geq 0$, the power sum is 
+  \begin{equation*}
+    \psi_k = \sum_{i=1}^n T_n^k.
+  \end{equation*}
+  This is clearly a symmetric polynomial.
+\end{definition}
+\begin{definition}
+  The elementary symmetric polynomials are defined by expressing products 
+  \begin{equation*}
+    \prod_{i=1}^n(1-T_i x)\in\Lambda_n[x]
+  \end{equation*}
+  in terms of powers of $x$,
+  \begin{equation*}
+    \prod_{i=1}^n(1-T_i x) 1+ \sum_{i=1}^n(-1)^ie_ix^i,
+  \end{equation*}
+  where $e_i\in\Lambda_n$. More explicitly,
+  \begin{equation*}
+    e_i = \sum_{1\leq a_1\leq \cdots\leq a_i\leq n}T_{a_1}\cdots T_{a_i}.
+  \end{equation*}
+\end{definition}
+\begin{example}
+  \begin{equation*}
+    e_1 = \sum_{i=1}^n T_i,\quad e_n = T_1\cdots T_n.
+  \end{equation*}
+\end{example}
+\begin{definition}
+  Let $\lambda$ be a partition of $n$ which has at most $n$-parts. Then we define 
+  \begin{equation*}
+    m_\lambda = \sum_{\sigma\in\mathfrak{S}_n}\sigma \prod_{i=1}^n T_i^{\lambda_i}.
+  \end{equation*}
+  In other words, $m_\lambda$ is the orbit of $\prod_{i=1}^n T_i^{\lambda_i}$ under $\mathfrak{S}_n$.
+  We call $m_\lambda$ a monomial symmetric polynomial.
+\end{definition}
+\begin{remark}
+  The above definition generalize the symmetric polynomials we have defined. Explicitly,
+  \begin{equation*}
+    \psi_i = m_{(i)},\quad e_i = m_(111\cdots 10\cdots0)
+  \end{equation*}
+  where for $e_i$, there are $1$-s in the first $i$-terms.
+\end{remark}
+\begin{remark}
+  \label{remark_symmetric_polynomials_basis}
+  Any monomial of $\Lambda_n$ is a $\mathfrak{S}_n$ orbit of some mononial of the form,
+  \begin{equation*}
+    T_1^{\lambda_1}\cdots T_n^{\lambda_n}
+  \end{equation*}
+  where $\lambda$ is a partition of $r$ which has at most $n$-parts. Indeed, this forms a basis of $\Lambda_n^r$. 
+  \par Moreover, we have 
+  \begin{equation*}
+    \{m_\lambda\sep\text{$\lambda$ has at most $n$-parts}\},
+  \end{equation*}
+  is a basis of the algebra $\Lambda_n$.
+\end{remark}
+
+%Nov 4
+
+\begin{definition}
+  Given a partition $\lambda=(1^{k_1},\cdots,n^{k_n},\cdots)$, we define
+  \begin{enumerate}
+    \item $a(\lambda) = k_1!\cdots k_n!\cdots $,
+    \item $b(\lambda) = \prod_{i\in\N} i^{k_i}$,
+    \item $n(\lambda) = a(\lambda)b(\lambda)$.
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}
+  \begin{equation*}
+    \beta_\lambda(\mu)\defeq \chi_{\C[S_r/S_\lambda]}(\mu).
+  \end{equation*}
+\end{definition}
+
+\begin{proposition}
+  Let $\lambda,\mu\vdash r$ with $\lambda = (\lambda_1>\cdots>\lambda_k)$ and $\mu = (1^{p_1}\cdots n^{p_n})$. Then 
+  \begin{equation*}
+    \beta_\lambda(\mu) = \sum_{\substack{\mu = \bigoplus_{i=1}^k \mu_i\\ \mu_i\vdash \lambda}}\prod_{j=1}^n{p_j \choose p_{j1},p_{j2}\cdots p_{jk}}.
+  \end{equation*} 
+  where $\mu_i = (1^{p_{1i}2^{p_{2i}}}$. )
+\end{proposition}
+
+\begin{proof}
+  \begin{equation*}
+    \beta_{\lambda}(\mu) = \sum_{i} {\frac {\vert S_r(\mu)\vert} {\vert S_\lambda(h_i)
+    \vert}},
+  \end{equation*}
+  where $h_i$ are representatives of the $S_\lambda$ conjugacy classes in $C_{S_r}(\mu)$ (ie a conjugacy class is $S_r$ of cycle type $\mu$). Not $\vert S_r(\mu)\vert = \vert S_r(\sigma)\vert $ for any $\sigma $ of cycle type $\mu$.
+  \par We have
+  \begin{equation*}
+    C_{S_{\lambda_1}}(\mu_1)\times \cdots\times C_{S_{\lambda_k}}(\mu_k)\subseteq C_{S_r}(\mu).
+  \end{equation*}
+  Thus we have 
+  \begin{equation*}
+    (\mu_i\vdash \lambda_i)\Leftrightarrow \mu = \bigoplus_{i=1}^k \mu_i. 
+  \end{equation*}
+  Now $\vert S_r(\mu)\vert = n(\mu)$ from the lemma, using this, we obtain,
+  \begin{equation*}
+    \vert S_{\lambda_1}(\mu_1)\times \cdots\times S_{\lambda_k}(\mu_k)\vert  = \prod_{i=1}^k n(\mu_i).
+  \end{equation*}
+  For $\mu = \bigoplus_{i=1}^k\mu_i$, we get 
+  \begin{equation*}
+    b(\mu) = \prod_{i=1}^k b(\mu_i).
+  \end{equation*}
+  For $a(\mu)$, we have,
+  \begin{equation*}
+    a(\mu) = p_1!p_2!\cdots, \quad a(\mu_i) = (p_{1i})!(p_{2i})!\cdots.
+  \end{equation*}
+  Thus we obtain,
+  \begin{equation*}
+    \prod_{i=1}^n a(\mu_i) = \prod_{i=1}^n\prod_{j=1}^k (p_{ij})!.
+  \end{equation*}
+  Substituting these, we get 
+  \begin{equation*}
+    \beta_\lambda(\mu) = \sum_{\substack{\mu_i=\bigoplus_{i=1}^k \mu_i\\ \mu\vdash \lambda}} {\frac {a(\mu)b(\mu)} {\prod_{i=1}^na(\mu_i)b(\mu_i)}} = \sum_{\substack{\mu = \bigoplus_{i=1}^k \mu_i\\ \mu_i\vdash \lambda}}\prod_{j=1}^n {\frac {p_j!} {(p_{j!})!\cdots (p_{jk})!}}.
+  \end{equation*}
+  Using the generalized binomial coefficient, we get
+  \begin{equation*}
+    \beta_\lambda(\mu) = \sum_{\substack{\mu_i=\bigoplus_{i=1}^k \mu_i\\ \mu\vdash \lambda}} \prod_{j=1}^n {p_j \choose p_{j1},\cdots, p_{jk}}.
+  \end{equation*}
+\end{proof}
+
+\begin{example}
+  Let $V =\C^r = C[S_r/S_\lambda]$ where $\lambda = (r-1\geq 1)$.
+  \begin{center}
+    \[
+    \lambda \sim\overbrace{
+  \begin{tabular}{|l|llllll}
+\cline{1-3} \cline{5-7}
+ & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{$\cdots$} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \cline{1-3} \cline{5-7} 
+ &                       &                       &                               &                       &                       &                       \\ \cline{1-1}
+\end{tabular}
+    }^{r}
+\]
+  \end{center} 
+  For any $\mu = (1^{p_1}2^{p_2}\cdots)$, there is at most one way to write $\mu$ as the direct sum of partitions,
+  \begin{equation*}
+    \mu = \mu_1\oplus\mu_2
+  \end{equation*} 
+  with $\mu_1 \vdash \lambda_1 = r-1, \mu_2 \vdash \lambda_2 = 1$. Namely, 
+  \begin{equation*}
+    \mu_2 = (1),\mu_1 = (1^{p_1-1}2^{p_2}3^{p_3}\cdots).
+  \end{equation*}
+  Notice this is only possible if and only if $p_1>0$. Then using the proposition,
+  \begin{equation*}
+    \beta_\lambda(\mu) = {p_1 \choose p_1-1,1}{p_2\choose p_2,0}{p_3\choose p_3,0} = p_1.
+  \end{equation*}
+\end{example}
+
+Recall for $\lambda$ a partition with at most $n$-parts, $m_\lambda\in\Lambda_n$ is the sum of all monomials in the $S_n$-orbit of $T_1^{\lambda_1}T_2^{\lambda_2}\cdots$. 
+We also have defined that 
+\begin{equation*}
+  \psi_k = \sum_{i=1}^n T_i^k\in\Lambda_n.
+\end{equation*}
+For any partition $\mu=(\mu_1\geq\mu_2\geq\cdots)$, define 
+\begin{equation*}
+  \psi_{\mu} = \psi_{\mu_1}\psi_{\mu_2}\cdots.
+\end{equation*}
+\begin{lemma}
+  We have,
+  \begin{equation*}
+    \psi_\mu = \sum_{\substack{\lambda\\\text{$\lambda$ has at most $n$-parts.}}}\beta_\lambda(\mu) m_\lambda,
+  \end{equation*}
+  for all $\mu\vdash r$.
+\end{lemma}
+\begin{proof}
+  Note $\lambda = (\lambda_1\geq \lambda_2\geq\cdots\lambda_k)$ and $\mu=(1^{p_1}2^{p_2}\cdots)$. Then 
+  \begin{equation*}
+    \psi_\mu = (\psi_1)^{p_1}(\psi_2)^{p_2}\cdots = \sum_{\{1,\cdots,p_j\}=S_{j1}\coprod\cdots\coprod S_{jk}}\prod_{i,j}T_i^{j\vert S_{ji}\vert}.
+  \end{equation*}
+  Here we multiply, out $\psi_j^{p_j}$ by picking $T_i^j$ for each index in $S_j$. 
+This means that the coefficient of $T_1^{\lambda_1}T_2^{\lambda_2}\cdots T_{k}^{\lambda_k}$ in $\psi_\mu$ is equal to all possible ways to partition $\{1,\cdots,p_j\} = S_{j1}\coprod\cdots \coprod S_{jk}$.
+Such that 
+\begin{equation}
+  \lambda_i = p_{1i}+2p_{2i}+\cdots \text{ where } p_{ji} = \vert S_{ji}\vert \label{partition_condition_eq}
+\end{equation} 
+\par Set $\mu_i \defeq (1^{p_{1i}}2^{p_{2i}}\cdots)$, then $\mu_i\vdash \lambda$ if and only if Equation \eqref{partition_condition_eq} holds.
+ Also $\mu=\bigoplus_{i=1}^k\mu_i$ since $p_j = \sum_{i=1}^kp_{ji}$.
+\par For a fixed decomposition $\mu=\bigoplus_{i=1}^k \mu_i$, the number of ways to choose $S_{j1}\sqcup S_{j2}\sqcup\cdots\sqcup S_{jk} = \{1,\cdots,p_j\}$, with $\S_{ji} = p_{ji}$ is given by 
+\begin{equation*}
+  {p_j \choose p_{j1},\cdots,p_{jk}}
+\end{equation*}
+Therefore, coefficient of $T_1^{\lambda_1}\cdots T_k^{\lambda_k}$ in $\psi_\mu$ is 
+\begin{equation*}
+  \sum_{\substack{\mu = \bigoplus_{i=1}^k\mu_i\\ \mu_i\vdash \lambda}}\prod_{j=1}^n{p_j \choose p_{j1},\cdots,p_{jk}} = \beta_\lambda(\mu).
+\end{equation*}
+Note $m_\lambda$ is the unique monomial symmetric polynomial containing $T_1^{\lambda_1}\cdots T_{\lambda_k}$, thus 
+\begin{equation*}
+  \psi_\mu = \sum_{\lambda}\beta_{\lambda}(\mu)m_{\lambda}.
+\end{equation*}
+\end{proof}
+We can also express $\psi_\mu$ in the Schur basis, 
+\begin{equation}
+  \psi_\mu = \sum_{\lambda} c_\lambda(\mu) s_\lambda,
+\end{equation}
+where $c_\lambda\in\Z$. Note that we can view $c_\lambda\in\Ouv(S_r)^{S_r}$, where $c_\lambda(\sigma)=c_\lambda(\mu)$ if $\sigma$ has cycle of type $\mu$. 
+\begin{proposition}
+  Let $\lambda,\mu\vdash r$ with at most $n$-parts. Then 
+  \begin{equation*}
+  \langle c_\lambda,c_\mu\rangle = \delta_{\lambda,\mu},
+  \end{equation*}
+  (with respect to the standard Hermitian product $\langle f,g\rangle = {\frac 1 {\vert S_r\vert }}\sum_{\sigma\in S_r}f(\sigma)\overline{g(\sigma)}$).
+  We see the $c_\lambda$-s are orthonormal.
+\end{proposition}
+\begin{proof}
+  Recall the power series in $\C\llbracket x\rrbracket$. We can define,
+  \begin{equation*}
+    \ln(1+x) = \sum_{n\in \N}(-1)^{n-1}{\frac {x^n} n},\quad \exp(x) = \sum_{n\in\N_0}{\frac {x^n} {n!}}.
+  \end{equation*}
+  They satisfy the following properties which can be verified by simple computations.
+  \begin{enumerate}[1).]
+    \item $\ln((1+x)(1+y)) = \ln(1+x)+\ln(1+y)$,
+    \item $\exp(\ln(1+x)) = 1+x$.
+  \end{enumerate}
+  We use Cauchy's formula, such that 
+  \begin{equation*}
+    \prod_{1\leq i,j\leq n}{\frac 1 {1-{x_iy_j}}} = \sum_{\lambda}s_\lambda(x_1,\cdots,x_n)s_\lambda(y_1,\cdots,y_n).
+  \end{equation*}
+  Applying $\ln$ to this, we get,
+  \begin{align*}
+    \ln\left(\sum_{\lambda} s_\lambda(x_1,\cdots,x_n)s_\lambda(y_1,\cdots,y_n)\right) & = \ln\left(\prod_{1\leq i,j\leq n}{\frac 1 {1-x_iy_j}}\right),\\
+    & = \sum_{1\leq i,j\leq n}\ln\left({\frac 1 {1-x_iy_j}}\right),\\
+    & = -\sum_{1\leq i,j\leq n}\ln\left(1-x_iy_j\right),\\
+    & = -\sum_{1\leq i,j\leq n} \sum_{k\in\N}(-1)^{k-1}{\frac {(-x_iy_j)^k} {k}},\\
+    & = \sum_{1\leq i,j\leq n}\sum_{k\in\N} {\frac {(x_iy_j)} k}, \\
+    & = \sum_{k\in\N}{\frac 1 k}\sum_{1\leq i,j\leq n}(x_iy_j)^k,\\
+    &= \sum_{k\in\N}{\frac {\psi_k(x_1,\cdots,x_n)\psi_k(y_1,\cdots,y_n)} {k}}.
+  \end{align*}
+  Apply $\exp$ to this, we obtain,
+  \begin{equation*}
+    \sum_{\lambda}s_\lambda(x_1,\cdots,x_n)s_\lambda(y_1,\cdots,y_n) = \exp\left(\sum_{k\in\N}{\frac {\psi_k(x_1,\cdots,x_n)\psi_k(y_1,\cdots,y_n)} {k}}\right).
+  \end{equation*}
+  By expanding $x$, we obtain,
+  \begin{align*}
+    &=\sum_{k\in\N_0}{\frac 1 {k!}}\left(\sum_{h\in\N}{\frac {\psi_h(x_1,\cdots,x_n)\psi_h(y_1,\cdots,y_n)} {h}}\right)^k,\\
+    &= \sum_{k\in\N_0}{\frac 1 {k!}}\sum_{k=k_1+k_2\cdots}{k\choose k_1,k_2,\cdots}\left({\frac {\psi_1(x_1,\cdots,x_n)\psi_1(y_1,\cdots,y_n)} {1}}\right)^{k_1}\left({\frac {\psi_2(x_,\cdots,x_n)\psi_2(y_1,\cdots,y_n)} {1}}\right)^{k_2}\cdots
+  \end{align*}
+  Simplyfy this, we get 
+  \begin{align*}
+    & = \sum_{k\in\N_0}\sum_{k=k_1+k_2+\cdots} {\frac {1} {(k_1!k_2!\cdots)(1^{k_1}2^{k_2}\cdots)}}(\psi_1(x_1,\cdots,x_n)^{k_1}\psi_2(x_1,\cdots,x_n)^{k_2}\cdots)(\psi_1(y_1,\cdots,y_n)^{k_1}\psi_2(y_1,\cdots,y_n)^{k_2}\cdots),\\
+    & = \sum_{\mu}{\frac 1 {n(\mu)}}\psi_\mu(x_1,\cdots,x_n)\psi_\mu(y_1,\cdots,y_n),
+  \end{align*}
+  where $\mu  = (1^{k_1}2^{k_2}\cdots)$.
+  Substitute $\psi_\mu = \sum_{\lambda} c_\lambda(\mu)s_\lambda$ into the above equation, we get,
+  \begin{align*}
+    &= \sum_{\mu}{\frac 1 {n(\mu)}}\left(\sum_{\lambda_1}c_{\lambda_1}(\mu)s_{\lambda_1}(x_1,\cdots,x_n)\right)\left(\sum_{\lambda_2} c_{\lambda_2}(\mu)s_{\lambda_2}(y_1,\cdots,y_n)\right),\\
+    & = \sum_{\lambda_1}\sum_{\lambda_1}\left(\sum_{\mu}{\frac 1 {n(\mu)}}c_{\lambda_1}(\mu)c_{\lambda_2}(\mu)\right)s_{\lambda_1}(x_1,\cdots,x_n)s_{\lambda_2}(y_1,\cdots,y_n),\\
+    & = \sum_{\lambda}s_\lambda(x_1,\cdots,x_n)s_\lambda(y_1,\cdots,y_n).
+  \end{align*}
+  The $s_{\lambda_1}(x_1,\cdots,x_n)s_{\lambda_2}(y_1,\cdots,y_n)$ are linearly independent. We get 
+  \begin{equation*}
+    \sum_{\mu}{\frac 1 {n(\mu)}}c_{\lambda_1}(\mu)c_{\lambda_2}(\mu) = \delta_{\lambda_1,\lambda_2}.
+  \end{equation*}
+  where ${\frac {\vert S_r\vert} {n(\mu)}}$ denotes the number of conjugacy classes of type $\mu$. We can also write this as 
+  \begin{equation*}
+     = {\frac 1 {S_r}}\sum_{\mu}{\frac {\vert S_r\vert } {n(\mu)}}c_{\lambda_1}(\mu)c_{\lambda_2}(\mu) = {\frac 1 {\vert S_r\vert }}\sum_{\sigma\in S_r}c_{\lambda_1}(\mu)c_{\lambda_2}(\mu).
+  \end{equation*}
+  By definition $c_{\lambda_2}(\mu)$ is an integer, we get 
+  \begin{equation*}
+    {\frac 1 {\vert S_r\vert}}\sum_{\sigma\in S_r}c_{\lambda_1}(\mu)\overline{c_{\lambda_2}(\mu)} = \langle c_{\lambda_1},c_{\lambda_2}\rangle.
+  \end{equation*}
+\end{proof}
+\begin{theorem}
+  Let $\chi_\lambda = \chi_{S^\lambda}$ be the character ofthe Specht module $S^\lambda$. We have the following statements.
+  \par $\forall\lambda, \lambda\vdash r$ and $\lambda$ has at most $n$-parts, we have $\chi_\lambda = c_\lambda$. In particular, the $c_\lambda$-s are irreducible characters. 
+  If $n\geq r$, then $c_\lambda$ are all the irreducible characters.
+  \par Furthermore, we have,
+  \begin{equation*}
+    \beta_\lambda = \sum_{\phi\geq\lambda}k_{\phi,\lambda}c_\phi.
+  \end{equation*}
+\end{theorem}
+\begin{proof}
+  Recall 
+  \begin{enumerate}[i).]
+    \item $\psi_\mu = \sum_{\lambda}c_\lambda(\mu)s_\lambda$,
+    \item $m_\phi = \sum_{\phi\geq\lambda}p_{\phi,\lambda}s_\lambda$.
+    \item $s_\phi = \sum_{\phi\geq\lambda}k_{\phi,\lambda}m_\lambda$.
+  \end{enumerate}
+  We have,
+  \begin{equation*}
+    \sum_{\lambda}c_\lambda(\mu)s_\lambda = \psi_{\mu}=\sum_{\phi}\beta_\phi(\mu)m_\phi = \sum_{\phi}\sum_{\phi\geq\lambda}\beta_\phi(\mu)p_{\phi,\lambda}s_\lambda.
+  \end{equation*}
+  By comparing the coefficients, which form a unitriangular matrix,
+  \begin{equation*}
+    c_\lambda(\mu) = \sum_{\phi\geq \lambda} \beta_\phi p_{\phi,\lambda} = \beta_\lambda+\sum_{\phi>\lambda}p_{\phi,\lambda}\beta_\phi.
+  \end{equation*}
+  The $(k_{\phi,\lambda})$ are the inverse matrix of $(p_{\phi,\lambda})$, hence,
+  \begin{equation}
+    \beta_\lambda = c_\lambda+\sum_{\phi>\lambda}k_{\phi,\lambda}c_\lambda.\label{dagger_beta_lambda}
+  \end{equation}
+  Note that $\beta_\lambda$ is a character of the representation by definition. Thus $\beta_\lambda$ is an integer linear combination of the $\chi_\lambda$-s.
+  Thus each $c_\lambda$ is an integer linear combination of $\chi_\mu$. In another words,
+  \begin{equation*}
+    c_\lambda = \sum r_\mu\chi_\mu,\quad r_\mu\in\Z.
+  \end{equation*}
+  With this expression, we get ,
+  \begin{equation*}
+    1 = \langle c_\lambda,c_\lambda\rangle = \sum_{\mu} r_\mu^2\langle \chi_\mu,\chi_\mu\rangle = \sum_{\mu}r_\mu^2.
+  \end{equation*}
+  Since each $r_\mu$ is an integer, we know that they are all $0$ except for one $\mu=\lambda'$, and $r_{\lambda'} = \pm1$. This means, for some $\lambda'$, we get,
+  \begin{equation*}
+    c_\lambda = \pm\chi_{\lambda'}.
+  \end{equation*}
+  If the coefficient is $-1$, then,
+  \begin{equation*}
+  \beta_\lambda = -\chi_{\lambda'}+\sum_{\phi>\lambda}k_{\phi,\lambda}\chi_{\phi'},
+  \end{equation*}
+  which is a contradiction, since $\beta_\lambda$ is a non-negative integer linear combination of the $\chi_\phi$'s. Thus we obtain, for some $\lambda'$,
+  \begin{equation*}
+    c_\lambda = \chi_{\lambda'}.
+  \end{equation*}
+  Remains to show that $\lambda = \lambda'$. We prove this by downward induction on the lexicographical order.\\
+  \par If we take $\lambda = (r)$, then $s^\lambda = \triv$. We also have,
+  \begin{equation*}
+    c\lambda = \beta_\lambda = \chi_{\C[S_r/S_\lambda]} = \chi_{\triv}.
+  \end{equation*}  Suppose $c_\phi = \chi_\phi$ for all $\phi>\lambda$. Then substituting this in Equation \eqref{dagger_beta_lambda}, we get 
+
+  \begin{align*}
+    \beta_\lambda & = c_\lambda + \sum_{\phi>\lambda}k_{\phi,\lambda}c_\phi\\
+    & = \chi_{\lambda'}+\sum_{\phi>\lambda}k_{\phi,\lambda}\chi_{\phi}.
+  \end{align*}
+  By previous lemma, we have $s^\lambda$ apppears in $\C[S_r/S_\lambda]$ with multiplicity $1$. Thus $\chi_\lambda$ appears in $\beta_\lambda$, in particular 
+  \begin{equation*}
+    \Rightarrow \chi_\lambda = \chi_{\lambda'} \Rightarrow \lambda = \lambda'.
+  \end{equation*}
+\end{proof}
+
+\section{Schur-Weyl Duality}
+We assume $k=\C$. The goal of the section is to determine and construct all irreducible representations of 
+$\GL_n$ and $\SL_n$.\\
+\par We have seen earlier the following.
+\begin{enumerate}
+  \item Any irreducible $\GL_n$-representation appears in some $V^{\otimes r}\otimes \det^{\otimes m}$ where $V = C^n$ with the natural vector representation.
+  \item Similarly, any irreducible representation of $\SL_n$ appears in $V^{\otimes r}\otimes \det^{\otimes m}$.
+\end{enumerate}
+\begin{remark}
+  $V^{\otimes r}$ are not irreducible in general. 
+\end{remark}
+
+\begin{example}
+  \begin{equation*}
+    V\otimes V = S^2V\otimes \bigwedge^2V.
+  \end{equation*}
+\end{example}
+
+\begin{remark}
+  $S_r$ acts on $V^{\otimes r}$ by permuting tensor factors. Explicitly,
+  \begin{equation*}
+    \sigma(v_1\otimes \cdots \otimes v_r) = v_{\sigma^{-1}(1)}\otimes \cdots \otimes v_{\sigma^{-1}(r)}.
+  \end{equation*}
+  Clearly, the $S_r$-action and the $\GL_n$-action commute. Since $S_r$ acts diagonally on $V^{\otimes r}$. Thus we can view $V^{\otimes r}$ as a $\GL_n\times S_r$-representation.\\
+  \par In particular, there is a functor, 
+  \begin{equation*}
+    \mathcal{S}(V):\Rep(S_r)\to\Rep(\GL_n),\quad \Rep(S_r)\ni M\mapsto \Hom_{S_r}(M,\stackrel{\stackrel{\GL_n}{\curvearrowright}}{V^{\otimes r}})\in \Rep(\GL_n),
+  \end{equation*}
+  where $\GL_n$ acts on $V^{\otimes r}$.
+\end{remark}
+\begin{remark}
+  We can also view $V^{\otimes r}$ as a right $S_r$-representation by 
+  \begin{equation*}
+    (v_1\otimes \cdots \otimes v_r) \sigma = v_{\sigma(1)}\otimes\cdots\otimes v_{\sigma(r)}.
+  \end{equation*}
+  With this, $V^{\otimes r}$ is a $(\GL_n,S_r)$-bimodule/birepresentation.
+\end{remark}
+
+\begin{proposition}
+  Any $S_r$-representation is self-dual in other words,
+  \begin{equation*}
+    \mathcal{S}(V)(M) = \Hom_{S_r}(M,V^{\otimes r}) = (V^{\otimes r}\tens{\C}M^*)^{S_r} = V^{\otimes r}\tens{\C[S_r]}M.
+  \end{equation*}
+\end{proposition}
+
+\begin{proof}
+  Foundation course.
+\end{proof}
+\begin{theorem}[Double Centralizer Theorem]
+  \label{theorem_43}
+  Let $W$ be a finite dimensional complex vector space and $A\subset\End_\C(W)$ be a semisimple subalgebra of the endomorphisms of $W$.
+  We define 
+  \begin{equation*}
+    B\defeq = \End_A(W),
+  \end{equation*}
+  then we have the following statements.
+  \begin{enumerate}[1).]
+    \item $B$ is also semisimple.
+    \item $\End_B(W) = A$.
+    \item $W\cong\bigoplus_{i\in I}U_i\boxtimes W_i$ as a $A\otimes B$-modules where $\{U_i\}_{i\in I}$ are the simple $A$-modules and $W_i = \Hom_A(U_i,\stackrel{\stackrel{B}{\curvearrowright}}{W})$ for each $i\in I$.
+    \item $\{W_i\sep i\in I\}$ are the all simple $B$-modules.
+    \item There is a bijection $\Irr(A)\stackrel{1:1}{\Leftrightarrow}\Irr(B),U_i\mapsto \Hom_A(U_i,W) = W_i$.
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  Since $A$ is semisimple we have,
+  \begin{equation*}
+    A \cong \bigoplus_{i\in I}\End(U_i),
+  \end{equation*}
+  which follows from Artin-Wedderborn theorem. For each $i\in I$, there is a morphism of $A\otimes B$-modules,
+  \begin{equation*}
+    \stackrel{\stackrel{A}{\curvearrowright}}{U_i}\boxtimes \stackrel{\stackrel{B}{\curvearrowright}}{\Hom}_A(U_i,W)\stackrel{\ev}{\to} W,\quad u\otimes f\mapsto f(u).
+  \end{equation*}
+  Note that $\Hom_A(U_i,W) = W_i$. Then we get a morphism of $A\otimes B$-modules,
+  \begin{equation*}
+    \bigoplus_{i\in I}U_i\boxtimes W_i\stackrel{\phi}{\to}W.
+  \end{equation*}
+  First, we will show $\phi$ is surjective. Indeed, if $W$ is semisimple as an $A$-module ($A$ is semisimple). Then we have,
+  \begin{equation*}
+    W\cong\bigoplus_{i\in I}U_i^{\oplus n_i}.
+  \end{equation*}
+  Then we have,
+  \begin{equation}
+    U_i\boxtimes\Hom(U_i,U_i^{\oplus n_i})\to U_i^{\oplus n_i}\label{dagger_theorem_43}
+  \end{equation}
+  is surjective. To see this, let us denote $U_i^{(j)}\subseteq U_i^{\oplus n_i}$ to be the $j$-th copy then
+  \begin{center}
+    \begin{tikzcd}
+U_i \arrow[r,"\sim"] \arrow[rr, "f_j"', bend right] & U_i^{(j)} \arrow[r, hook] & U_i^{\oplus n_i}
+\end{tikzcd}
+  \end{center}
+  We see $\Image(f_j) = U_i^{(j)}$. Thus $U_i^{(j)}$ lies in the image of \eqref{dagger_theorem_43}. \\
+  \par To prove $\phi$ is injective. We see,
+  \begin{align*}
+    \dim W_i & = \dim \Hom_A(U_i,W) = n_i.\\
+    \Rightarrow & \dim\bigoplus_{i\in I}U_i\boxtimes W_i = \sum_{i\in I}\dim U_i\cdot n_i,\\
+    & = \dim W.
+  \end{align*}
+  Thus $\phi$ is an injective, in particular an isomorphism.
+  \begin{equation*}
+    \Rightarrow B = \End_A(W) = \End_A\left(\bigoplus_{i\in I}U_i\boxtimes W\right) = \bigoplus_{i\in I}\End(W_i).
+  \end{equation*}
+  Thus we conclude $B$ is semisimple and the simple $B$-modules are the $W_i$-s with $W_i\not=\{0\}$.\\
+  \par Note $W_i=\{0\}$, then $\Hom_{S_r}(U_i,W) = \{0\}$. This means that $U_i$ does not appear in $W$. Thus 
+  \begin{equation*}
+    \End(U_i) = \bigoplus_{i\in I}\End(U_j) = A
+  \end{equation*}
+  acts by $0$ on $W$. Since $A\subseteq\End(W)$, the only element $a\in A$ acting by $0$ is $a=0$.\\
+  \begin{equation*}
+    \End_B(W) = \End_B\left(\bigoplus_{i\in I} U_i\boxtimes W_i\right) = \bigoplus_{i\in I}\End_B(U_i\boxtimes W_i) = \bigoplus_{i\in I}\End(U_i) = A.
+  \end{equation*}
+\end{proof}
+\begin{lemma}
+  \label{lemma_44}
+  The image of $\GL_n\to\End(V^{\otimes r})$ coming from $\GL_n\curvearrowright V^{\otimes r}$ generats $\End_{S_r}(V^{\otimes r})$.
+\end{lemma}
+\begin{proof}
+  Let $B' \subseteq\End(V^{\otimes r})$ be the subalgebra generated by the image. Clearly we have $B'\subseteq B\subseteq \End_{S_r}(V^{\otimes r})$. We want to show $B' = B$.\\
+  \par Consider the morphism of varieties for each $X\in\End(V^{\otimes r})$, 
+  \begin{equation*}
+    \A_k^1 \stackrel{\phi_X}{\to} \End(V^{\otimes r}) \cong \A_k^{(nr)^2}, \quad t\mapsto (t\id_V+x)\otimes\cdots\otimes (t\id_V+x).
+  \end{equation*}
+  Note that 
+  \begin{equation*}
+  \det(t\id_V+X) = t^n+a_{n-1}t^{n-1}+\cdots +a_0,
+  \end{equation*}
+  which has at most $n$-distinct roots. Thus $t\id_V+X\in\GL_n$ for all but finitely many $t$, we have,
+  \begin{equation*}
+    \phi_X(t)\in B'.
+  \end{equation*}
+  In another words, $\varphi_X^{-1}(B)$ is dense in $\A_k^1$ since closed subsets of $\A_k^1$ are $\A_k^1$ and finite sets.\\
+  \par But $\phi_X$ is continuous and $B'\subset\End(V^{\otimes r})$ is closed since $B'$ is a subvectorspace. We see 
+  \begin{equation*}
+    \phi_X^{-1}(B')\text{ is dense and closed}\Rightarrow\phi_X^{-1}(B') = \A_k^1\Rightarrow \Image(\phi_X)\subseteq B'.
+  \end{equation*} 
+  In particular 
+  \begin{equation*}
+    \forall X\in\End(V), X\otimes\cdots\otimes X = \phi_X(0)\in B'.
+  \end{equation*}
+  Note that,
+  \begin{equation*}
+    \End_{S_r}(V^{\otimes r}) = \End_{\C}(V^{\otimes r})^{S_r} = (\End_{\C}(V)^{\otimes r})^{S_r}.
+  \end{equation*}
+  From the exercise, 
+  \begin{exercise}
+  For any representation $W$, $(W^{\otimes r})^{S_r}$ is spanned by $w^{\otimes r} = \overbrace{w\otimes \cdots \otimes w}^r$,
+  then $\End_{S_r}(V^{\otimes r})$ is spanned by all $X\otimes \cdots \otimes X\in B'$ for $X\in\End(V)$. 
+  \end{exercise}
+  We conclude $B'=B$.
+\end{proof}
+\begin{notation}
+For any $\lambda\vdash r$, 
+\begin{equation*}
+  \mathcal{S}_\lambda(V) = \mathcal{S}(V)(S^\lambda) = \Hom_{S_r}(S^\lambda,\stackrel{\stackrel{\GL_n}{\curvearrowright}}{V^{\otimes r}}).
+\end{equation*}
+\end{notation}
+
+\begin{corollary}[Schur-Weyl Duality]
+  We have 
+  \begin{equation*}
+    V^{\otimes r} = \bigoplus_{\lambda\vdash r}\mathcal{S}_\lambda(V)\boxtimes S^{\lambda}
+  \end{equation*}
+  as $\GL_n\times S_r$-representation.\\
+  \par Moreover,
+  \begin{enumerate}
+  \item For any $\lambda\vdash r$, $\mathcal{S}_\lambda$is either $0$ or a simple $\GL_n$-representation. \\
+  \item If $\mathcal{S}_\lambda(V),\mathcal{S}_\lambda(V)\not=\{0\}$, then $\mathcal{S}_\lambda(V) \cong \mathcal{S}_\mu(V)\Leftrightarrow \lambda= \mu$.
+  \end{enumerate}
+  In other words, there is a bijection 
+  \begin{align*}
+    \{M\in\Irr(S_r)\sep\text{$M$ appears in $V^{\otimes r}$}\}&\stackrel{1:1}{\leftrightarrow}\{M'\in\Irr(\GL_n)\sep \text{$M'$ appears in $V^{\otimes r}$}\}\\
+    S^{\lambda}&\mapsto\mathcal{S}_{\lambda}(V).
+  \end{align*}
+\end{corollary}
+\begin{proof}
+  Let $A = \Image(\C[S_r]\to\End(V^{\otimes r}))$. Since $\C[S_r]$ is semisimple $A$ is also semisimple. Let $B = \End_{S_r}(V^{\otimes r})$.
+  \begin{equation*}
+    V^{\otimes r} \cong \bigoplus_{\substack{i\in I\\\text{$S^\lambda$ is a simple $A$-module}}}\Hom(S^\lambda,V^{\otimes r})\boxtimes S^\lambda,
+  \end{equation*}
+  as $B\otimes A$-modules where the sum runs over all simple $A$-modules which is a some subset of $\{S^\lambda\sep \lambda\vdash r\}$. \\
+  \par By restriction, we also have
+  \begin{equation*}
+    V^{\otimes}\cong \bigoplus_{\lambda\vdash r}\Hom(S^\lambda,V^{\otimes r})\boxtimes S^{\lambda}.
+  \end{equation*} 
+  as $\GL_n\times S_r$-representations. here we take the sum over all $\lambda\vdash r$.\\
+  \par This woks since 
+  \begin{equation*}
+    \Irr(A) = \{S^\lambda\sep \text{$S^\lambda$ appears in $V^{\otimes r}$ as an $S_r$-representation}\}.
+  \end{equation*}
+  If $S^\lambda$ does not appear in $V^{\otimes r}$, then
+  \begin{equation*}
+    \Hom_{S^r}(S^\lambda,V^{\otimes r}) = 0.
+  \end{equation*}
+  By Theorem \ref{theorem_43}, we also have,
+  \begin{equation*}
+    \{S_\lambda(V)\sep S_\lambda(V) \not=\{0\}\},
+  \end{equation*}
+  are the simple $B$-modules. Since $\GL_n$ generates $B$ from Lemma \ref{lemma_44}, they are also the simple $\GL_n$-representations appearing in $V^{\otimes r}$.
+\end{proof}
+\begin{corollary}
+  \label{corollary_45}
+  Any irreducible $\GL_n$-representation is of the form
+  \begin{equation*}
+    \mathcal{S}_\lambda(V)\otimes \det^{\otimes m}
+  \end{equation*}
+  for some $m\in\Z$.
+\end{corollary}
+\begin{proof}
+  If $M$ is a simple $\GL_n$-representation, then $M$ appears in some $V^{\otimes r}\otimes \det^{\otimes l}$.\\
+  \par Note if $N\in\Irr(\GL_n)$, then $N\otimes \det\in\Irr(|GL_n)$. Therefore, we can rephrase this as 
+  \begin{equation*}
+    M\otimes {\det}^{\otimes -l}\text{ appears in }V^{\otimes r}.
+  \end{equation*}
+  which means,
+  \begin{equation*}
+    M\otimes {\det}^{\otimes-l} \cong \mathcal{S}_\lambda(V)
+  \end{equation*}
+  for some $\lambda\vdash r$. Thus we obtain,
+  \begin{equation*}
+    M \cong \mathcal{S}_\lambda(V)\otimes{\det}^{\otimes l}.
+  \end{equation*}
+\end{proof}
+Remains to see when we have,
+  \begin{equation*}
+    \mathcal{S}_\lambda(V)\otimes {\det}^{\otimes m}\stackrel{?}{\cong}\mathcal{S}_\mu(V)\otimes {\det}^{\otimes l},
+  \end{equation*}
+and  
+\begin{equation*}
+\mathcal{S}_\lambda(V)=\{0\}.
+\end{equation*}
+  \begin{example}
+    \label{example_42}
+    Let $n=1,V=\C,\GL_n=\C^\times$. Then $S_r$ acts trivially on $V^{\otimes r} \cong \C$. 
+    \begin{equation*}
+      \rightarrow \mathcal{S}_\lambda(V)  = \Hom_{S_r}(S^\lambda,V^{\otimes r}) = \{0\},
+    \end{equation*}
+    unless $\lambda = (r)$.
+  \end{example}
+
+  \begin{lemma}
+    Let $b = \sum_{\sigma\in S_m}\sgn(\sigma)\sigma\in\C[S_m]$. Then for any $S_m$-representation $W$, we have,
+    \begin{equation*}
+      bW = \{w\in W\sep \forall \sigma\in S_m, \sigma w = \sgn(\sigma)w\}.
+    \end{equation*}
+    \label{proposition_48_claim_1}
+  \end{lemma}
+  \begin{proof}
+    We have 
+    \begin{equation*}
+    \sigma b = \sgn(\sigma)b \Rightarrow bW \subseteq \{w\in W\sep \forall \sigma\in S_m, \sigma w = \sgn(\sigma)w\}.
+    \end{equation*}
+    Let $w\in\{w\in W\sep \forall \sigma\in S_m, \sigma w = \sgn(\sigma)w\}$, then 
+    \begin{equation*}
+      {\frac b {m!}}w = {\frac 1 {m!}}\sum_{\sigma\in S_m}\sgn(\sigma)\sigma w = {\frac 1 {m!}}\sum_{\sigma\in S_m}w = w.
+    \end{equation*}
+    Thus this completes the proof.
+  \end{proof}
+\begin{proposition}
+  \label{proposition_48}
+  we have $\mathcal{S}_\lambda(V)\not=\{0\}\Leftrightarrow\lambda$ has at most $n$-parts.
+\end{proposition}
+\begin{proof}
+  For any vectorspace $W$,
+  \begin{equation}
+    \label{dagger_prop_48}
+    \wedge^m W = \{x\in W^{\otimes r}\sep \forall \sigma\in S_m, \sigma x = \sgn(\sigma)x\}\subset W^{\otimes r} \stackrel{\text{Lemma \ref{proposition_48_claim_1}}}{=}bW^{\otimes m}.
+  \end{equation}
+  Let $\lambda\vdash r$ with more than $n$-parts. Take $T$ to be the column superstandard tableau.
+  \begin{example}
+    $\lambda = (3,2,2)$, then 
+    \begin{equation*}
+      T=
+      \begin{tabular}{|l|l|l}
+\hline
+$1$ & $4$ & \multicolumn{1}{l|}{$7$} \\ \hline
+$2$ & $5$ &                        \\ \cline{1-2}
+$3$ & $6$ &                        \\ \cline{1-2}
+\end{tabular}
+    \end{equation*}
+  \end{example}
+  Take the column stabilizer is 
+  \begin{equation*}
+    C_r = S_{\mu_1}\times S_{\mu_2}\times\cdots,
+  \end{equation*}
+  when the $\mu_i$ are the column lengths. Note $\lambda$ has more than $n$-parts, thus $\mu_i>n$. 
+  \begin{equation*}
+    \Rightarrow S^\lambda\C[S-r]a_Tb_T,
+  \end{equation*}
+  where $b_T$ is the column anti symmetrizer $b_T = \sum_{\sigma\in C_T}\sgn(\sigma)\sigma$,
+  \begin{equation*}
+    \mathcal{S}_\lambda(V) = \Hom_{S_r}(S^\lambda,V^{\otimes r}) = \Hom_{S_r}(\C[S_r]a_Tb_T,V^{\otimes r})\cong a_Tb_TV^{\otimes r}\stackrel{\text{Equation \eqref{dagger_prop_48}}}{=}a_T(\wedge^{\mu_1}V\otimes \wedge^{\mu_2}V\otimes \cdots).
+  \end{equation*}
+  We have,
+  \begin{equation*}
+    \dim\wedge^{\mu_i}V = {\dim V\choose \mu_i} = {n \choose \mu_i},
+  \end{equation*}
+  and $0$i f $\mu_i>n$.\\
+  \par If $\mu_i>n$ then $\wedge^\mu V= 0\Rightarrow\mathcal{S}_\lambda(V) = 0$.
+\end{proof}
+%11/11
+\begin{definition}
+Let $X_1,\cdots,X_r\in\Mat_{n\times n}(\C)$, and $c=(i_1,\cdots,i_p)\in S_r$. We define,
+\begin{equation*}
+  \phi_c(X_1,\cdots,X_r)=\tr(X_{i_1},\cdots,X_{i_p}).
+\end{equation*}
+\end{definition}
+\begin{lemma}
+  \label{lemma_4_9}
+  Let $X_1,\cdots,X_r\in\Mat_{n\times n}$ and $\sigma\in S_r$ where $\sigma = c_1\cdots c_k$ decoposes into disjoint cycles. We have,
+  \begin{equation}
+    \tr(\underbrace{\sigma\circ(X_1\otimes\cdots\otimes X_r)}_{\End_\C(V^{\otimes r})})=\prod_{j=1}^k \phi_{c_i}(X_1,\cdots,X_r).
+    \label{lemma_4_9_equation}
+  \end{equation}
+\end{lemma}
+\begin{proof}
+  Note that $W$ is a finite dimensional vector space, thus ,
+  \begin{equation*}
+    \End_\C(W)\cong W\tens{\C}W^*, A\mapsto w\otimes f, \tr(A)\to f(w).
+  \end{equation*}
+  %Check the above fact from linear algebra.
+  For a fixed $\sigma$, Equation \eqref{lemma_4_9_equation} is multilinear in $X_1,\cdots, X_r$. It suffices to prove this for $X_i=u_i\otimes f_i\in V\otimes V^* = \End(V)$. 
+  \begin{align*}
+    \sigma\circ(X_1\otimes\cdots X_r)(v_1\otimes \cdots\otimes v_r) & = \sigma(f_1(v_1)u_1\otimes \cdots\otimes f_r(v_r)u_r),\\
+    & = \prod_{i=1}^r f_i(v_i)\sigma(u_1\otimes \cdots\otimes u_r),\\
+    & = \prod_{i=1}^rf_i(v_i)u_{\sigma^{-1}(1)}\cdots\otimes u_{\sigma^{-1}(r)}.
+  \end{align*}
+  Hence,
+  \begin{equation*}
+    \sigma\circ(X_1\otimes \cdots\otimes X_r) = \overbrace{((u_{\sigma^{-1}(1)}\otimes f_1)\otimes\cdots\otimes (u_{\sigma^{-1}(r)}\otimes f_r))}^{\in(V\otimes V^*)^r=\End(V)^{\otimes r}=\End(V^{\otimes r})}.
+  \end{equation*}
+  Thus we get,
+  \begin{equation*}
+    \tr(\sigma\circ(X_1\otimes \cdots\otimes X_r)) = f_1(u_{\sigma^{-1}(1)})\cdots f_r(u_{\sigma^{-1}(r)}).
+  \end{equation*}
+  On the other hand, for $c_i=(j_{1},\cdots,j_{l})$,
+  \begin{equation*}
+    \phi_{c_i}(X_1,\cdots,X_r) = \tr(X_{j_{1}},\cdots,X_{j_{l}}) = \tr((u_{j_1}\otimes f_{j1})\circ \cdots\circ (u_{j_l}\otimes f_{j_l})).
+  \end{equation*}
+  We have,
+  \begin{equation*}
+    \End(W)\times \End(W) \to \End(W), (w\otimes w^*)\times (w\otimes w^*)\to w\otimes w^*, (v\otimes f,u\otimes g)\mapsto f(u)v\otimes g.
+  \end{equation*}
+  Applying this, we get,
+  \begin{align*}
+    \phi_{c_i}(X_1,\cdots,X_r) & = \tr(f_{j_1}(u_{j_2})f_{j_2}(u_{j_3})\cdots f_{j_{l-1}}(u_{j_l})u_{j_1}\otimes f_{j_l}),\\
+    & = f_{j_1}(u_{j_2})\cdots f_{j_{l-1}}(u_{j_l})f_{j_l}(u_{j_1}),\\
+    & = \prod_{p=1}^l f_{j_p}(u_{c_i(j_p)}),\\
+    & = \prod_{p=1}^l f_{j_p}(u_{\sigma(j_p)}).
+  \end{align*}
+  Thus we get,
+  \begin{equation*}
+    \prod\phi_{c_i}(X_1,\cdots,X_r) = \prod_{i=1}^r f_i(u_{\sigma(i)})=\tr(\sigma\circ(X_1\otimes \cdots\otimes X_r)).
+  \end{equation*}
+\end{proof}
+\begin{proposition}
+  \label{proposition_4_10}
+  Denote the character of the representation $\mathcal{S}_\lambda(V)$ by 
+  \begin{equation*}
+    \rho_\lambda\in\Ouv(\GL_n)^{\GL_n} = \Ouv(T)^{\S_n} = \C\otimes \Lambda_n[e_n^{-1}].
+  \end{equation*}
+  We have the following statements.
+  \begin{enumerate}[1).]
+    \item $\mathcal{S}_\lambda \not=\{0\}\Leftrightarrow\lambda $ has at most $n$-parts.
+    \item $\rho_\lambda = s_\lambda$.
+  \end{enumerate}
+\end{proposition}
+\begin{proposition}
+  Note that $2)\Rightarrow 1)$, since $\rho_\lambda=s_\lambda \not=0$ thus $\mathcal{S}_\lambda(V) \not = \{0\}$.\\
+  \par Let 
+  \begin{equation*}
+    X = \begin{pmatrix}
+      t_1 & 0 & \cdots & 0 \\
+      0 & t_2 & \cdots & 0 \\
+      \vdots & \ddots & \ddots & \vdots \\
+      0 & 0 & \cdots & t_n.
+    \end{pmatrix}
+    \in T = \left\{\begin{pmatrix}
+      \ast & 0 & \cdots & 0 \\
+      0 & \ast & \cdots & 0 \\
+      \vdots & \ddots & \ddots & \vdots \\
+      0 & 0 & \cdots & \ast.
+    \end{pmatrix}\right\}
+  \end{equation*}
+  Then 
+  \begin{align*}
+    \tr(X) = \sum_{i=1}^n t_i, \tr(X^p)=\sum_{i=1}^nt_i^p.
+  \end{align*}
+  If $c=(i_1,\cdots,i_p)$ then 
+  \begin{equation*}
+    \phi_c(X,\cdots,X) = \tr(X^p) = \sum_{i=1}^n t_i^p = \psi_p(t_1,\cdots,t_n).
+  \end{equation*}
+  This means that if $\sigma$ has cycle type $\mu= (\mu_1\geq \mu_2\geq\cdots)$ (ie. $\sigma = c_1c_2\cdots$, where $c_i$ is a cycle of length $\mu_i$).
+  \begin{align*}
+    \tr(\sigma^{-1}\circ(X\otimes \cdots\otimes X)) &\stackrel{\text{Lemma \ref{lemma_4_9}}}{=}\phi_{c_1}(X,\cdots, X)\phi_{c_2}(X,\cdots,X)\cdots,\\
+    & \stackrel{\text{By definition}}{=}\psi_{\mu}(t_1,\cdots,t_n),\\
+    & \stackrel{\text{By definition}}{=}\sum_{\text{$\lambda$ with at most $n$-parts}}c_\lambda(\mu)s_\lambda(t_1,\cdots,t_n).
+  \end{align*}
+  On the other hand, we have a decomposition of tensor spaces. 
+  \begin{equation*}
+    V^{\otimes r} = \bigoplus_{\text{$\lambda$ has at most $n$-parts}}\mathcal{S}_\lambda(V)\boxtimes S^\lambda,
+  \end{equation*}
+  as $\GL_n\times S_r$-representations. This leads us to that 
+  \begin{equation*}
+    \tr(\sigma^{-1}\circ(X\otimes \cdots \otimes X))=\sum_{\text{$\lambda$ has at most $n$-parts}}\rho_{\lambda}(t_1,\cdots,t_n)\underbrace{\chi_\lambda(\mu)}_{=c_\lambda(\mu)}.
+  \end{equation*}
+  Finally, we get,
+  \begin{equation*}
+    \forall \mu, 0 = \sum_{\text{$\lambda$ has at most $n$-parts}}c_\lambda(\mu)(\rho_\lambda-s_\lambda).
+  \end{equation*}
+  Set, 
+  \begin{equation*}
+    C = (c_\lambda(\mu))_{\text{$\lambda$ has at most $n$-parts, $\mu$ is any partition}}.
+  \end{equation*}
+  we get,
+  \begin{equation*}
+     C(\rho_\lambda-s_\lambda)_{\text{$\lambda$ has at most $n$-parts}} = 0.
+  \end{equation*}
+  Now we show that $C$ has full rank. Indeed,
+  \begin{align*}
+    \tilde{C} &= (c_\lambda\times \text{number of conjugacy classes of $\mu$})_{\text{$\lambda$ at most $n$-parts and $\mu$ arbitrary}}.\\
+    & \Rightarrow \tilde{C}^TC = \sum_{\mu}c_\lambda(\mu)c_\lambda(\mu)(\text{number of conjugacy classes of $\mu$}) = r!\id.
+  \end{align*}
+  Thus we conclude $\rho_\lambda = s_\lambda$ for all $\lambda$ with at most $n$-parts.
+\end{proposition}
+Recall that for partitions $\lambda = (\lambda_1\geq\lambda_2\geq \cdots\geq\lambda_)$ and $\mu=(\mu_1\geq\mu_2\geq\cdots\geq \mu_n)$ with at most $n$-parts. We have defined,
+\begin{equation*}
+  \lambda+\mu = (\lambda_1+\mu+1\geq\cdots\geq\lambda_n+\mu_n).
+\end{equation*}
+Note that 
+\begin{equation*}
+  \lambda+\mu \not = \lambda\oplus\mu.
+\end{equation*}
+\begin{lemma}
+  \label{lemma_4_11}
+  \begin{equation*}
+    \mathcal{S}_\lambda(V)\otimes \det = \mathcal{S}_{\lambda+(1^n)}(V).
+  \end{equation*}
+\end{lemma}
+\begin{proof}
+  Let us take,
+  \begin{equation*}
+    T_1\cdots T_2 A_{\lambda+\rho} = \sum_{\sigma}\sgn(\sigma)T_1^{\lambda-(n-1)+1}T_2^{\lambda_2-(n-2)+1}\cdots T_n^{\lambda_n+1} = A_{\lambda+(1^n)+\rho}.
+  \end{equation*}
+  That is,
+  \begin{equation*}
+    T_1T_2\cdots T_ns_\lambda = T_1\cdots T_n{\frac {A_{\lambda+\rho}} V} = {\frac {A_{\lambda+(1^n)+\rho}} V} = s_{\lambda+(1^n)}. 
+  \end{equation*}
+  Since 
+  \begin{enumerate}
+    \item $\det$ has character $T_1\cdots T_n$,
+    \item $\mathcal{S}_\lambda(V)$ has character $s_\lambda$,
+    \item $\mathcal{S}_\lambda(V)$ has character $s_{\lambda+(1^n)}$.
+  \end{enumerate}
+  We conclude that the character of $\mathcal{S}_\lambda(V)\otimes \det$ is 
+  \begin{equation*}
+     = T_1\cdots T_n s_\lambda  = s_{\lambda+(1^n)}.
+  \end{equation*}
+\end{proof}
+\begin{theorem}
+  \label{theorem_4_12}
+  THe following is a full collection of (pairwise non-isomorphic) $\GL_n$-representations. 
+  \begin{equation*}
+    \mathcal{S}_\lambda(V)\otimes{\det}^{\otimes m},
+  \end{equation*}
+  where $\lambda$ is a partition with at most $n-1$ parts and $m\in\Z$.\\
+  \par In particular, there is a bijection,
+  \begin{equation*}
+    \{\text{sequence of integers $a_1\geq \cdots\geq a_n$ in $\Z$}\}\stackrel{1:1}{\leftrightarrow}\Irr(\GL_n).
+  \end{equation*}
+  given by 
+  \begin{equation*}
+    (a_1,\cdots,a_n)\mapsto \mathcal{S}_{(a_1-a_n,a_2-a_n,\cdots,a_{n-1}-a_n)}\otimes {\det}^{\otimes a_n}.
+  \end{equation*}
+\end{theorem}
+\begin{proof}
+  Any irreducible representation is of the form $\mathcal{S}_\lambda(V)\otimes {\det}^k$ where $\lambda$ has at most $n$-parts. Write 
+  \begin{equation*}
+    \lambda = \mu + (\lambda_n^n),
+  \end{equation*}
+  such that $\mu$ has at most $n-1$-parts. Then we get,
+  \begin{equation*}
+    \mathcal{S}_\lambda(V)\otimes {\det}^k \stackrel{\text{Lemma \ref{lemma_4_11}}}{=}\mathcal{S}_\mu(V)\otimes \underbrace{\det\otimes\cdots\otimes \det}_{\text{$\lambda_n$-times}}\otimes {\det}^{\otimes k} = \mathcal{S}_\mu(V)\otimes {\det}^{\lambda_n+k}. 
+  \end{equation*}
+  Remains to show that 
+  \begin{equation*}
+    \mathcal{S}_\lambda(V)\otimes {\det}\cong \mathcal{S}_\mu(V)\otimes {\det}^{l-m}\Leftrightarrow \lambda=\mu,l=m.
+  \end{equation*}
+  Without the loss of generality, we assume $m=0$ and $l\geq0$. Then,
+  \begin{equation*}
+    S_\lambda(V)\cong S_mu(V)\otimes {\det}^{\otimes l} \cong S_{\mu+(l(1^n))}(V).
+  \end{equation*}
+  Hence 
+  \begin{equation*}
+    S_\lambda = S_{\mu+l(1^n)}\Rightarrow\lambda = \mu+l(1^n).
+  \end{equation*}
+\end{proof}
+Now we classify $\Irr(\SL_n)$. 
+\begin{lemma}
+  \label{lemma_4_13}
+  Restriction along $\SL_n\hookrightarrow\GL_n$ induces an isomorphism,
+  \begin{equation*}
+    \Ouv(\SL_n)^{\SL_n}\cong \Ouv(\GL_n)^{\GL_n}/(\det -1)= \C[T_1,\cdots,T_n]^{S_n}/(e_n-1).
+  \end{equation*}
+\end{lemma}
+\begin{proof}
+  There is a short exact sequence of vector spaces,
+  \begin{center}
+    \begin{tikzcd}
+0 \arrow[r] & (\det-1)\mathcal{O}(\GL_n) \arrow[r] & \mathcal{O}(\GL_n) \arrow[r] & \mathcal{O}(\SL_n) \arrow[r] & 0
+\end{tikzcd}
+  \end{center}
+  Using that $\SL_n$ is linearly reductive, we conclude $(\cdot)^{\SL_n}$ is exact by the exercise sheet. We thus get,
+  \begin{center}
+    \begin{tikzcd}
+0 \arrow[r] & ((\det-1)\mathcal{O}(\GL_n))^{\SL_n} \arrow[r] & (\mathcal{O}(\GL_n)))^{\SL_n} \arrow[r] & (\mathcal{O}(\SL_n))^{\SL_n} \arrow[r] & 0
+\end{tikzcd}
+  \end{center}
+  is exatct. Thus any $\lambda I_n\in\GL_n$ acts trivially on $\Ouv(\GL_n)$, and $\GL_n = \langle\SL_n,\lambda I_n\rangle$. Thus we conclude,
+  \begin{equation*}
+    \Ouv(\GL_n)^{\SL_n} = \Ouv(\GL_n)^{\GL_n}.
+  \end{equation*}
+  If $f\in \Ouv(\GL_n)$ such that $(\det-1)t\in\Ouv(\GL_n)^{\GL_n}$. Then $f\in\Ouv(\GL_n)^{\GL_n}$ since $\det\in\Ouv(\GL_n)^{\GL_n}$. Thus we obtain,
+  \begin{equation*}
+    ((\det-1)\Ouv(\GL_n))^{\GL_n} = (\det - 1)\Ouv(\GL_n)^{\GL_n}.
+  \end{equation*}
+  Thus we get,
+  \begin{equation*}
+    \Ouv(\SL_n)^{\SL_n}=\Ouv(\GL_n)^{\SL_n}/((\det-1)\Ouv(\GL_n))^{\SL_n} = \Ouv(\GL_n)^{\GL_n}/(\det-1)\Ouv(\GL_n)^{\GL_n}.
+  \end{equation*}
+\end{proof}
+
+\begin{remark}[Warning]
+  \begin{equation*}
+    \GL_n/Z(\GL_n)\not\cong \SL_n.
+  \end{equation*}
+\end{remark}
+\begin{theorem}
+  \label{theorem_4_14}
+  Any irreducible $\GL_n$-representation remains irreducible upon restriction to $\SL_n$. The following is a complete set of (pairwise non-isomorphic) $\SL_n$ representations.
+  \begin{equation*}
+    \mathcal{S}_\lambda(V)\quad\text{$\lambda$ has at most $n-1$-parts}.
+  \end{equation*}
+\end{theorem}
+\begin{proof}
+  Let $\mathcal{M}$ be an irreducible $\GL_n$-representation. Let $\mathcal{N}\subseteq\mathcal{M}$ which is a n $\SL_n$-subrepresentation. For any $\lambda\in\C$, the element $\lambda I_n\in\GL_n$ is central.
+  By Schur's lemma, $\lambda\cdot I_n$ acts by multiplying with some $\tilde{\lambda}\in\C^*$ on $\mathcal{M}$. Therefore, $\mathcal{N}$ is stable under $\lambda I_n$. \\
+  \par Since $\GL_n=\langle \SL_n,\lambda I_n\sep \lambda\in\C^\times\rangle\Rightarrow\mathcal{N}$ is a $\GL_n$-subrepresentation. Thus we conluder $\mathcal{N}=\{0\}$ or $\mathcal{M}$. Thus $\mathcal{M}$ is irreducible as an $\SL_n$-representation.
+  \par In particular, 
+  \begin{equation*}
+    V^{\otimes r} = \bigoplus_{\substack{\lambda\vdash r\\ {\text{at most $n$-parts}}}}\mathcal{S}_\lambda(V)^{\otimes \dim S^\lambda}\boxtimes S^\lambda,
+  \end{equation*}
+  as both $\GL_N$-representations and $\SL_n$-representations.\\
+  \par Since any irreducible $\SL_n$ representation appears in some $V^{\otimes r}$, we conclude any irreducible $\SL_n$-representation is of the form $\mathcal{S}_\lambda$.\\
+  \par If $\lambda_n>0$, we can write 
+  \begin{equation*}
+    \lambda = \mu +\lambda_n(1^n),
+  \end{equation*}
+  for some $\mu$ with at most $n-1$-parts. Thus,
+  \begin{equation*}
+    \mathcal{S}_\lambda(V) = \mathcal{S}_\mu(V)\otimes {\det}^{\otimes \lambda_n}\cong\mathcal{S}_\mu(V),
+  \end{equation*}
+  as $\SL_n$-reprensetation. But notice that ${\det}^{\otimes \lambda_n}\cong\triv$ as $\SL_n$-representation. \\
+  \par To see that $s_\lambda(V) \not \cong S_\mu(V)$, if $\lambda\not=\mu$ both at most $n-1$ parts, suffices to show that they have distinct characters in 
+  \begin{equation*}
+    \Ouv(\SL_n)^{\SL_n}=\C[T_1,\cdots,T_n]^{S_n}/(e_n-1).
+  \end{equation*}
+  It is an exercise that 
+  \begin{equation*}
+    \{S_\lambda\sep \text{$\lambda$ at most $n-1$-parts}\}
+  \end{equation*}
+  is linearly independent in $\Ouv(\SL_n)^{\SL_n}$.
+\end{proof}
+Let us compare the above theorem with $\mathfrak{sl}_n$. Recall that 
+\begin{equation*}
+  \Irr^{\text{fd}}(\mathfrak{sl}_n) \stackrel{1:1}{\Leftrightarrow}\{\text{dominant integral weights}\}.
+\end{equation*}
+Let $\eta\defeq\{a_1E_{11}+a_2E_{22}+\cdots a_nE_{nn}\sep \sum a_i = 0\}$, which is called the Cartan subalgebra. We also had,
+\begin{equation*}
+  \eta^*\defeq \Span_\C\{E_{11}^*,\cdots,E_{n-1n-1}^*\}.
+\end{equation*}
+
+\section{Lie algebras of an algebraic groups}
+Recall the following definition. 
+\begin{definition}
+  A weight of a Lie algebra $\mathfrak{sl}_n$ is an element $\lambda\in\eta^*$. It is called dominant if 
+  \begin{equation*}
+    \forall i=1,\cdots,n-1, \lambda(E_{ii}-E_{i+1i+1}) \in\Z_{\geq0}.
+  \end{equation*}
+\end{definition}
+If we have,
+\begin{equation*}
+  \lambda = \lambda_1E_{11}^*+\cdots+\lambda_{n-1}E^*_{n-1n-1}.
+\end{equation*}
+Then $\lambda$ is dominant if and only if all the coefficients are positive integers and
+\begin{equation*}
+  \lambda_1\geq\cdots\geq\lambda_{n-1}\geq 0.
+\end{equation*}
+Or equivalently, $\lambda = (\lambda_1,\cdots,\lambda_{n-1})$ is a partition with at most $n-1$-parts.
+\begin{equation*}
+  \Irr(\mathfrak{sl}_n)\stackrel{1:1}{\leftrightarrow}\{\text{partition of at most $n-1$-parts}\}\stackrel{1:1}{\leftrightarrow}\Irr(\SL_n).
+\end{equation*}
+The goal is to find a connection between algebraic groups and Lie algebras explaining this phenomena.\\
+\par Throughout the section, we let $k$ to be an algebraically closed field with any characteristic. Let $G$ be an algebraic group.
+\begin{definition}
+  \label{definition_5_1}
+  A $k$-derivation on $\Ouv(G)$ is a $k$-linear map $\delta:\Ouv(G)\to\Ouv(G)$ satisfying Leipniz rule. Explicitly,
+  \begin{equation*}
+    \delta(fg) = f\delta(g)+g\delta(f).
+  \end{equation*}
+\end{definition}
+\begin{remark}
+  For any derivation $\delta$, we have $\delta(1) = 0$. If $\delta_1,\delta_2$ are $k$-derivations on $\Ouv(G)$ then their commutator $[\delta_1,\delta_2] =\delta_1\circ\delta_2-\delta_2\circ \delta_1$ is again a derivation. 
+\end{remark}
+
+\begin{remark}
+  Recall, for any $g\in G$, we can define an algebra automorphism
+  \begin{equation*}
+    \lambda_g:\Ouv(G)\to\Ouv(G), f(\cdot)\mapsto f(g^{-1}(\cdot)).
+  \end{equation*}
+\end{remark}
+
+\begin{definition}
+  A derivation $\delta:\Ouv(G)\to\Ouv(G)$ is said to be left-invariant if 
+  \begin{equation*}
+    \forall g\in G, \lambda_g\circ\delta = \delta\circ\lambda_g.
+  \end{equation*}
+  We denote the set of all left-invariant derivations to be $\mathcal{L}(G)$.
+\end{definition}
+\begin{remark}
+  For left-invariant derivations $\delta_1,\delta_2$, their commutator $[\delta_1,\delta_2]$ is again left invariant. Thus $\mathcal{L}(G)$ equipped with the bracket $[\cdot,\cdot]$ is a Lie algebra.
+\end{remark}
+
+\begin{definition}
+  For an algebraic group $G$, $\mathcal{L}(G)$ is the Lie algebra of $G$.
+\end{definition}
+
+We will examine following questions,
+
+\begin{enumerate}
+  \item What is the dimension of $\mathcal{L}(G)$?
+  \item If $f:G\to G'$ is a homomorphism of algebraic groups, can we get $\Lie(G)\to\Lie(G')$?
+  \item What does $\Lie(G)$ know about $\Rep(G)$?
+\end{enumerate}
+
+\begin{example}
+  \label{example_5_3}
+  Let $G = \G_a$. Recall $\Ouv(G) = k[T]$. We would like to have a left-invariant function $\delta:k[T]\to k[T]$. Examine,
+  \begin{equation*}
+    \delta(T^n) = T\delta(T^{n-1})+T^{n-1}\delta(T).
+  \end{equation*}
+  By induction, we get,
+  \begin{equation*}
+    \delta(T^n) = n\cdot\delta(T)T^{n-1}.
+  \end{equation*}
+  By left-invariance, we have, for any $x\in G$, 
+  \begin{equation*}
+    \lambda_x\circ\delta(T) = \delta\circ\lambda_x\circ(T) = \delta(T-x) = \delta(T).
+  \end{equation*}
+  In another words, $\delta(T)$ is stable under all substitutions $T\mapsto T-X$. Thus we conclude $\delta(T)$ is a constant.
+  \par We conclude $\delta(T)$ is a multiple of ${\frac {\partial} {\partial T}}$ we conclude,
+  \begin{equation*}
+    \Lie(G) = k\cdot{\frac {\partial}{\partial T}}.
+  \end{equation*}
+\end{example}
+
+\begin{definition}
+  \label{definition_5_4}
+  Let $X$ be a variety. For any $x\in X$, we defined $\mathfrak{m}_x \defeq \{f\in\Ouv(X)\sep f(x)=0\}$. The Zariski tangent space is defined as 
+  \begin{equation*}
+    T_xX = \Hom_k(\m_x/\m_x^2,k).
+  \end{equation*}
+\end{definition}
+
+\begin{example}
+  \label{example_5_5}
+  Let $X=\A^n$, and $x=(x_1,\cdots,x_n)\in\A^n$, then 
+  \begin{equation*}
+    \m_x = (T_1-x_1,\cdots,T_n-x_n).
+  \end{equation*}
+  Then we observe,
+  \begin{equation*}
+    \m_x/\m_x^2\text{ is a $n$-dimensional with basis } T_1-x_1,\cdots,T_2-x_2.
+  \end{equation*}
+  That is 
+  \begin{equation*}
+    T_x\A^n = (\m_x,\m_x^2)^*
+  \end{equation*}
+  is also $n$-dimensional with dual basis, 
+  \begin{equation*}
+    \alpha_1,\cdots\alpha_n, \alpha_i(T_i+x_i+\m_x^2) = \delta_{ij}.
+  \end{equation*}
+  Thus we can write,
+  \begin{equation*}
+    \alpha_i(f) = {\frac {\partial f} {\partial T_i}}(x).
+  \end{equation*}
+  We denote this basis by,
+  \begin{equation*}
+    {\frac {\partial} {\partial T_1}}(x),\cdots,{\frac {\partial} {\partial T_n}}(x).
+  \end{equation*}
+\end{example}
+
+\begin{definition}
+  Let $f:X\to Y$ be a morphism of varieties with corresponding algebra homomorphism, $f^\#:\Ouv(Y)\to\Ouv(X)$. If $x\in X$, then the preimage $(f^\#)^{-1}(\m_x) = \m_{f(x)}$. In particular, $f^\#$ induces a linear map,
+  \begin{equation*}
+    \m_{f(x)}/\m_{f(x)}^2\to\m_x/\m_x^2.
+  \end{equation*}
+  Taking duals yeilds a map,
+  \begin{equation*}
+    df_x:\m_x/\m_x^2=T_xX\to T_{f(x)}Y=\m_{f(x)}/\m_{f(x)}
+  \end{equation*}
+\end{definition}
+
+\begin{lemma}
+  \label{lemma_5_6}
+  Let $X\subseteq \A^n$ be adefined by $f_1,\cdots,f_m\in\Ouv(\A^n)$. Then the inclusion, 
+  \begin{equation*}
+    \iota:X\to \A^n,
+  \end{equation*}
+  identifies the space $T_xX$ via $d\iota_x:T_xX\to T_x\A^n$ with the linear subspace $T_xX$ of $T_x\A^n$ given by 
+  \begin{equation*}
+    \Ker(J(x)),
+  \end{equation*}
+  where 
+  \begin{equation*}
+    J(x) = J_{f_1,\cdots,f_m}(x)\left({\frac {\partial f_j}{\partial T_i}}(x)\right)_{\substack{1\leq i\leq n\\ 1\leq j\leq m}}.
+  \end{equation*}
+\end{lemma}
+\begin{proof}
+Let $\m_x\subseteq\Ouv(\A^n)$ and $\overline{\m_x} = \m_x/I(X)\subseteq\Ouv(X)$. We have an exact sequence.
+\begin{center}
+  \begin{tikzcd}
+k^n \arrow[r, "e_i\to f_i+\m_x^2"] & \m_x/\m_x^2 \arrow[r] & \overline{\m_x}/\overline{\m_x}^2 \arrow[r] & 0
+\end{tikzcd}
+\end{center} 
+Taking the duals, we get,
+\begin{center}
+  \begin{tikzcd}
+0 \arrow[r] & T_xX \arrow[r] & T_x\A^n \arrow[r, "\alpha^*"] & k^n
+\end{tikzcd}
+\end{center}
+Note that $T_x\A^n$ has the basis 
+\begin{equation*}
+  \left\{{\frac {\partial }{\partial T_1}}(x),\cdots,\frac {\partial }{\partial T_n}\right\}.
+\end{equation*}
+And in $k^n$ we have the dual basis corresponding to the standard basis $\{e_i\}$.
+We have,
+\begin{equation*}
+  \alpha^*\left({\frac {\partial}{\partial T_i}}(x)\right)(e_j) = \left({\frac{\partial}{\partial T_i}}(x)\right)\underbrace{(\alpha(e_j))}_{f_i+\m_x^2} = {\frac {\partial f_j} {\partial T_i}}(x).
+\end{equation*}
+
+Thus we obtain,
+\begin{equation*}
+  \alpha^*\left({\frac {\partial }{\partial T_i}}(x)\right) = \sum_j {\frac {\partial f_j} {\partial T_i}}(x)e_j^*.
+\end{equation*}
+Therefore, $\alpha^*$ is the linear map given by $J(x)$.
+\end{proof}
+
+\begin{lemma}
+  \label{lemma_5_7}
+  Let $\varphi:\A^n\to\A^m$ be such that 
+  \begin{equation*}
+    \varphi=(\varphi_1(T_1,\cdots,T_n),\cdots,\varphi_m(T_1,\cdots,T_n)).
+  \end{equation*}
+  Then 
+  \begin{equation*}
+    d\varphi_x:T_x\A^n\to T_x\A^m,
+  \end{equation*}
+  is the linear given by the Jacobi matrix,
+  \begin{equation*}
+    J(x) = J_\varphi(x) = \left({\frac {\partial\varphi_j}{\partial T_i}}\right)_{\substack{1\leq i\leq n\\ 1\leq j\leq m}}.
+  \end{equation*}
+\end{lemma}
+\begin{proof}
+  The map $\m_{\varphi(x)}/\m_{\varphi(x)}^2\to \m_x/\m_x^2$ is given by 
+  \begin{equation*}
+    T_j-\varphi(x)_j+\m_{\varphi(x)}^2\mapsto \varphi_j-\varphi(x)_j+\m_x^2.
+  \end{equation*}
+  Hence,
+  \begin{equation*}
+    d\varphi_x\left({\frac {\partial}{\partial T_i}(x)}\right)(T_j-\varphi(x)_j+\m_{\varphi(x)}^2) = \left({\frac {\partial}{\partial T_i}}(x)\right)(\varphi_j-\varphi(x)_j+\m_x^2) = {\frac {\partial \varphi_j}{\partial T_i}}(x).
+  \end{equation*}
+  Thus we obtain,
+  \begin{equation*}
+    d\varphi_x\left({\frac {\partial} {\partial T_i}}\right) = \sum_j {\frac {\partial\varphi_j}{\partial T_i}}(x)\cdot{\frac {\partial } {\partial T_j}}(\varphi(x)).
+  \end{equation*}
+  We conclude that $d\varphi_x$ is the linear map given by $J_\varphi(x)$.
+\end{proof}
+This can be used to describe any morphisms of affine varieties on tangent spaces.
+\par let $X\subseteq \A^n$ bedefined by $f_1,\cdots,f_m$ and $X'\subseteq \A^m$ bedefined by $f'_1,\cdots,f'_m$. Any morphism,
+\begin{center}
+  \begin{tikzcd}
+\A^n \arrow[r, "\varphi"]               & \A^m               \\
+X \arrow[u, hook] \arrow[r, "\varphi"'] & X' \arrow[u, hook]
+\end{tikzcd}
+\end{center}
+\begin{center}
+  \begin{tikzcd}
+T_x\A^n \arrow[r, "d\varphi_x"]                       & T_{\varphi(x)}\A^m                                  \\
+T_xX \arrow[u, hook] \arrow[r, "d\varphi_x", dotted] & T_{\varphi(x)}X' \arrow[u, hook]                    \\
+{\Ker(J_{f_1,\cdots,f_m}(x))} \arrow[u]              & {\Ker(J_{f'_1,\cdots,f'_m}(\varphi(x)))} \arrow[u]
+\end{tikzcd}
+\end{center}
+\begin{theorem}
+  \label{theorem_5_8}
+  Let $f:X\to Y$ be a morphism of irreducible varieties.
+  \begin{enumerate}[1).]
+    \item $\forall x\in X$, we have $T_xX\geq \dim X$.
+    \item There si adense open subset $U\subseteq X$ such that for all $x\in U$, $\dim T_xX=\dim X$.
+    \item Let $\chr(k) = 0$, If $f:X\to Y$ is dominant there is a dense open subset $U\subseteq X$ such that $df_x:T_xX\to T_{f(x)}Y$ is surjective for all $x\in U$.
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  Omitted.
+\end{proof}
+\begin{example}
+  \label{example_5_9}
+  Let $p$ be a prime number $f:\A^1\to \A^1$ be such that 
+  \begin{equation*}
+    f(T) = T^p.
+  \end{equation*}
+  At $T=1$, we have,
+  \begin{equation*}
+    df_1 = p,
+  \end{equation*}
+  (ie the multiplication by $p$). In particular, if $\chr(k) = p$, then $df_1$ is the $0$-map. Similarly, $df_x=0$ for all $x\in \A^1$ if $\chr(k) = p$.
+\end{example}
+\begin{definition}
+  \label{definition_5_10}A point $x\in X$ is called simple if 
+  \begin{equation*}
+    \dim T_xX = \dim X.
+  \end{equation*}
+  We call $X$ smooth if all points of $X$ are simple.
+\end{definition}
+
+\begin{example}
+  $\Spec(k[x,y]/(xy))$ is not smooth since the origin is not simple.
+\end{example}
+
+\begin{lemma}
+  \label{lemma_5_11}
+  Let $G$ be an algebraic group. Any $x\in G$ is simple. In particular $G$ is smooth.
+\end{lemma}
+\begin{proof}
+  For any $g\in G$, we get an isomorphism of varieties by 
+  \begin{equation*}
+    G\ni x\mapsto gx\in G.
+  \end{equation*}
+  Thus we get,
+  \begin{equation*}
+    \forall x,g\in G, T_xG\stackrel{\sim}{\to}T_{gx}G
+  \end{equation*}
+  Thus all $x\in G$, we have $\dim T_xG$ is the same. By Theorem \ref{theorem_5_8} 2). there eixsts $x\in G$ with 
+  \begin{equation*}
+    T_xG = \dim G,
+  \end{equation*}
+  thus all points of $G$ are simple.
+\end{proof}
+
+\begin{theorem}
+  \label{theorem_5_12}
+  Let $G$ be an algebraic group. There is an isomorphism of vector spaces,
+  \begin{equation*}
+    \theta:\Lie(G)\delta\mapsto (f\mapsto \delta(f)(e)) \in T_eG,
+  \end{equation*}
+  with the inverse,
+  \begin{equation*}
+    \eta:T_eG\ni X\mapsto \delta_X = [g\mapsto X(\lambda_{g^{-1}}(f)-f(g))]\in\Lie(G).
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+We first show that $\theta$ is well-defined. To do so, need to show that $\theta(\delta) = \delta(\cdot)(e)$ vanishes on $\m_e^2$.
+Let $f,g\in\m_e$, then,
+\begin{equation*}
+  \theta(\delta)(fg) = \delta(fg)(e) = (f\delta(g)+\delta(f)g)(e)=0,
+\end{equation*}
+since $f,g\in\m_e$, they vanishe on $e$.
+Secondly, we show that $\eta$ is well-defined. We will do it by deriving,
+\begin{equation*}
+  \lambda_{g^{-1}}-f(g)\in\m_e.
+\end{equation*}
+We already have,
+\begin{equation*}
+  (\lambda_{g^{-1}}(f)-f(g))(e) = f(g)-f(g) = 0.
+\end{equation*}
+Now we check that $\delta_x$ is a derivation,
+\begin{align*}
+  \eta_x(f_1f_2)(g)&\stackrel{\text{def}}{=}x(\lambda_{g^{-1}}(f_1f_2)-f_1(g)f_2(g)),\\
+  & = x(\lambda_{g^{-1}}(f_1)\lambda_{g^{-1}}(f_2)-f_1(g)f_2(g)),\\
+  & = x(\underbrace{(\lambda_{g^{-1}}(f_1)-f_1(g))}_{\in\m_e}\underbrace{(\lambda_{g^{-1}}(f_2)-f_2(g))}_{\in\m_e}+f_1(g)(\lambda_{g^{-1}}(f)-f_1(g))+(\lambda_{g^{-1}}(f)-f_1(g))f_2(g)).\\
+  \Rightarrow & (\lambda_{g^{-1}}(f_1)-f_1(g))(\lambda_{g^{-1}}(f_2)-f_2(g)),\\
+  \eta_x(f_1f_2)(g)& = x(f_1(g)(\lambda_{g^{-1}}(f_2)-f_2(g))+(\lambda_{g^{-1}}(f)-f_1(g))f_2(g)),\\
+  & = f_1(g)\cdot x(\lambda_{g^{-1}}(f_2)-f_2(g)+(\lambda_{g^{-1}}(f_1)-f_1(g))f_2(g)),\\
+  & = f_1(g)\delta_x(f_2)(g) = \delta_x(f_1)(g)f_2(g),\\
+  \Rightarrow & \delta(f_1f_2) = f_1\delta_x(f_2)+\delta(f_1)f_2.
+\end{align*}
+We have $\delta$ is left invariant. Indeed,
+\begin{align*}
+  (\lambda_{g_2}\circ\delta_x)(f)(g_1) & = \delta_x(f)(g_2^{-1}g_1),\\
+  & = x(\lambda_{g_1^{-1}g_2}(f)-f(g_2^{-1}g_1)),\\
+  & = x(\lambda_{g_1^{-1}}(\lambda_{g_2}(f))-\lambda_{g_2}(f)(g_1)),\\
+  & = \delta_x(\lambda_{g_2}(f))(g_1).\\
+  \Rightarrow& \lambda_{g_2}\circ f= f\circ\lambda_{g_2}.
+\end{align*}
+
+We now show that $\theta$ and $\eta$ are inverse to each other. 
+\begin{align*}
+  \eta(\theta(\delta))(f)(g) & = \theta(\delta)(\lambda_{g^{-1}}(f)-f(g)),\\
+  & = \delta(\lambda_{g^{-1}}(f)-f(g))(e),\\
+  & \stackrel{\delta(1)=0}{=}\delta(\lambda_{g^{-1}}(f))(e),\\
+  & \stackrel{\text{$\delta$ is left invariant}}{=}\lambda_{g^{-1}}(\delta(f))(e),\\
+  & = \delta(f)(g).\\
+  \Rightarrow & \eta(\theta(\delta))= \delta.
+\end{align*}
+
+Let $x\in(\m_e/\m_e^2)^*$ and $f\in \m_e$.
+\begin{align*}
+  \theta(\eta(x))(f) & = \eta(x)(f)(e),\\
+  & = x(\\lambda_{g^{-1}}(f)-f(g)),\\
+  & = x(f).\\
+  \Rightarrow & \theta(\eta(x))=x.
+\end{align*}
+This finishes the proof.
+\end{proof}
+From now on, we denote the Lie algebra of $G$ by $\g$ where $\g$ inherits the Lie bracket from $\Lie(G)$.
+\begin{corollary}
+  \label{corollary_5_13}
+  We have 
+  \begin{equation*}
+    \dim_k\g = \dim G.
+  \end{equation*}
+  In particular, $\g$ is finite-dimensional.
+\end{corollary}
+\begin{proof}
+  Since $G$ is smooth we have,
+  \begin{equation*}
+    \dim_kT_gG = \dim G,
+  \end{equation*}
+  for any $g\in G$.
+\end{proof}
+Recall that $\GL_n$ has a ring of functions, 
+\begin{equation*}
+  \Ouv(\GL_n) = k[T_{ij}]_{1\leq i,j\leq n}[y]/(\det y-1).
+\end{equation*}
+\begin{lemma}
+  \label{lemma_5_14}
+  $\gl_n$ is $n^2$-dimensional with basis ${\frac {\partial} {\partial T_{ij}}}(I_n)\in(\m_e/\m_e^2)^*$ where, for $f\in \C[T_{ij}],m\in\Z_{0\geq}$,
+  \begin{equation*}
+  {\frac {\partial(f\det^{-m})} {\partial T_{ij}}}(I_n) \defeq {\frac {\partial f} {\partial T_{ij}}}(I_n) -mf(I_n)\delta_{ij}.
+  \end{equation*}
+\end{lemma}
+\begin{proof}
+  We need to first show that ${\frac {\partial} {\partial T_{ij}}}(I_n)$ is well-defined.
+  \par Note that 
+  \begin{align*}
+    {\frac {\partial\det} {\partial T_{ij}}}(I_n) = \delta_{ij},
+  \end{align*}
+  since we have,
+  \begin{equation*}
+    \det = T_{11}\cdots T_{nn}+\sum_{\sigma\in\mathfrak{S}_n,\sigma\not=1}\sgn(\sigma)T_{1\sigma(1)}\cdots T_{n\sigma(n)}.
+  \end{equation*}
+  Then the right hand side contains at least two factors of $T_{ij}$ if $i\not=j$.
+  \begin{align*}
+    {\frac {\partial(f\det^a)\det^{-a-m}} {\partial T_{ij}}}(I_n) & = {\frac {\partial (f\det^a)} {\partial T_{ij}}}(I_n)-(a+m)f(I_n)\delta_{ij},\\
+    & = \left({\frac {\partial f} {\partial T_{ij}}}(I_n)\det^a+f{\frac {\partial\det^a} {\partial T_{ij}}}\right)(I_n) - (a+m)f(I_n)\delta_{ij},\\
+    & = \left({\frac {\partial f} {\partial T_{ij}}}(I_n)\det^a+fa\det^{a-1}{\frac {\partial\det} {\partial T_{ij}}}\right)(I_n)- (a+m)f(I_n)\delta_{ij},\\
+    & = {\frac {\partial f} {\partial T_{ij}}}(I_n) + af(I_n)f_{ij}-(a+m)f(I_n)\delta_{ij},\\
+    & = {\frac {\partial f}{\partial T_{ij}}}(I_n) - mf(I_n)\delta_{ij},\\
+    & = {\frac {\partial f\det^m} {\partial T_{ij}}}(I_n).
+  \end{align*}
+  We know that 
+  \begin{equation*}
+    \dim\gl_n=\dim\GL_n=n^2.
+  \end{equation*}
+  Let $x\defeq\sum\lambda_{ij}{\frac {\partial }{\partial T_{ij}}}(I_n) = 0$. Then 
+  \begin{align*}
+    \underbrace{x(T_{ab})}_{=0}=\sum_{\lambda_{ij}}{{\frac {\partial T_{ab}}{\partial T_ij}}}(I_n) = \lambda_{ab}.
+  \end{align*}
+  In particular,
+  \begin{align*}
+    \Rightarrow\lambda_{ab} = 0\forall a,b,
+  \end{align*}
+  $\Rightarrow $The ${\frac {\partial} {\partial T_{ij}}}(I_n)$ are linearly independent. By the dimension argument, we have ${\frac {\partial} {\partial T_{ij}}}(I_n)$ are the basis.
+  \par Remains to show that each ${\frac {\partial}{\partial T_{ij}}}(I_n)$ vanishes on $\m_{I_n}^2$. Let $f\det^{-a},g\det^{-b}\m_{I_n}$. Then,
+  \begin{align*}
+    {\frac {\partial(f\det^{-a})(g\det^{-b})} {\partial T_{ij}}}(I_n) & = {\frac {\partial (fg)\det^{-a-b}} {\partial T_{ij}}}(I_n),\\
+    &= {\frac {(fg)} {\partial T_{ij}}}(I_n)-(a+b)f(I_n)g(I_n)\delta_{ij},\\
+    & = \left(f{\frac {\partial g} {\partial T_{ij}}}+{\frac {\partial f} {\partial T_{ij}}}\right)(I_n),\\
+    & = 0.
+  \end{align*}
+\end{proof}
+\begin{lemma}
+  \label{lemma_5_15}
+  The Lie bracket $[\cdot,\cdot]:\gl_n\times\gl_n\to\gl_n$, which we identify it with $\gl_n\cong \Mat_{n\times n}$ and ${\frac {\partial} {\partial T_{ij}}}\mapsto E_{ij}$ is the commutator bracket on $\Mat_{n\times n}$.
+\end{lemma}
+\begin{proof}
+  Recall the isomorphism $\eta:T_e\GL_n\to\Lie(\GL_n)$. So we compute the bracket on $\eta\left({\frac {\partial }{\partial T_{ij}}}(I_n)\right)$. We have,
+  \begin{align*}
+    \eta\left({\frac {\partial }{\partial T_{ij}}}(I_n)\right)(T_{ab})(A) &= {\frac {\partial }{\partial T_{ij}}}(I_n)(\lambda_{A^{-1}}(T_{ab})-T_{ab}(A)),\\
+    & = {\frac {\partial (\lambda_{A^{-1}}(T_{ab})-A_{ab})} {\partial T_{ij}}},\\
+     & = {\frac {\partial (\sum_{l}A_{al}T_{lb}-A_{ab})} {\partial T_{ij}}},\\
+     & = A_{ai}\delta_{jb},\\
+     \Rightarrow & \eta\left({\frac {\partial }{\partial T_{ij}}}(I_n)\right)(T_{ab}) = T_{ai}\delta_{jb}.
+  \end{align*}
+  On $\Lie(\GL_n)$ the Lie bracket is the commutator thus,
+  \begin{align*}
+    \eta\left({\frac {\partial }{\partial T_{ij}}}(I_n)\right)\circ\eta\left({\frac {\partial }{\partial T_{lm}}}(I_n)\right)(T_{ab})& = \eta\left({\frac {\partial }{\partial T_{ij}}}(I_n)\right)(T_{al}\delta_{b,m}),\\
+    & = T_{ai}\delta_{lj}\delta_{{bm}},\\
+    & = \delta_{jl}\eta(\left({\frac {\partial} {\partial T_{im}}}(I_n)\right))(T_{ab}),\\
+    \Rightarrow & \left[\eta\left({\frac {\partial }{\partial T_{ij}}}(T_n)\right),\eta\left({\frac {\partial }{\partial T_{lm}}}(T_n)\right)\right](T_{ab})\\
+                & = \left(\delta_{j,l}\eta\left({\frac {\partial} {\partial T_{im}}}(I_n)\right)-\delta_{i,m}\eta\left({\frac {\partial} {\partial T_{im}}}(I_n)\right)\right)(T_{ab}).
+  \end{align*}
+  Since any derivation ofn $\Ouv(\GL_n)$ is uniquely determined by the values on the $T_{ab}$(From Leibniz rule, $0 = \delta(\det\det^{-1}) = \det\delta(\det^{-1})+\delta(\det)\det^{-1}$), we have,
+  \begin{equation*}
+    \Rightarrow \left[\eta\left({\frac {\partial} {\partial T_{ij}}}(I_n)\right),\eta\left({\frac {\partial} {\partial T_{lm}}}(I_n)\right)\right] = \delta_{jl}{\frac {\partial} {\partial T_{im}}}(I_n)-\delta_{im}\eta\left({\frac {\partial} {\partial T_{lj}}}\right).
+  \end{equation*}
+  This is precisely the commutator bracket on $\Mat_{n\times n}$ where,
+  \begin{equation*}
+    [E_{ij},E_{lm}] = \delta_{j,l}E_{i,m}-\delta_{i,m}E_{l,j}.
+  \end{equation*}
+\end{proof}
+
+For any morphism of algebraic groups, $\varphi:G\to G'$, we write,
+\begin{equation*}
+  d\varphi = d_e\varphi:\underbrace{\g}_{=T_eG}\to\underbrace{\g'}_{=T_eG}.
+\end{equation*}
+
+\begin{proposition}
+  \label{proposition_5_16}
+  Let $\varphi:G\to G'$ be a morphism of algebraic grups then $d\varphi:\g\to\g'$ is a morphism of Lie algebras.
+\end{proposition}
+
+\begin{proof}
+  Let $tilde{d\varphi}:\Lie(G)\to\Lie(G')$ be the map induced by $d\varphi$ via $\eta,\theta$. In other words, 
+  \begin{center}
+    \begin{tikzcd}
+T_eG=\g \arrow[r, "d\varphi"]                                      & T_eG'=\g' \arrow[d, "\eta"] \\
+\Lie(G) \arrow[u, "\theta"] \arrow[r, "\tilde{d\varphi}"', dotted] & \Lie(G')                   
+\end{tikzcd}
+  \end{center}
+  We want to show that $\tilde{d\varphi}$ is a morphism of Lie algebras. Consider,
+  \begin{align*}
+    \tilde{d\varphi}(\delta)(f)(g) & = \eta(d\varphi(\theta(\delta)))(f)(g),\\
+    & \stackrel{\text{def of $\eta$}}{=} d\varphi(\theta(\delta))(\lambda_{g^{-1}}(f)-f(g)),\\
+    &\stackrel{\text{def}}{=}\theta(\delta)\circ\varphi^\#(\lambda_{g^{-1}}(f)-f(g)),\\
+&\stackrel{\text{def}}{=}\theta(\delta)(\lambda_{g^{-1}}(f)\circ\varphi-f(g)),\\
+&=\delta(\lambda_{g^{-1}}(f)\circ\varphi-f(g))(e),\\
+& = \delta(\lambda_{g^{-1}}(f)\circ\varphi)(e).
+  \end{align*}
+  \begin{claim}
+  \begin{equation*}
+    \tilde{d\varphi}(\delta)(f)\circ\varphi = \delta(f\circ \varphi).
+  \end{equation*}
+  \end{claim} 
+  \begin{proof}[Proof of the claim]
+    \begin{align*}
+      \tilde{d\varphi}(\delta)(f)\circ\varphi(g)&=\delta(\lambda_{\varphi(g)^{-1}}(f)\circ\varphi)(e),\\
+      & = \delta(\lambda_{g^{-1}}(f\circ\varphi))(e),\\
+      & \stackrel{\text{$\delta$ is left inv.}}{=} \lambda_{g^{-1}}(\delta(f\circ\varphi))(e),\\
+      & = \delta(f\circ \varphi)(g).
+    \end{align*}
+  \end{proof}
+  Hence,
+  \begin{align*}
+    [\delta,\delta'](f\circ\varphi) & = \delta(\delta'(f\circ \varphi))-\delta'(\delta(f\circ\varphi)),\\
+    & \stackrel{\text{Claim}}{=} \delta(\tilde{d\varphi}(\delta')(f)\circ\varphi)-\delta'(\tilde{d\varphi}(\delta)(f)\circ\varphi),\\
+    & = \tilde{d\varphi}(\delta)\circ\tilde{d\varphi}(\delta')(f)\circ\varphi - \tilde{d\varphi}(\delta')\circ\tilde{d\varphi}(\delta)(f)\circ\varphi,\\
+    & = [\tilde{d\varphi}(\delta),\tilde{d\varphi}(\delta)](f)\circ\varphi.
+  \end{align*}
+  Thus we get,
+  \begin{align*}
+    \tilde{d\varphi}([\delta,\delta'])(f)(g) & = [\delta,\delta'](\lambda_{g^{-1}}(f)\circ\varphi)(e),\\
+    & = [\tilde{d\varphi}(\delta),\tilde{d\varphi}(\delta')](\lambda_{g^{-1}}(f))\circ\varphi(e),\\
+    & = [\tilde{d\varphi}(\delta),\tilde{d\varphi}(\delta')](\lambda_{g^{-1}}(f))(e),\\
+    &\stackrel{\text{left inv.}}{=}\lambda_{g^{-1}}[\tilde{d\varphi}(\delta),\tilde{d\varphi}(\delta')](f)(g),\\
+    \Rightarrow & \tilde{d\varphi}([\delta,\delta']) = [\tilde{d\varphi}(\delta).\tilde{d\varphi}(\delta')].
+  \end{align*}
+\end{proof}
+
+\begin{remark}
+  If $G\subseteq\GL_n\subseteq\Mat_{n\times n}$ is the vanishing locus of $f_1,\cdots,f_m\in\Ouv(\Mat_{n\times n})$, then $\g = \Ker (\underbrace{J_{f_1,\cdots,f_m}(I_n)}_{\subseteq T_{I_n}\Mat_{n\times n}})$. And by Proposition \ref{proposition_5_16}, the Lie bracket on $\g\subseteq\gl_n$ is again the commutator bracket.
+\end{remark}
+
+\begin{example}
+  \label{example_5_12}
+  Let $G=\SL_n=V(\det-1)$, recall that ,
+  \begin{equation*}
+    {\frac {\partial \det} {\partial_{T_{ij}}}} = \delta_{ij}.
+  \end{equation*}
+  Thus we have,
+  \begin{equation*}
+    \spl_n=\{A\in\gl_n\sep \sum\delta_{ij}A_{ij} = 0\} = \{A\in\gl_n\sep \tr(A) = 0\}.
+  \end{equation*}
+\end{example}
+
+\begin{example}
+  \label{example_5_12_2}
+  Let $J\in\GL_n$, and we set $G(J) = \{A\in\Mat_{n\times n}\sep A^TJA = J\}$. Then we have, 
+  \begin{enumerate}[1).]
+    \item $J$ is symmetric, then $\G(J) = O_n$,
+    \item $J$ is skew-symmetric, then $\G(J) = \Sp_{2n}$.
+  \end{enumerate}
+  $G(J)$ is cut out by the following equation. At the $(i,l)$-entry.
+  \begin{equation*}
+    \sum_{j,k=1}^n A_{ji}J_{jk}A_{kl} = J_{il} \quad (1\leq i,l\leq n).
+  \end{equation*}
+  Now,
+  \begin{equation*}
+    {\frac {\partial (\sum_{j,k}T_{ji}J_{jk}T_{kl}-J_{il})} {\partial T_{ab}}}(I_n) = \delta_{bi}J_{al}+\delta_{bl}J_{ia}.
+  \end{equation*}
+  Thus the Lie algebra of $\g(J)\subseteq \gl_n =\Mat_{n\times n}$ is a cut out by the equations 
+  \begin{equation*}
+    \sum_{a,b}A_{a,b}(\delta_{ib}J_{al}+J_{ia}\delta_{lb}) = \sum_{a}(A_{ia}J_{al}+A_{al}J_{ia}) = (A^TJ)_{il}+(JA)_{il}
+  \end{equation*}
+  Or another words, this is equivalent to $A^TJ+JA=0$. THus we get,
+  \begin{equation*}
+    \g(J) = \{A\in\Mat_{n\times n}\sep A^TJ+JA = 0\}.
+  \end{equation*}
+  In particular, the orthogonal group $O_n$ has Lie algebra $\so_n$ and $\Sp_n$ has Lie algebra $\spg_{2n}$
+\end{example}
+
+\begin{theorem}
+  \label{theorem_5_18}
+  Let $\iota:G\to G, g\mapsto g^{-1}$ be the inversion .Then we have,
+  \begin{equation*}
+    d\iota:\g\to\g, d\iota(x) = -x.
+  \end{equation*}
+  Let $\mu:G\times G\to G, (g,h)\mapsto gh$ be the multiplication, then we have,
+  \begin{equation*}
+    d\mu:\g\oplus\g\to\g, (x,y) = x+y.
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  We first prove the second assertion. Since the differential of 
+  \begin{equation*}
+    G\stackrel{j=(\id,e)}{\to}G\times G, 
+  \end{equation*}
+  is given by 
+  \begin{equation*}
+    d_j(x) = (d\id(x),de(x))
+  \end{equation*}
+  Since any map factoring through $\{e\}\hookrightarrow G$ must have the tangent space $0$ since,
+  \begin{center}
+    \begin{tikzcd}
+G \arrow[r] & \{e\} \arrow[r] & G
+\end{tikzcd}
+  \end{center}
+  then
+  \begin{center}
+    \begin{tikzcd}
+T_eG \arrow[r] \arrow[rr, "0"', bend right] & \{0\} \arrow[r] & T_eG
+\end{tikzcd}
+  \end{center}
+  Thus the map $d_j$ is given by,
+  \begin{equation*}
+    d_j(x) = (x,0).
+  \end{equation*}
+  Note that $\mu\circ j(g) = \mu(g,e) = g$ thus we have $\mu\circ j = \id$. THus for any $x\in\gl_n$, we have,
+  \begin{equation*}
+    x = d_\mu(d_j(x)) = d\mu(x,0).
+  \end{equation*}
+  By the additivity, we obtain,
+  \begin{equation*}
+    d_\mu((x,y)) = d_\mu((x,0)+(0,y)) = d_\mu(x,0)+d_\mu(0,y) = x+y.
+  \end{equation*}
+  Now, we prove the first assertion. The following composition is the constant map $e$, 
+  \begin{center}
+    \begin{tikzcd}
+G \arrow[r, "{\Delta=g\mapsto(g,g)}"] & G\times G \arrow[r, "{(\id,\iota)}"] & G\times G \arrow[r, "\mu"] & G
+\end{tikzcd}
+  \end{center}
+  The following composition is the zero map,
+  \begin{center}
+    \begin{tikzcd}
+\g \arrow[r, "\Delta"] & \g\oplus\g \arrow[r, "{(\id,d_\iota)}"] & \g\oplus\g \arrow[r, "d\mu"] & \g
+\end{tikzcd}
+  \end{center}
+  Hence, we have, for any $x\in\g$,
+  \begin{equation*}
+    0 = d\mu\circ(\id,d_\iota)\circ\Delta(x) = d\mu(x,d_\iota(x)) = x+d_\iota(x).
+  \end{equation*}
+  Thus we conclude $d_\iota(x) = -x$.
+\end{proof}
+
+We assume from now on in this section that $\Rep(G),\Rep(\g)$ are all finite dimensional representations of $G$ and $\g$, respectively.
+\begin{definition}
+Let $G$ be an algebraic group and $V$ be a $G$-representation. Let $\rho:G\to\GL(V)$ be the corresponding morphism of algebraic groups. Taking differentials, we get a morphism of Lie algebras. 
+\begin{equation*}
+  d\rho:\g\to\gl(V).
+\end{equation*}
+We denote this corresponding representation of $\g$ by $d(V)\in\Rep(\g)$, which is a finite dimensional representation.
+\end{definition}
+\begin{example}
+  Let $V=\triv$, be the trivial representation, in other words,
+  \begin{equation*}
+    \rho:G\to\GL_1, g\mapsto e.
+  \end{equation*}
+  Thus from the discussion in Theorem \ref{theorem_5_18}, we obtain $d\rho = 0$. In other words, $d(\triv_G)=\triv_{\g}$.
+\end{example}
+Next goal is to extend this to a functor $d:\Rep(G)\to\Rep(\g)$.
+\begin{lemma}
+  \label{lemma_5_20}
+  The assingment $\Rep(G)\ni V\mapsto d(V)\in\Rep(\g)$ is compatible with tensor products and duals. That is to say,
+  \begin{equation*}
+    d(V\otimes W) \cong d(V)\otimes d(W), d(V^*) \cong d(V)^*.
+  \end{equation*}
+\end{lemma}
+
+\begin{proof}
+  Let $\rho:G\to \GL_n$ be a representation on $G$. The dual representation is the composition of ,
+  \begin{equation*}
+    \rho^*:G\stackrel{\iota}{\to}G\stackrel{\rho}{\to}\GL_n\stackrel{(\cdot)^T}{\to}\GL_n.
+  \end{equation*}
+  On tangent spaces, this becomes, 
+  \begin{equation*}
+    d\rho^*:\g\stackrel{d\iota}{\to}\g\stackrel{d\rho}{\to}\gl_n\stackrel{d(\cdot)^T}{\to}\gl_n.
+  \end{equation*}
+  Note that $d(\cdot)^T=(\cdot)^T$, since,
+  \begin{center}
+    \begin{tikzcd}
+\GL_n \arrow[d, hook] \arrow[r, "(\cdot)^T"] & \GL_n \arrow[d, hook] \arrow[rr, "d", bend left=60] &  & \gl_n \arrow[r, "d(\cdot)^T"] \arrow[d, "\sim"'] & \gl_n \arrow[d, "\sim"] \\
+\Mat_{n\times n} \arrow[r, "(\cdot)^T"']     & \Mat_{n\times n}                                    &  & T_{I_n}\Mat_{n\times n} \arrow[r, "d(\cdot)^T"'] & T_{I_n}\Mat_{n\times n}
+\end{tikzcd}
+  \end{center}
+  $(\cdot)^T:\Mat_{n\times n}\to\Mat_{n\times n}$ is linear since $d(\cdot)^T = (\cdot)^T$ on $\gl_n$ is 
+  \begin{equation*}
+    d\varphi^*(x) = -xd\rho(x)^T.
+  \end{equation*}
+  This is the dual representation of $d\rho:\g\to\gl_n$.\\
+  \par The tensor product of $\rho:G\to\GL(V),\rho':G\to\GL(W)$ is the following map,
+  \begin{center}
+    \begin{tikzcd}
+G \arrow[r, "\Delta"] & G\times G \arrow[r, "{(\rho,\rho')}"] & \GL(V)\times \GL(W) \arrow[r, "{\alpha:(f,g)\mapsto f\otimes g}"] & \GL(V\otimes W)
+\end{tikzcd}
+  \end{center}
+  Taking differentials we get,
+  \begin{center}
+    \begin{tikzcd}
+\g \arrow[r, "\Delta"] & \g\times\g \arrow[r, "{(d\rho,d\rho')}"] & \gl(V)\oplus\gl(W) \arrow[r, "d\alpha"] & \gl(V\otimes W)
+\end{tikzcd}
+  \end{center}
+  We have a commutative diagram,
+  \begin{center}
+    \begin{tikzcd}
+\GL(V)\times\GL(W) \arrow[rr, "\alpha"] \arrow[d, hook]                       &  & \GL(V\otimes W) \arrow[d, hook]                          \\
+\End(V)\times \End(W) \arrow[rr, "{\tilde{\alpha}:(f,g)\mapsto f\otimes g}"'] &  & \End(V)\otimes \End(W)=\End(V\otimes W)=\End(V\otimes W)
+\end{tikzcd}
+  \end{center}
+  Let $j:\End(V)\to\End(V)\times \End(W), f\mapsto(f,\id_W)$. Then $\tilde{\alpha}\circ j$ is a linear map 
+  \begin{equation*}
+    (f\mapsto f\otimes \id_W).
+  \end{equation*}
+  Since we have,
+  \begin{equation*}
+    d(\tilde{\alpha}\circ j)(f) = f\otimes \id_W = d\tilde{\alpha}(d_j(f)) = d\tilde{\alpha}(f,0).
+  \end{equation*}
+  (Since $j=(\id_{\End(V)},c_{id_W})$ where $c:\End(V)\to\End(W), f\mapsto \id_W$ whose differential is of course $0$). Similarly
+  \begin{equation*}
+    d\tilde{\alpha}(0,g) = \id_V\otimes g.
+  \end{equation*}
+  Thus we obtain,
+  \begin{equation*}
+    d\tilde{\alpha}(f,g) = d\tilde{\alpha}((f,0)+(0,g)) = f\otimes \id_W+\id_V\otimes f.
+  \end{equation*}
+  Taking the differential in the commutative diagram above, we get, 
+  \begin{center}
+    \begin{tikzcd}
+\gl(V)\oplus\gl(W) \arrow[rr, "d\alpha"] \arrow[d, "\sim"'] &  & \gl(V\otimes W) \arrow[d, "\sim"] \\
+T_e\End(V)\times T_e\End(W) \arrow[rr, "d\tilde{\alpha}"']  &  & T_e\End(V\otimes W)              
+\end{tikzcd}
+  \end{center}
+  Let $\rho\otimes \rho'$ be the tensor product representation the, we get,
+  \begin{equation*}
+    d(\rho\otimes\rho')(x) = d\alpha(\rho(x),\rho'(x)) = \rho(x)\otimes \id_W+\id_V\otimes \rho'(x).
+  \end{equation*}
+  By definition, we get,
+  \begin{equation*}
+    d(\rho\otimes\rho') = d(\rho)\otimes d(\rho').
+  \end{equation*}
+\end{proof}
+\begin{proposition}
+  \label{proposition_5_12}
+  The assignment, 
+  \begin{equation*}
+    d:\Rep(G)\to\Rep(\g), V\mapsto d(V), f\mapsto d(f) = f,
+  \end{equation*}
+  is a functor.
+\end{proposition}
+\begin{proof}
+  Need to chevk if $f\in\Hom_G(V,W)$ then $f\in\Hom_\g(d(V),d(W))$.\\
+  \par Note that $f\in\Hom_\C(V,W)$ is $G$-linear if and only if $f$ lies in $f\in (W\otimes V^*)^G = \Hom_G(V,W)$. Since 
+  \begin{equation*}
+    d(\triv_G) = \triv_\g,
+  \end{equation*}
+  we have, 
+  \begin{equation*}
+    d(\mathcal{M}^G)\subseteq d(\mathcal{M})^\g,
+  \end{equation*}
+  for all $G$-representations $\mathcal{M}$. If $f\in\Hom_\C(V,W)$ is $G$-equivariant, then
+  \begin{align*}
+    f\in (V^*\otimes W)^G& \Rightarrow f\in d((V^*\otimes W)^G),\\
+    & \subseteq d(V^*\otimes W)^\g,\\
+    & = (d(V)^*\otimes d(W))^\g,\\
+    &= \Hom_\C(d(V),d(W))^\g,\\
+    &= \Hom_\g(d(V),d(W)).
+  \end{align*}
+\end{proof}
+\begin{remark}
+  Thus $d:\Rep(G)\to\Rep(\g)$ is always a faithful functor. However, it is not always full.
+\end{remark}
+\begin{example}
+  Let $G=\G_m$ and consider the one-dmensional $\G_m$-representation $k_p$ where $t\in\G_m$ acts by multiplication with $t^p$. 
+  Then $d\rho=p(\cdot):k=\gl_1\to k=\gl_1$ is multiplication by $p$. Thus if $\chr(k) = p$, then $d(k_p) \cong \triv$. Therefore, we have,
+  \begin{equation*}
+    \dim\Hom_\g(d(\triv),d(k_p))=1.
+  \end{equation*}
+  But $\triv,k_p$ are non-isomorphic irreducible representations of $\G_m$. That is 
+  \begin{equation*}
+    \Hom_{\G_m}(\triv,k_p)=0.
+  \end{equation*}
+\end{example}
+\begin{lemma}
+  \label{lemma_5_23}
+  Let $V$ be a $G$-representation and $v\in V$. Then the differential of the map,
+  \begin{equation*}
+    \varphi:G\to V, g\mapsto gv,
+  \end{equation*}
+  is 
+  \begin{equation*}
+    d\varphi_e:\g\to V, x\mapsto xv.
+  \end{equation*}
+\end{lemma}
+\begin{proof}
+  Note that $\varphi$ factors through 
+  \begin{center}
+    \begin{tikzcd}
+G \arrow[r, "\rho"] & \GL(V) \arrow[r, "(\cdot)v"] \arrow[d, hook] & V \arrow[d, "\sim"] \\
+                    & \End(V) \arrow[r, "(\cdot)v\text{ which is linear}"']               & V                  
+\end{tikzcd}
+  \end{center}
+  The differentials 
+  \begin{equation*}
+    \g\stackrel{d\rho}{\to}\gl(V)\stackrel{(\cdot)v}{\to}V, x\mapsto xv.
+  \end{equation*}
+\end{proof}
+
+\begin{proposition}
+  \label{proposition_5_24}
+  Let $k=\C$. If $G$ is connected and $V$ is a $G$-representation, then $V^G = d(V)^\g$.
+\end{proposition}
+\begin{proof}
+  We already know that $V^G\subseteq d(V)^\g$. Let $v\in d(V)^\g$ and consider,
+  \begin{equation*}
+    \varphi:G\to \overline{Gv}, g\mapsto g_v.
+  \end{equation*}
+  This is a dominant morphism. From Theorem \ref{theorem_5_8}, there is a $g\in G$ such that 
+  \begin{equation*}
+    d\varphi_g:T_gG\to T_{gv}\overline{Gv},
+  \end{equation*}
+  is surjective. By $G$-equivariance. We have,
+  \begin{equation*}
+    d\varphi_e:\g\to T_v\overline{Gv},
+  \end{equation*}
+  is also surjective. Clearly $T_v\overline{Gv}\subseteq\g$. By Lemma \ref{lemma_5_23}, we have,
+  \begin{equation*}
+    d\varphi_e(x) = xv = 0.
+  \end{equation*}
+  That is $d\varphi_e=0$ is surjective, thus $T_v\overline{Gv}= 0$.\\
+  \par By $G$-equivariance, $T_x\overline{Gv}=0$ for all $x\in Gv$. Since $Gv$ is dense in $\overline{Gv}$ and by Theorem \ref{theorem_5_8}, there is a dense open subset $U\subseteq \overline{Gv}$ such that for all $x\in U$,
+  \begin{equation*}
+    \dim T_x\overline{Gv} = \dim\overline{Gv}.
+  \end{equation*}
+  By density, $Gv\cap U\not=\emptyset$. Let $x\in Gv\cap U$ them
+  \begin{equation*}
+    \dim\overline{Gv} = \dim T_x\overline{Gv} = \dim\{0\}=0.
+  \end{equation*}
+  Thus we conclude ${Gv}$ is a finite set of points. But $G$ is connected thus $G$ is irreducible. %refer to the proposition which supports this!!
+  Since the image of an irreducible set  $Gv$ is also irreducible thus $\overline{Gv}$ is also irreducible. We conclude $\overline{Gv} = \{v\}$. Thus we conclude $v\in V^G$.
+\end{proof}
+
+\begin{theorem}
+  \label{theorem_5_25}
+  Let $k=\C$ and $G$ is a connected algebraic group. Then the functor,
+  \begin{equation*}
+    d:\Rep(G)\to\Rep(\g),
+  \end{equation*}
+  is fully-faithful. That is this functor induces an isomorphism,
+  \begin{equation*}
+    \Hom_G(V,W)\stackrel{d}{\to}\Hom_\g(d(V),d(W)),
+  \end{equation*}
+  for any $V,W\in\Rep(G)$.
+\end{theorem}
+
+\begin{proof}
+  We have,
+  \begin{equation*}
+    \Hom_G(V,W) = (V^*\otimes W)^G \stackrel{\text{Prop \ref{proposition_5_24}}}{=} d(V^*\otimes W) = (d(V)^*\otimes d(W))^\g = \Hom_\g(d(V),d(W)).
+  \end{equation*}
+\end{proof}
+
+\begin{remark}
+  Theorem \ref{theorem_5_25} never woks if $G$ is not connected. For example, consider a finite group $G$. Then $\g=\{0\}$, and 
+  \begin{equation*}
+    d:\Rep(G)\to\Rep(\g) = (\Vect)
+  \end{equation*}
+  is just the forgetful functor. Thus $d$ is not full (there are linear maps which are not $G$-linear).
+\end{remark}
+
+\begin{definition}
+  \label{definition_5_27}
+  A connected algebraic group $G$ over $k=\C$, is called semisimple if $\g$ is semisimple.
+\end{definition}
+
+\begin{example}
+  We've already seen that $\SL_n,O_n,\Sp_{2n}$ have semisimple Lie algebras, $\spl_n,\so_n,\spg_{2n}$. Thus $\SL_n^\circ,O_n^\circ,\Sp_{2n}^\circ$ are all semisimple. Unfortunately $O_n$ is not connected. But 
+  we've shown in the exercise sheet that $\SO_n$ is connected. Thus $\SL_n,\SO_n,\Sp_{2n}$ are all semisimple.
+\end{example}
+
+\begin{theorem}
+  \label{theoreme_5_29}
+  Let $G$ be a connected semisimple algebraic group over $k=\C$. Then $\Rep(G)$ is semisimple and $V\in\Rep(G)$ is irreducible if and only if $d(V)$ in $\Rep(\g)$ is irreducible.
+\end{theorem}
+
+\begin{proof}
+  For semisimplicity, we need to show any short exact sequence,
+  \begin{center}
+    \begin{tikzcd}
+0 \arrow[r] & V_1 \arrow[r] & V_2 \arrow[r] & V_3 \arrow[r] & 0
+\end{tikzcd}
+  \end{center}
+  in $\Rep(G)$ splits.
+  \par Since $\Rep(\g)$ is semisimple, the sequence,
+  \begin{center}
+    \begin{tikzcd}
+0 \arrow[r] & d(V_1) \arrow[r] & d(V_2) \arrow[r,"f"] & d(V_3) \arrow[r] & 0
+\end{tikzcd}
+  \end{center}
+  splits , so there is $g\in\Hom_\g(d(V_2),d(V_3))$ such that $g\circ f = \id_{V_2}$. But we have,
+  \begin{equation*}
+    \Hom_\g(d(V_2),d(V_3)) = \Hom_g(V_2,V_3).
+  \end{equation*}
+  Thus $g\in\Hom_G(V_2,V_3)$, thus the short exact sequence in the beginning splits. 
+  \par For the latter part, we see that, if $V\in\Rep(G)$ is irreducible then $\dim\End(G)(V)=1$ if and only if $\dim\End_\g(d(V))=1$ if and only if $d(V)$ is irreducible.
+\end{proof}
+
+Let $T$ be a torus and $V$ a $T$-representation. We have,
+\begin{equation*}
+  \Ouv(T)\ni\chi_{T,V}(t) = \tr(t|_V).
+\end{equation*}
+And we have defined that,
+\begin{equation*}
+  X^*(T) = \Hom_{\text{alg-grp}}(T,\G_m).
+\end{equation*}
+
+\begin{lemma}
+  \label{lemma_5_30}
+  The inclusion,
+  \begin{equation*}
+    X^*(T)\hookrightarrow\Ouv(T),
+  \end{equation*}
+  induces an isomorphism,
+  \begin{equation*}
+    k[X^*(T)]\stackrel{\sim}{\to}\Ouv(T).
+  \end{equation*}
+  Where $k[X^*(T)]$ is a group algebra of $X^*(T)$.
+\end{lemma}
+
+\begin{proof}
+  Both sides transform products of groups into tensor products of algebras. Thus we may assume that $T=\G_m$. We have an isomorphism $Z\ni1\mapsto(t\mapsto t)\in X^*(\G_m)$.
+  \begin{equation*}
+    k[X^*(\G_m)]\stackrel{\sim}{\to}\Ouv(\G_m) = k[x,x^{-1}],
+  \end{equation*}
+  where $X^*(\G_m) \cong \Z$, and the map is given by $\Z\ni1\mapsto x\in k[x,x^{-1}]$.
+\end{proof}
+
+ Hence if,
+  \begin{equation*}
+    V\cong \bigoplus_{\lambda\in X^*(T)}k_x^*{n_x},
+  \end{equation*}
+  where $k_\lambda$ is the one-dimensional $T$-representatio nwhere $t$ acts by $\chi(t)(\cdot)$.
+  Then 
+  \begin{equation*}
+    \chi_{V,T} = \sum_{\lambda\in X^*(T)}n_\lambda \chi\in k[X^*(T)]\cong\Ouv(T).
+  \end{equation*}
+  There is a similar notion for Lie algebras. Let $\mathfrak{t}$ be an abelian Lie algebra and $V$ be a semisimple $\mathfrak{t}$-representation.
+  Then,
+  \begin{equation*}
+    V=\bigoplus_{\lambda\in\mathfrak{t}^*}k_\lambda^{\oplus n_\lambda},
+  \end{equation*}
+  where $k_\lambda$ is the one-dimensional $\mathfrak{t}$-representation on which $x\in\mathfrak{t}$ acts by $\lambda(t)$.
+  \par The character of $V$ is 
+  \begin{equation*}
+    \chi_{\mathfrak{t},V} = \sum n_\lambda e^\lambda\in k[\mathfrak{t}^*],
+  \end{equation*}
+  where we denote $e^\lambda e^\mu = e^{\lambda+\mu}$.\\
+  \par Any morphism of algebraic groups,
+  \begin{equation*}
+    \chi:T\to\G_m
+  \end{equation*}
+  gives rise to a linear map,
+  \begin{equation*}
+    \mathfrak{t}^*\ni d\lambda:\mathfrak{t}\to k.
+  \end{equation*}
+  The functor can be written as,
+  \begin{equation*}
+    \Irr(\Rep(G))\ni k_\chi\stackrel{d}{\mapsto}d(k_\chi) = k_{d(\chi)}\in\Irr(\Rep(\tl)).
+  \end{equation*}
+  Thus,
+  \begin{equation*}
+    V=\bigoplus_{\lambda\in X^*(T)}k_\lambda^*{n_\lambda} \Rightarrow d(V) = \bigoplus_{\lambda\in X^*(\tl)}k_{d(\lambda)}^{n_\lambda}.
+  \end{equation*}
+  There is a map,
+  \begin{equation*}
+    d:k[X^*(T)]\ni \chi\mapsto d(\chi)\in k[\tl^*],
+  \end{equation*}
+  and 
+  \begin{equation*}
+    d(\chi_{T,V}) = \sum_{\lambda\in X^*(T)}n_\lambda(\lambda) = \chi_{\tl,d(V)}.
+  \end{equation*}
+  \begin{proposition}
+    \label{proposition_5_32}
+    Let $\lambda$ be a partition with at most $n$-parts. Then,
+    \begin{equation*}
+      d:\Rep(\SL_n)\to\Rep(\spl_n),
+    \end{equation*}
+    sends $\mathcal{S}^\lambda(V)$ to the irreducible highest weight representation of weight 
+    \begin{equation*}
+      \lambda = \sum\lambda_iE_{ii}^*\in\tl^*,
+    \end{equation*}
+    where $\tl$ is the standard Cartan subalgebra of $\spl_n$, (ie. all diagonal entries in $\spl_n$).
+  \end{proposition}
+  \begin{proof}
+    Let $T\subseteq\SL_n$ be the diagonal torus which has Lie algebra $\tl$. Note that,
+    \begin{equation*}
+      T_i\in\C[T_1,\cdots,T_n]/(e_n-1)\cong\Ouv(T).
+    \end{equation*}
+    Picks at the $i$-th entry in $T$. Then, $d(T_i)$ picks at the $i$-th coordinate in $\tl$, thus $d(T_i) = E_{ii}^*$.
+    We have,
+    \begin{equation*}
+      \chi_{T,S^\lambda(V)}\stackrel{\text{Prop \text{\ref{proposition_4_10}}}}{=} s_\lambda = {\frac {A_{\lambda+\rho}} {V}}.
+    \end{equation*}
+    Expanding the right most hand side, we have,
+    \begin{align*}
+      = & {\frac {\sum_{\sigma\in S_n}\sgn(\sigma)T_{\sigma(1)}^{\lambda_1+n-1}\cdots T_{\sigma(n)}^{\lambda_n}} {\prod_{i<j}(T_i-T_j)}}.
+    \end{align*}
+    Apply $d$ to this, we get,
+    \begin{align*}
+      \chi_{\tl,d(S^\lambda(V))} &= {\frac {\sum_{\sigma\in S_n}\sgn(\sigma)e^{(\lambda_1+n-1)E_{\sigma(1)\sigma(1)}^*+\cdots+\lambda_nE^{\sigma(n)\sigma(n)}}} {\prod_{i<j}(e^{E^*_{ii}}-e^{E^*_{jj}})}},\\
+      & = {\frac {\sum_{\sigma\in S_n}\sgn(\sigma)e^{\sigma(\lambda+\rho)}} {e^\rho\prod_{i<j}(1-e^{E^*_{jj}-E^*_{ii}})}},\\
+      & = {\frac {\sum_{\sigma\in S_n}\sgn(\sigma)e^{\sigma(\lambda+\rho)}} {e^\rho\prod_{\alpha\in\Phi^+}(1-e^{-\alpha})}}.
+    \end{align*}
+    Where,
+    \begin{align*}
+      \lambda & = \lambda_1E_{11}^*+\cdots+\lambda_nE_{nn}^*,\\
+      \rho & = (n-1)E_{11}^*+\cdots+E_{nn}^*,\\
+      \Phi^+ &= \{\alpha_{ij}=E_{ii}^*-E_{jj}^*\sep i<j\}.
+    \end{align*}
+    This is the character of the irreducible highest weight representation $L(\lambda)$. Any $\g$-representation is determined by its $\tl$-character. Thus we have,
+    \begin{equation*}
+      \mathcal{S}^\lambda \cong L(\lambda).
+    \end{equation*}
+  \end{proof}
+  Let us now consider $G = \SO_{2n}$ over $k=\C$ which is of type $D_n$. That is 
+  \begin{equation*}
+    \SO_{2n} = \{A\in \GL_n\sep A^*JA = J\},
+  \end{equation*}
+  where 
+  \begin{equation*}
+    J=
+    \begin{pmatrix}
+      O & I_n\\
+      I_n & O
+    \end{pmatrix}.
+  \end{equation*}
+  Then 
+  \begin{equation*}
+    \so_{2n} = \{A\in\Mat_{n\times n} \sep A^*J +JA = 0\}.
+  \end{equation*}
+  Let 
+  \begin{equation*}
+    \tl = \left\{\begin{pmatrix}
+      X & O\\
+      O& -X
+    \end{pmatrix}
+    \bigg{|}X\in\Mat_{n\times n}, \text{diagonal}\right\},
+  \end{equation*}
+  be the standard Cartan subalgebra. Let $e_i = E_{ii}^* = E_{n+i,n+i}^*\in\tl^* (1\leq i\leq n)$.
+  We see, $\{e_i\sep 1\leq i\leq n\}$ is a basis of $\tl^*$ and the inner product on $\tl^*$ is coming from the killing form is 
+  \begin{equation*}
+    (e_i,e_j) = \delta_{ij}.
+  \end{equation*}
+  Then 
+  \begin{equation*}
+    \Phi(\so_{2n}) = \{\pm e_i\pm e_j\sep i\pm j\}.
+  \end{equation*}
+  This defines $(\alpha,\alpha) = 2\forall \alpha\in \Phi$. Furthermore,
+  \begin{equation*}
+    \Z\Phi = \{\sum a_ie_i\sep \sum a_i \equiv 0\mod{2}\}.
+  \end{equation*}
+  The weight (missing) is 
+  \begin{align*}
+    \bigwedge(\so_{2n}) & = \{\lambda\in\tl^*\sep \langle\lambda,\alpha\rangle\in\Z,\forall\alpha\in\Phi\},\\
+    & = \{\lambda\in\tl^*\sep (\lambda,\alpha)\in\Z,\forall \alpha\in\Phi\},\\
+    & = \{\lambda = {\frac 1 2}\sum a_ie_i\in\tl^*\sep a_i\equiv e_j\mod{2}\forall i\not=j, a_i\in\Z\}.
+  \end{align*}
+  Consider the following insde $\SO_{2n}$,
+  \begin{equation*}
+    T\defeq = \left\{\begin{pmatrix}
+      D & O\\
+      O & D^{-1}
+    \end{pmatrix}
+    \bigg{|}D\in\GL_n \text{ is diagonal}\right\}.
+  \end{equation*}
+  Then $T$ has Lie algebra $\tl$, $X^*(T)$ has basis $\{\chi_i\sep 1\leq i\leq n\}$ where,
+  \begin{equation*}
+    \chi_i\left(\begin{pmatrix}
+      D & O\\
+      O & D^{-1}
+    \end{pmatrix}
+    \right),
+  \end{equation*}
+  and $d\chi_i = E_{ii}^* = e_i$.
+  \begin{proposition}
+    \label{5_34}
+    $d:\Rep(\SO_{2n})\to\Rep(\so_{2n})$, is not an equivalence for any $n> 1$. 
+  \end{proposition}
+  \begin{proof}
+    Let $V\in\Rep(G)$, then 
+    \begin{equation*}
+      \chi_{\tl,d(V)} = d(\chi_{T,V}) \in k[d(X^*(T))]\subseteq k[\tl^*].
+    \end{equation*}
+    However, $d(\chi_i) = e_i$. Therefore,
+    \begin{equation*}
+      d(X^*(T)) = \bigoplus_{i=1}^n\Z e_i.
+    \end{equation*}
+    Let $\lambda = {\frac 1 2}(e_1+\cdots e_n) \in \Lambda(\so_{2n})$. Since $\lambda\not\in d(X^*(T))\Rightarrow d(V)\not\cong L(\lambda)$.
+    For any $V\in\Rep(\SO_{2n})\Rightarrow d:\Rep(\SO_{2n})\to\Rep(\so_{2n})$ is not an equivalence.
+  \end{proof}
+  One can prove the following,
+  \begin{theorem}
+    \label{theorem_5_35}
+    Let $G$ be a connected semisimple algebraic group, $k=\C$. Pick a Cartan subalgebra $\tl\subseteq\g$, we have,
+    \begin{enumerate}[1).]
+      \item There is a torus $T\subseteq G$ with Lie algebra $\tl$.
+      \item The $d$ restricts to an equivalence $d:\Rep(G)\to\{V|in\Rep(\g)\sep \chi_{\tl,V}\in k[d(X^*(T))]\}$.
+    \end{enumerate}
+  \end{theorem}
+  \begin{remark}
+    It is easyd to check that 
+    \begin{equation*}
+      d:\Rep(\SL_n)\to\Rep(\spl_n), d:\Rep(\Sp_{2n})\to\Rep(\spg_{2n}),
+    \end{equation*}
+    are equivalences but
+    \begin{equation*}
+      d:\Rep(\SO_{n}) \to\Rep(\so_{n}),
+    \end{equation*}
+    is not an equivalence for $n>3$.
+  \end{remark}
+  \begin{remark}
+    There is a connected semisimple group $\Spin_n$ with Lie algebra $\so_n$ such that 
+  \begin{equation*}
+    d:\Rep(\Spin_n)\to\Rep(\so_n),
+  \end{equation*}
+  is an equivalence. Moreover, there is a surjective morphism of algebraic groups $\Spin_n\stackrel{\alpha}{\to}\SO_n$ such that 
+  \begin{equation*}
+    \Ker(\alpha)\subseteq Z(\Spin_n),\text{ and } \vert \Ker(\alpha)\vert = 2.
+  \end{equation*}
+  \end{remark}
+\end{document}
