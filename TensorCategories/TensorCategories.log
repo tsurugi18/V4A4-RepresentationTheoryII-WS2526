@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=latex 2025.10.19)  9 OCT 2026 01:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=latex 2025.10.19)  10 OCT 2026 05:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -717,12 +717,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 346--347
 [8]
 
 [9]
-Overfull \hbox (11.1114pt too wide) detected at line 710
+Overfull \hbox (11.1114pt too wide) detected at line 720
 \LS1/stix/m/n/10 ^[]` \LS1/stix/m/it/10 Ó \LS1/stix/m/n/10 ^[]` [] ^\LS1/stix/m/it/10 f \LS1/stix/m/n/10 : \LS1/stix/m/it/10 X \LS1/stixsf/m/n/10 ™ \LS1/stix/m/it/10 Y \LS2/stixex/m/n/10 ð  []\LS1/stix/m/n/10 .\LS1/stix/m/it/10 f\LS1/stix/m/n/10 / = .0 \LS1/stixsf/m/n/10 ™ \LS1/stix/m/it/10 X\LS1/stix/m/n/10 /`\LS1/stix/m/it/10 :
  []
 
 
-Overfull \hbox (13.88802pt too wide) detected at line 713
+Overfull \hbox (13.88802pt too wide) detected at line 723
 \LS1/stix/m/n/10 ^[]` \LS1/stix/m/it/10 Ó \LS1/stix/m/n/10 ^[]` [] ^\LS1/stix/m/it/10 f \LS1/stix/m/n/10 : \LS1/stix/m/it/10 X \LS1/stixsf/m/n/10 ™ \LS1/stix/m/it/10 Y \LS2/stixex/m/n/10 ð  [] \LS1/stix/m/it/10 f \LS1/stix/m/n/10 = .\LS1/stix/m/it/10 Y \LS1/stixsf/m/n/10 ™ \LS1/stix/m/n/10 0/`\LS1/stix/m/it/10 :
  []
 
@@ -739,7 +739,7 @@ Overfull \hbox (13.88802pt too wide) detected at line 713
 [14]
 
 [15]
-Overfull \hbox (12.00977pt too wide) in paragraph at lines 1087--1088
+Overfull \hbox (12.00977pt too wide) in paragraph at lines 1097--1098
 []\T1/stix/b/n/10 Example 2.9. []\T1/stix/m/it/10 Let $\LS1/stix/m/it/10 A; B$ \T1/stix/m/it/10 be $\LS1/stixbb/m/n/10 K$\T1/stix/m/it/10 -algebras and $[]\LS1/stix/m/n/10 .\LS1/stix/m/it/10 B; A\LS1/stix/m/n/10 /$ \T1/stix/m/it/10 be the cat-e-gory of $\LS1/stix/m/n/10 .\LS1/stix/m/it/10 B; A\LS1/stix/m/n/10 /$\T1/stix/m/it/10 -bimodules.
  []
 
@@ -748,21 +748,21 @@ Overfull \hbox (12.00977pt too wide) in paragraph at lines 1087--1088
 [16]
 
 [17]
-Overfull \hbox (31.66287pt too wide) in paragraph at lines 1184--1185
+Overfull \hbox (31.66287pt too wide) in paragraph at lines 1194--1195
  [] 
  []
 
 
 
 [18]
-Overfull \hbox (1.69226pt too wide) in paragraph at lines 1241--1242
+Overfull \hbox (1.69226pt too wide) in paragraph at lines 1251--1252
 []\T1/stix/b/n/10 Definition 3.3. []\T1/stix/m/it/10 Let $\LS1/stixscr/m/n/10 C\LS1/stix/m/it/10 ; \LS1/stixscr/m/n/10 D$ \T1/stix/m/it/10 be monoidal cat-e-gories. A monoidal func-tor is a tu-ple $\LS1/stix/m/n/10 .\LS1/stix/m/it/10 F; ^^Q; ^^V\LS1/stix/m/n/10 /$
  []
 
 
 
 [19]
-Overfull \hbox (33.58592pt too wide) detected at line 1319
+Overfull \hbox (33.58592pt too wide) detected at line 1329
 \LS1/stix/m/it/10 f ä \LS1/stixscr/m/n/10 ^^L \LS1/stix/m/n/10 = \LS1/stix/m/it/10 g ä \LS1/stixscr/m/n/10 ^^L \LS1/stixsf/m/n/10 Ù \LS1/stix/m/it/10 f ä \LS1/stix/m/n/10 1 = \LS1/stix/m/it/10 g ä \LS1/stix/m/n/10 1 \LS1/stixsf/m/n/10 Ù \LS1/stix/m/it/10 ^^Z\LS1/stix/m/n/10 .\LS1/stix/m/it/10 f ä \LS1/stix/m/n/10 1/ = \LS1/stix/m/it/10 ^^Z\LS1/stix/m/n/10 .\LS1/stix/m/it/10 g ä \LS1/stix/m/n/10 1/ [] \LS1/stix/m/it/10 f^^Z \LS1/stix/m/n/10 = \LS1/stix/m/it/10 g^^Z [] f \LS1/stix/m/n/10 = \LS1/stix/m/it/10 g:
  []
 
@@ -771,7 +771,7 @@ Overfull \hbox (33.58592pt too wide) detected at line 1319
 [20]
 
 [21]
-Overfull \hbox (8.58984pt too wide) in paragraph at lines 1385--1386
+Overfull \hbox (8.58984pt too wide) in paragraph at lines 1395--1396
  [] 
  []
 
@@ -790,7 +790,7 @@ Overfull \hbox (8.58984pt too wide) in paragraph at lines 1385--1386
 [27]
 
 [28]
-Overfull \hbox (10.08467pt too wide) in paragraph at lines 1762--1763
+Overfull \hbox (10.08467pt too wide) in paragraph at lines 1772--1773
 \T1/stix/m/it/10 has a left dual $\LS1/stix/m/n/10 .\LS1/stix/m/it/10 X[]; []; []\LS1/stix/m/n/10 /$\T1/stix/m/it/10 . Then $\LS1/stix/m/it/10 F\LS1/stix/m/n/10 .\LS1/stix/m/it/10 X\LS1/stix/m/n/10 /$ \T1/stix/m/it/10 has a left dual which is $\LS1/stix/m/n/10 .\LS1/stix/m/it/10 F\LS1/stix/m/n/10 .\LS1/stix/m/it/10 X[]\LS1/stix/m/n/10 /\LS1/stix/m/it/10 ; F\LS1/stix/m/n/10 .[]/\LS1/stix/m/it/10 ; F\LS1/stix/m/n/10 .[]//$\T1/stix/m/it/10 .
  []
 
@@ -803,7 +803,7 @@ Missing character: There is no , in font nullfont!
 
 
 [31]
-Overfull \hbox (4.20146pt too wide) in paragraph at lines 1868--1869
+Overfull \hbox (4.20146pt too wide) in paragraph at lines 1878--1879
 []\T1/stix/b/n/10 Corollary 4.4. []\T1/stix/m/it/10 The func-tors $\LS1/stix/m/n/10 .\LS1/stixscr/m/n/10 ^^L\LS1/stix/m/n/10 /[]\LS1/stix/m/it/10 ; [][][][]$ \T1/stix/m/it/10 send monomor-phisms to monomor-phisms in $\LS1/stixscr/m/n/10 C[]$
  []
 
@@ -828,14 +828,14 @@ Overfull \hbox (4.20146pt too wide) in paragraph at lines 1868--1869
 [40]
 
 [41]
-Overfull \hbox (126.35144pt too wide) in paragraph at lines 2276--2277
+Overfull \hbox (126.35144pt too wide) in paragraph at lines 2286--2287
  [] 
  []
 
 
 
 [42]
-Overfull \hbox (13.25385pt too wide) detected at line 2324
+Overfull \hbox (13.25385pt too wide) detected at line 2334
 [] \LS1/stix/m/n/10 = [][].\LS1/stix/m/it/10 S[]; V[]\LS1/stix/m/n/10 / = [][].\LS1/stixbb/m/n/10 C\LS1/stix/m/it/10 S[]e[]; V[]\LS1/stix/m/n/10 / ö \LS1/stix/m/it/10 e^^UV[] [] \LS1/stixbb/m/n/10 S[]\LS1/stix/m/n/10 .\LS1/stix/m/it/10 X\LS1/stix/m/n/10 /
  []
 
@@ -847,7 +847,7 @@ Overfull \hbox (13.25385pt too wide) detected at line 2324
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 2413.
+(amsmath)                 on input line 2423.
 
 
 
@@ -864,7 +864,7 @@ Package amsmath Warning: Foreign command \atopwithdelims;
 [50]
 
 [51]
-Overfull \hbox (4.4619pt too wide) in paragraph at lines 2862--2863
+Overfull \hbox (4.4619pt too wide) in paragraph at lines 2872--2873
 []\T1/stix/m/n/10 Generally $\LS1/stix/m/it/10 X \LS1/stix/m/n/10 = [][] \LS1/stix/m/it/10 n[]X[]$ \T1/stix/m/n/10 whrere each $\LS1/stix/m/it/10 X[]$ \T1/stix/m/n/10 are sim-ple and pair-wise non-isomorphic.
  []
 
@@ -891,7 +891,7 @@ Overfull \hbox (4.4619pt too wide) in paragraph at lines 2862--2863
 [61]
 
 [62]
-Overfull \hbox (164.25827pt too wide) detected at line 3507
+Overfull \hbox (164.25827pt too wide) detected at line 3517
 []\LS1/stix/m/n/10 .[\LS1/stix/m/it/10 m\LS1/stix/m/n/10 ]\LS1/stix/m/it/10 ; \LS1/stix/m/n/10 [\LS1/stix/m/it/10 n\LS1/stix/m/n/10 ]/ = \LS1/stixbb/m/n/10 K\LS1/stix/m/n/10 ^[]`_.[]/\LS1/stix/m/it/10 :
  []
 
@@ -901,7 +901,7 @@ Overfull \hbox (164.25827pt too wide) detected at line 3507
 Missing character: There is no = in font nullfont!
 Missing character: There is no = in font nullfont!
 
-Overfull \hbox (46.97115pt too wide) detected at line 3525
+Overfull \hbox (46.97115pt too wide) detected at line 3535
 \LS1/stix/m/n/10 .\LS1/stix/m/it/10 A \LS1/stix/m/n/10 Ë \LS1/stixscr/m/n/10 C\LS1/stix/m/it/10 ; ^^Q \LS1/stix/m/n/10 = [] = []\LS1/stix/m/it/10 ; ^^V \LS1/stix/m/n/10 = []\LS1/stix/m/it/10 ; " []\LS1/stix/m/n/10 = []\LS1/stix/m/it/10 ; \LS1/stix/m/n/10 ^^A = []/
  []
 
@@ -923,12 +923,12 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 29745 strings out of 473191
- 596405 string characters out of 5715825
- 1232418 words of memory out of 5000000
- 52578 multiletter control sequences out of 15000+600000
+ 29746 strings out of 473191
+ 596417 string characters out of 5715825
+ 1232444 words of memory out of 5000000
+ 52579 multiletter control sequences out of 15000+600000
  651695 words of font info for 173 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  116i,22n,121p,560b,1535s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on TensorCategories.dvi (66 pages, 1147664 bytes).
+Output written on TensorCategories.dvi (66 pages, 1148040 bytes).

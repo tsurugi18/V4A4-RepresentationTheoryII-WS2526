@@ -570,11 +570,10 @@ Throughout this subsection, we assume $\cat$ is a $\K$-linear category.
 %   \end{equation*}
   %later needs revision
 \end{example}
-%current Current
 \subsection{Completion}
 
 \begin{definition}
-  Let $\cat$ be a $\K$-linear category. The additive envelope of $\cat$ is $\cat^{\oplus}$ whose objects are formal direct sums. In other words, it is a tuple $(X_i)_{i\in I}$ where $X_i\in\cat$ with morphisms,
+  Let $\cat$ be a $\K$-linear category. The additive envelope of $\cat$ is $\cat^{\oplus}$ whose objects are formal direct sums of objects of $\sC$. In other words, it is a tuple $(X_i)_{i\in I}$ where $X_i\in\cat$ with morphisms,
   \begin{equation*}
     \cat^{\oplus}((X_i)_i,(Y_j)_j) = \bigoplus_{i,j}\cat(X_i,Y_j),
   \end{equation*}
@@ -593,6 +592,14 @@ Throughout this subsection, we assume $\cat$ is a $\K$-linear category.
   and composition as in $\cat$. 
 \end{definition}
 
+\begin{remark}
+  \label{remark_1_6}
+  Since $f^2ge^2 = fge$ and $fge\in\Mor_\sC(X,Y)$, we can put,
+  \begin{equation*}
+    \sC^{\summand}((X,e),(Y,f)) = \{g\in\sC(X,Y)\sep fge = g\}.
+  \end{equation*}
+\end{remark}
+
 \begin{definition}
   An additive, idempotent completion of $\cat$ is 
   \begin{equation*}
@@ -600,9 +607,10 @@ Throughout this subsection, we assume $\cat$ is a $\K$-linear category.
   \end{equation*}
 \end{definition}
 
+
 \begin{lemma}
   Let $\cat$ be a $\K$-linear category, we have the following statements.
-  \begin{enumerate}[1).]
+  \begin{enumerate}[1.]
     \item $\cat^{\oplus},\cat^{\oplus,\summand}$ are additive $\K$-linear.
     \item $\cat^{\summand},\cat^{\oplus,\summand}$ are idempotent complete.
     \item $\cat$ is additive then $\cat\cong \cat^{\oplus}$ as $\K$-linear category.
@@ -611,17 +619,17 @@ Throughout this subsection, we assume $\cat$ is a $\K$-linear category.
 \end{lemma}
 
 \begin{proof}
-    For \textbf{1)}, the additiity is clear. For \textbf{2)}, let $(X,e)\in\cat^{\summand}$ and $efe\in\End((X,e))$ be an idempotent. Then $(X,efe)\in\cat^{\summand}$. Let
+    For \textbf{1}, the additiity is clear. For \textbf{2}, let $(X,e)\in\cat^{\summand}$ and $f\in\End((X,e))$ be an idempotent. Clearly $f$ is an idempotent for $X$ thus, $(X,f)\in\cat^{\summand}$. Let
     \begin{equation*}
-        p=efe\id_Xe\in\cat^{\summand}((X,e),(X,efe)),q=e\id_Xefe\in\cat^{\summand}((X,efe),(X,e)).
+        p\defeq f\id_Xe,q\defeq e\id_Xf.
     \end{equation*}
     Then we have,
     \begin{equation*}
-        pq = efeeeefe = efe \id_X efe = \id_{(X,efe)},qp = eefeefee = eefee=efe.
+        pq = f\id_Xee\id_Xf = ef\id_Xfe = \id_{(X,efe)},qp = effe = efe.
     \end{equation*}
     By Lemma \ref{lemma_idempotent_equivalent_condition}, this completes the proof.
-    \par\textbf{3)}. is clear by setting $F:\cat\to\cat^{\oplus}$ be such that $F((X,p_i,q_i)) = (X_i)$. Remains to show that $\cat\cong\cat^{\summand}$ for idempotent complete category $\cat$. 
-    Let $F:\cat\to\cat^{\summand}$ be such that $F(X)\to (X,\id_X)$. Clearly, this is fully-faithful. Remains to show this is essentially surjective. For $(X,e)\in\cat^{\summand}$, again by Lemma \ref{lemma_idempotent_equivalent_condition}, there is $Y\in\cat$ such that 
+    \par\textbf{3}. We set $F:\cat\to\cat^{\oplus}$ be such that $F((X,p_i,q_i)) = (X_i)$. This is fully faithful and essentially surjective.
+    \par For \textbf{4}, let $F:\cat\to\cat^{\summand}$ be such that $F(X)\to (X,\id_X)$. Clearly, this is fully-faithful. It remains to show this is essentially surjective. For $(X,e)\in\cat^{\summand}$, again by Lemma \ref{lemma_idempotent_equivalent_condition}, there is $Y\in\cat$ such that 
     \begin{equation*}
         \exists p:X\to Y,q:Y\to X, qp = e,pq = \id_Y.
     \end{equation*}
@@ -630,6 +638,7 @@ Throughout this subsection, we assume $\cat$ is a $\K$-linear category.
         peeq &= peq = pqpq = \id_Y=\id_{(Y,\id_Y)},\\
         eqpe & = e = \id_{(X,e)}.
     \end{align*}
+    Hence $(X,e)\cong (Y,\id_Y)$.
 \end{proof}
 
 \begin{example}
@@ -640,22 +649,22 @@ Then,
 \end{equation*}
 If $\cat$ is a $\K$-linear category with a single object whose endmorphism algebra is a ring $A$ which is a $\K$-algebra. We have,
 \begin{equation*}
-  \cat^{\oplus}\cong A-\Free,\cat^{\oplus,\summand}\cong A-\Proj.
+  \cat^{\oplus}\cong A\mathrm{-Free},\cat^{\oplus,\summand}\cong A\mathrm{-Proj}.
 \end{equation*}
 \end{example}
 
 \begin{remark}
-  $\cat^{\summand}$ is a full-subcategory of $A-\Mod^\infty$ on direct summands of $A$.
+  $\cat^{\summand}$ is a full-subcategory of $A\mathrm{-Mod}^\infty$ on direct summands of $A$.
 \end{remark}
 
 \section{Extensions}
 
 \subsection{Image Factorization}
 \begin{definition}
-Let $\mathscr{A}$ be a category and $f\in\Mor_{\mathscr{A}}(X,Y)$. We say it is ,
+Let $\mathscr{A}$ be a category and $f\in\Mor_{\mathscr{A}}(X,Y)$.
 \begin{enumerate}
-  \item monomorphism if for any $g_1,g_2\in\Mor_{\mathscr{A}}(Z,X)$, $fg_1 = fg_2$ then $g_1=g_2$. If $\mathscr{A}$ is a $\K$-linear category, it is equivalent to say that $g\in\Mor_{\mathscr{A}}(Z,X), fg=0$ then $g=0$. 
-  \item epimorphism if for any $g_1,g_2\in\Mor_{\mathscr{A}}(Y,Z)$, $g_1f = g_2f$ then $g_1=g_2$. If $\mathscr{A}$ is a $\K$-linear category, it is equivalent to say that $g\in\Mor_{\mathscr{A}}(Y,Z), gf=0$ then $g=0$. 
+  \item $f$ is monomorphism if for any $g_1,g_2\in\Mor_{\mathscr{A}}(Z,X)$, $fg_1 = fg_2$ then $g_1=g_2$. If $\mathscr{A}$ is a $\K$-linear category, it is equivalent to say that $g\in\Mor_{\mathscr{A}}(Z,X), fg=0$ then $g=0$, 
+  \item $f$ is epimorphism if for any $g_1,g_2\in\Mor_{\mathscr{A}}(Y,Z)$, $g_1f = g_2f$ then $g_1=g_2$. If $\mathscr{A}$ is a $\K$-linear category, it is equivalent to say that $g\in\Mor_{\mathscr{A}}(Y,Z), gf=0$ then $g=0$. 
 \end{enumerate}
 \end{definition}
 \begin{definition} 
@@ -671,6 +680,7 @@ Y' \arrow[ru, hook]         &
 \end{tikzcd}
 \end{center}
 \end{definition}
+%current Current
 \begin{definition} 
 A quotient of $X\in\mathscr{A}$ is an isomorphism class of epimorphism $(X\twoheadrightarrow Y)$ where 
 \begin{equation*}
