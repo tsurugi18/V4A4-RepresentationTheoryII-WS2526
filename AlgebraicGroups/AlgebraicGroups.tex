@@ -769,11 +769,10 @@ An algebraic group $G$ is called linearly reductive if the category of represent
   \end{equation*}
   The set $\{k_n\sep n\in\Z\}$ is a complete list of pairwise non-isomorphic irreducible $\G_m$-representations.
 \end{proposition}
-%current Current
 \begin{proof}
-  Let $V$ be a $\G_m$-representation and also we denote 
+ Recall that every element of $\G_m$ is of the form $(x,x^{-1})$ for some $x\in k^\times$. Let $V$ be a $\G_m$-representation and also we denote 
   \begin{equation*}
-    V_n = \{v\in V\sep \forall x\in G_m, xv = x^nv\}.
+    V_n = \{v\in V\sep \forall x\in \G_m, (x,x^{-1})\cdot v = x^nv\},
   \end{equation*}
   We will first show that 
   \begin{equation*}
@@ -795,7 +794,7 @@ An algebraic group $G$ is called linearly reductive if the category of represent
   \begin{equation*}
     \G_m\ni x\mapsto xv\in V.
   \end{equation*}
-  By definition there exists $f_1(t),\cdots,f_n(t) \in \Ouv(\G_m) = k[t,t^{-1}]$ such that 
+  By definition, $\rho:\G_m\times V\to V$ is expressed in terms of polynomial so is $\rho(\cdot,v):\G_m\to V$. Thus there exists $f_1(t),\cdots,f_n(t) \in \Ouv(\G_m) = k[t,t^{-1}]$ such that 
   \begin{equation*}
     tv = \sum_{i=1}^n f_i(t)e_i,
   \end{equation*}
@@ -803,7 +802,8 @@ An algebraic group $G$ is called linearly reductive if the category of represent
   \begin{equation*}
     tv = \sum_{i=-N}^M t^i v_i,
   \end{equation*}
-  for some $v_n\in V$ (Observe that the action is expressed as a polynomial thus this makes sense). We want to show 
+  for some $v_n\in V$.%(Observe that the action is expressed as a polynomial thus this makes sense). 
+  We want to show 
   $v_i\in V_i$ for each $-N\leq i\leq M$.
   \par For any $s,t\in\G_m$, we have 
   \begin{equation*}
@@ -844,19 +844,20 @@ An algebraic group $G$ is called linearly reductive if the category of represent
   \begin{equation*}
     v = 1\cdot v = \sum_{i=-N}^M v_i.
   \end{equation*}
-  Let $w\in V_i$ then we have for any $t\in G_m$, 
+  Let $w\in V_i$ then we have for any $t\in \G_m$, 
   \begin{equation*}
     t\cdot w = t^n w.
   \end{equation*}
-  Therefore, we have 
-  \begin{equation*}
-    (k_i,\langle w\rangle)
-  \end{equation*}
-  is an irreducible representation. In particular,
-  \begin{equation*}
-    V_i = \cong (k_n)^{\oplus\dim V_i}.
-  \end{equation*}
-  Therefore, we conclude all $G_m$-representations are a distinct sum of the $k_i$-s. Thus any irreducible representation is isomorphic to some $k_i$.
+  Therefore, $V_i = (k_i)^{\dim V_i}$. Any representation of $\G_m$ is a direct sum of $k_i$-s.
+  % Therefore, we have 
+  % \begin{equation*}
+  %   (k_i,\langle w\rangle)
+  % \end{equation*}
+  % is an irreducible representation. In particular,
+  % \begin{equation*}
+  %   V_i  \cong (k_n)^{\oplus\dim V_i}.
+  % \end{equation*}
+  % Therefore, we conclude all $G_m$-representations are a distinct sum of the $k_i$-s. Thus any irreducible representation is isomorphic to some $k_i$.
 \end{proof}
 \begin{proposition}
   Let $V$ be a finite dimensional vector space and $G$ be an algebraic group. Then any morphisms algebraic grouops 
@@ -874,7 +875,7 @@ An algebraic group $G$ is called linearly reductive if the category of represent
 \end{proposition}
 From now on, we will freely use both notions interchangebly.
 \begin{proposition}
-  The group $\G_a$ has a unique irreducible representation, namely the trivial representation. Furthermore, $\G_a$ is not irreducible.
+  The group $\G_a$ has a unique irreducible representation, namely the trivial representation. Furthermore, $\G_a$ is not linearly reductive.
 \end{proposition}
 \begin{proof}
   Let $V$ be a $\G_a$-representation corresponding to $\rho:G\to\GL(V)$. 
@@ -888,6 +889,7 @@ From now on, we will freely use both notions interchangebly.
     \rho(t) = \sum_{1\leq i,j\leq n} f_{ij}(t)E_{ij}
   \end{equation*}
   for some polynomials $\{f_ij\}_{1\leq i,j\leq n}$. Order by the degree of the monomials we get 
+  %current Current
   \begin{equation*}
     \rho(t) = \sum_{i=0}^\infty t^i \varphi_i
   \end{equation*}

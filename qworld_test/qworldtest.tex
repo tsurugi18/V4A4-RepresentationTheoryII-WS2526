@@ -1,0 +1,656 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{stmaryrd}
+\usepackage{ mathrsfs }
+\usepackage{ mathtools}
+\usepackage{enumerate}
+\usepackage{bbm}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{stix}
+\usepackage{tikz-cd} 
+\usepackage{qworld}
+\usetikzlibrary{tqft}
+\tikzset{commutative diagrams/.cd,
+mysymbol/.style={start anchor=center,end anchor=center,draw=none}
+}
+\newcommand\comsymb[2][\circlearrowleft]{%
+  \arrow[mysymbol]{#2}[description]{#1}}
+
+\newtheorem{theorem}{Theorem} [section] 
+\newtheorem{proposition}{Proposition}[section] 
+\newtheorem{definition}{Definition}[section] 
+\newtheorem{lemma}{Lemma}[section] 
+\newtheorem{notation}{Notation}[section] 
+\newtheorem{remark}{Remark}[section] 
+\newtheorem{corollary}{Corollary} [section] 
+\newtheorem{terminology}{Terminology}[section] 
+\newtheorem{fact}{Fact}[section] 
+\newtheorem{claim}{Claim}[proposition]
+\newtheorem{example}{Example}[section] 
+\newtheorem{exercise}{Exercise}[section] 
+\numberwithin{equation}{theorem}
+
+\DeclareMathOperator{\Hilb}{Hilb}
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\FA}{FA}
+\DeclareMathOperator{\Cob}{Cob}
+\DeclareMathOperator{\rev}{rev}
+\DeclareMathOperator{\TQFT}{TQFT}
+\DeclareMathOperator{\st}{s.t.}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\chr}{char}
+\DeclareMathOperator{\alggrp}{alg-grp}
+\DeclareMathOperator{\Simple}{Simple}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\len}{len}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\triv}{triv}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Irr}{Irr}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Orth}{O}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Spin}{Spin}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\trdeg}{trdeg}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Homk}{Hom_{k-alg}}
+\DeclareMathOperator{\Ker}{ker}
+\DeclareMathOperator{\Image}{im}
+\DeclareMathOperator{\image}{im}
+\DeclareMathOperator{\Coker}{Coker}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\MaxSpec}{MaxSpec}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id} 
+\DeclareMathOperator{\op}{op} 
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\Adj}{Adj}
+\DeclareMathOperator{\ConcAffVar}{ConcAffVar}
+\DeclareMathOperator{\AbsAffVar}{AbsAffVar}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Comod}{Comod}
+\DeclareMathOperator{\Free}{Free}
+\DeclareMathOperator{\indec}{indec}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Set}{Set}
+\DeclareMathOperator{\SVect}{SVect}
+\DeclareMathOperator{\FSet}{FSet}
+\DeclareMathOperator{\Top}{Top}
+\DeclareMathOperator{\Sk}{Sk}
+\DeclareMathOperator{\coev}{coev}
+\DeclareMathOperator{\Ver}{Ver}
+\DeclareMathOperator{\ComAlg}{ComAlg}
+\DeclareMathOperator{\Grp}{Grp}
+\DeclareMathOperator{\PGL}{PGL}
+%\newcommand*{\name}[\num_arguments][default values]{{\color{#1}\Large #2}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\norm}[1]{\Vert #1 \Vert}
+\newcommand{\opNorm}[2]{\norm{#1}_{#2\to#2}}
+\newcommand{\normL}[3]{\norm{#1}_{L^{#2}(#3)}}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\m}[0]{\mathfrak{m}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Ouv}[0]{\mathcal{O}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\bQ}[0]{\mathbb{Q}}
+\newcommand{\F}[0]{\mathbb{F}}
+\newcommand{\G}[0]{\mathbb{G}}
+\newcommand{\A}[0]{\mathbb{A}}
+\newcommand{\Para}[0]{\mathbb{P}}
+\newcommand{\K}[0]{\mathbb{K}}
+\newcommand{\cat}[0]{\mathscr{C}}
+\newcommand{\catd}[0]{\mathscr{D}}
+\newcommand{\M}[0]{\mathbb{M}}
+\newcommand{\Lie}[0]{\mathcal{L}}
+\newcommand{\torus}[0]{\mathbb{T}}
+\newcommand{\g}[0]{\mathfrak{g}}
+\newcommand{\tl}[0]{\mathfrak{t}}
+\newcommand{\gl}[0]{\mathfrak{gl}}
+\newcommand{\spl}[0]{\mathfrak{sl}}
+\newcommand{\so}[0]{\mathfrak{so}}
+\newcommand{\spg}[0]{\mathfrak{sp}}
+\newcommand{\sep}[0]{\:|\:}
+\newcommand{\card}[1]{\vert #1\vert}
+\newcommand{\smat}[1][n]{\Mat_{#1\times #1}}
+\newcommand{\I}[1][n]{\mathcal{I}}
+\newcommand{\disum}[1][n]{\stackrel{\subseteq}{\oplus}}
+\newcommand{\summand}[0]{\stackrel{\subseteq}{\oplus}}
+\newcommand{\fib}[1]{%
+  \mathbin{\mathop{\times}\limits_{#1}}%
+}
+\newcommand{\tens}[1]{%
+  \mathbin{\mathop{\otimes}\displaylimits_{#1}}%
+}
+
+\title{Representation Theory 2}
+\author{So Murata}
+\date{WiSe 25/26, University of Bonn}
+
+
+\begin{document}
+\maketitle
+% \subsection{Negligible Morphisms}
+% \begin{definition}
+%     Let $a$ be a pivotal structure for the category $\cat$. $a$ is said to be spherical if for any morphism $f$ of $\cat$,
+%     \begin{equation*}
+%         \tr^L(f) = \tr^R(f)=0.
+%     \end{equation*}
+% \end{definition}
+
+% \begin{example}
+% $\Vect,\Rep G,\Z/2\Z-\Vect$ admit spherical structures.
+% \end{example}
+
+% \begin{definition}
+%     \label{definition_negligible_morphisms}
+%     Let $\cat$ be a rigid monoidal category with a spherical structure $a$. A morphism $f:X\to Y$ in $\cat$ is negligible if for any $g\in\cat(Y,X)$, we have $\tr(gf) = 0$. 
+%     \par The collection of all negligible morphisms is denoted by $\mathcal{N}$.
+% \end{definition}
+% \begin{remark}
+%     By the swapping property of $\tr$, we can rephrase Definition \ref{definition_negligible_morphisms} can be restated by $\tr(fg) = 0$ for any $g:Y\to X$.
+% \end{remark}
+% \begin{lemma}
+%     $\mathcal{N}$ is a tensor ideal.
+% \end{lemma}
+% \begin{proof}
+%     For $f\in\mathcal{N},f',g$ be morphisms then,
+%     \begin{equation*}
+%         \tr(gf'f)=0,\tr(gff') = \tr(f'gf)=0,
+%     \end{equation*}
+%     whenever these expressions make sense. Thus $f'f,ff'\in\mathcal{N}$. Consider,
+%     \begin{equation*}
+%         \tr(g(f\otimes f'))=\q{\qcap[p=4]\n\qbox[name={$f$}]\qbox[name={$f'$}]\qwire\qwire\n\qbox[name={$f$},p=2]\qwire\qwire\n\qbox[name={$a$}]\qbox[name={$a$}]\qwire\qwire\n\qcup[p=4]\qbb[4,10]\qbb[6]}=\q{\qcap\n\qbox[name={$f$}]\qwire\n\qbox[name={$g'$}]\qwire\n\qbox[name={$a$}]\qwire\n\qcup}=\tr(g'f) = 0,
+%     \end{equation*}
+%     where $g'$ is the morphism corresponding to the diagram bounded by dotted lines. Thus $f\otimes f'\in\mathcal{N}$. Similarly,
+%     \begin{equation*}
+%         \tr(g(f'\otimes f))=\q{\qcap[p=4]\n\qwire\qwire\qbox[name={$a^{-1}$}]\qbox[name={$a^{-1}$}]\n\qwire\qwire\qbox[name={$f'$}]\qbox[name={$f$}]\n\qwire\qwire\qbox[name={$g$},p=2]\n\qcup[p=4]\qbb[4,11]\qbb[12]} =\tr(g'f) = 0,
+%     \end{equation*}
+%     where $g'$ is the morphism corresponding to the diagram bounded by dotted lines. We now have $f'\otimes f\in\mathcal{N}$. For the last equality, we used $a$ is spherical.
+% \end{proof}
+% \begin{lemma}
+%     \label{lemma_decomposition_endomorphism}
+%     Let $\cat$ be an additive idempotent complete $\K$-linear Hom-finite category where $\K$ is algebraically closed. Then for any $X\in \indec(\cat)$ and $f\in\End_{\cat}(X)$, there is $\lambda\in\K$ and a nilpotent $n\in\End_\cat(X)$ such that $f=\lambda+n$. 
+%     \par For any $X,Y\in\indec(\cat)$ and $f\in\cat(X,Y)$ $f$ is not isomorphism if and only if for any $g\in\cat(Y,X)$, $gf$ is a nilpotent.
+% \end{lemma}
+% \begin{proof}
+%     By Proposition \ref{proposition_krull_schmidt}, $R\defeq\End_\cat(X)$ is a local ring and as $\K=\overline{\K}$ we have,
+%     \begin{equation*}
+%         R/\rad(R)=\K.
+%     \end{equation*}
+%     Since $\rad(R)$ consists of exactly the nilpotent elements, we have the statement.
+%     \par For the second assertion, suppose $f$ is an isomorphism then $f{-1}f$ is not a nilpotent. Therefore, it is enough to show that $f$ is not an isomorphism then $gf$ is a nilpotent. Suppose $gf$ is not a nilpotent, then by the previous part it is invertible. Indeed, we can take,
+%     \begin{equation*}
+%         \sum_{i=0}^\infty (-1)^in^i.
+%     \end{equation*}
+%     As $n$ is a nilpotent, this sum is finite and defines an inverse of $1+n$. Therefore $gf$ is invertible. Set $g'\defeq g(fg)^{-1}$, then $fg'=\id$.
+%     Let $e\defeq g'f$. Then $e$ is idempotent. In particular, it is an idempotent element of an indecomposable object. As $\End_\cat(X)$ is local by Proposition \ref{proposition_krull_schmidt} and idempotent elements of a local ring are trivial. We have,
+%     \begin{equation*}
+%         e=
+%         \begin{cases}
+%             0\Rightarrow f=fg'f = fe\Rightarrow (fg) = 0\Rightarrow X\cong Y\cong 0,\\
+%             1\Rightarrow \text{$f$ is an isomorphism}.
+%         \end{cases}
+%     \end{equation*}
+%     This completes the proof.
+% \end{proof}
+% \begin{lemma}
+%     \label{lemma_negligible_equivalence}
+%     In the situation of Lemma \ref{lemma_decomposition_endomorphism}, assume $(\cat,a)$ is a spherical structure. Consider $X,Y\in\indec(\cat)$ and $f:X\to Y$. Then $f$ is negligible if and only if either it is not an isomorphism or $\dim X=0=\dim Y$.
+% \end{lemma}
+% \begin{proof}
+%     For any $g:Y\to X$, there exists $\lambda_g\in\K,n_g\in\End_\cat(Y)$ where $n_g$ is a nilpotent. such that 
+%     \begin{equation*}
+%         fg = \lambda_g+n_g.
+%     \end{equation*}
+%     Then 
+%     \begin{equation*}
+%         f\in\mathcal{N}\Leftrightarrow \forall g:Y\to X,\tr(fg)=0\Leftrightarrow \lambda_g\tr(\id_Y)=0\Leftrightarrow\lambda_g=0\lor\dim Y=0.
+%     \end{equation*}
+%     If $\lambda_g=0$, then $fg$ is a nilpotent and by Lemma \ref{lemma_decomposition_endomorphism}, $f$ is not an isomorphism. If $\lambda_g\not=0$ and $\dim Y=0$, then $f$ is an isomorphism thus $\dim X=0$.
+% \end{proof}
+% \begin{theorem}
+%     In the situation of Lemma \ref{lemma_decomposition_endomorphism}, $\cat/\mathcal{N}$ is semisimple with simple objects given by 
+%     \begin{equation*}
+%     \{X\sep X\in\indec(\cat),\dim(X)\not=0\}.
+%     \end{equation*}
+% \end{theorem}
+% \begin{proof}
+%     For any indecomposable $X$ with $\dim X\not=0$. Decomposition in Lemma \ref{lemma_decomposition_endomorphism} and Lemma \ref{lemma_negligible_equivalence}  tell us that 
+%     \begin{equation*}
+%         \cat(X,Y)/\mathcal{N}(X,Y) \cong\begin{cases}
+%             \K,X\cong Y,\\
+%             0,X\not\cong Y.
+%         \end{cases}
+%     \end{equation*}
+%     This shows that $X$ is simple. 
+% \end{proof}
+% \begin{remark}
+%     If $\cat$ is semisimple then $\mathcal{N}=\{0\}$. Indeed if $f\in\mathcal{N}(X,Y)$, then direct sums of $X,Y$ gives a morphism $f:X_i\to Y_j$ where $X_i,Y_j$ are simple objects which are summands of $X,Y$, respectively. $f$ is not isomorphism as by assumption thus it is $0$.
+% \end{remark}
+% \begin{remark}
+%     $\cat/\mathcal{N}$ is calledthe maximal semisimple quotient. This has an induced spherical structure and the functor $\cat\to\cat/\mathcal{N}$ preserves the dimensions.
+% \end{remark}
+% \begin{example}
+% Suppose $\K$ is algebraically closed and $\chr\K=p$, we will define.
+% \begin{equation*}
+%     \Ver_p\defeq\Rep_\K(\Z/p\Z)/\N.
+% \end{equation*}
+% This category has indecomposable objects $\overline{X}_1,\cdots,\overline{X}_{p-1}$ where for each $i=1,\cdots,p-1$, $X_i$ corresponds to a Jordan block of size $i$.
+% \par For $p=2$, indecomposable objects of $\Ver_2$ is $X_1=\K$. Therefore, $\Ver_2\cong\Vect_\K$ as linear monoidal categories. 
+% \par For $p=3$, indecomposable objects are $\{X_1=\K,X_2\}$. From Example \ref{example_indecomposable_jordan_block}, $X_2\otimes X_2 = X_1\oplus X_3$ where we conventionally write $X_3=0$. We note that $\Ver_3\cong\SVect$. 
+% \end{example}
+% \begin{example}
+%     Let us examine another important example of $\Ver_p$ in the view of Example \ref{example_indecomposable_jordan_block}. Namely, the case where $p=5$. 
+%     Let us denote the indecomposables by $\{X_1=1,Y_2,\cdots,Y_4\}$. Then 
+%     \begin{center}
+% \begin{tabular}{|l|l|l|l|}
+% \hline
+%       & $Y_2$     & $Y_3$     & $Y_4$ \\ \hline
+% $Y_2$ & $Y_1+Y_3$ & $Y_2+Y_4$ & $Y_3$ \\ \hline
+% $Y_3$ & $Y_2+Y_4$ & $Y_1+Y_3$ & $Y_2$ \\ \hline
+% $Y_4$ & $Y_3$     & $Y_2$     & $Y_1$ \\ \hline
+% \end{tabular}
+%     \end{center}
+%     wwhere we calculate rows besides the first one as follows.
+%     \begin{align*}
+%         Y_3^2  & = Y_3(Y^2_2-1)=(Y_2+Y_4)Y_2-Y_3,\\
+%         &= Y_1+2Y_3-Y_3 = Y_1+Y_3.\\
+%         Y_3Y_4 & = (Y_2^2-1)Y_4 = Y_2+Y_4-Y_4 = Y_2.\\
+%         Y_4^2 & = Y_4(Y_2Y_3-Y_2) = Y_3^2-Y_3^2 = Y_1.
+%     \end{align*}
+%     \label{example_ver_5}
+% \end{example}
+% \begin{remark}
+%     In general we have $X_{p-1}X_i=X_{p-i}$. Thus $\langle 1,X_{p-1}\rangle_{\oplus}$ is closed under $\otimes$ and is isomorphic to $\SVect$. Furthermore $\langle 1,X_3,X_5,\cdots\rangle_{\oplus}$ is closed under $\otimes$ as well. 
+%     We define,
+%     \begin{equation*}
+%         \Ver_p^+\defeq \langle 1,X_3,X_5,\cdots\rangle_{\oplus}.
+%     \end{equation*}
+%     We can check in Example \ref{example_ver_5} that $\Ver_5=\langle 1,X_3\rangle_{\oplus}$ is indeed closed under $\otimes$.
+%     \par Suppose we have a functor $F:\Ver_5^+\to\SVect$ which is linear monoidal. Let $Y\defeq F(X_3)$. Then $Y\otimes Y=Y\oplus 1$. This tells us that for $d=\dim_\K Y$,
+%     \begin{equation*}
+%         d^2=d+1.
+%     \end{equation*}
+%     As $d$ is integer, we conclude there is not reasonable such functor $F$.
+% \end{remark}
+%last lecture below
+% \begin{theorem}
+%   For any tuple $(\alpha,u)$, we have $\Cob_{\alpha,u}$ is Hom-finite and $\End(1)\cong \K$. Conversely if $\cat$ is Hom-finite and $\End(1)\cong \K$, then for any symmetric monoidal functor $F:\Cob\to\cat$, there is a Frobenius algebra datum $(\alpha,u)$ such that 
+%   \begin{center}
+%     \begin{tikzcd}
+% \Cob \arrow[rr, "F"] \arrow[rd, two heads] &                                                  & \cat \\
+%                                            & {\Cob_{\alpha,u}} \arrow[ru, "\exists"', dotted] &     
+% \end{tikzcd}
+%   \end{center} 
+% \end{theorem}
+
+% \begin{proof}
+%   In the first statement, to show Hom-finiteness, we show that all Hom-spaces are spanned by cobordisms of genus less than $d-1$ where $d$ is the degree of $u$. as we have the relation,
+%   \begin{equation*}
+%     \text{Insert cobordisms diagrams here}
+%   \end{equation*}
+%   For $\End(1)=\K$, it is spanned by cobordisms with a boundary 
+%   \begin{equation*}
+%     \text{Insert cobordisms diagrams here} = \alpha_i\in\K
+%   \end{equation*}
+%   To show the second statement, notice that $F([1])\in\Frob(\cat)$. Take 
+%   \begin{equation*}
+%     \phi\defeq F\left(\text{cobordism diagram}\right).
+%   \end{equation*}
+%   As $\cat$ is Hom-finite, there is $u\in\K[x],u(\phi)=0$. As $\End_\cat(1)\cong \K$, there is $\alpha_i\in\K$ such that 
+%   \begin{equation*}
+%     F\left(\text{cobordism diagram}\right) = \alpha_i.
+%   \end{equation*}
+%   This mesn $F$ factors via $\Cob_{\alpha,u}$.
+% \end{proof}
+% \begin{example}
+%     For $\cat=\Rep G$ where $G$ is finite and $X$ be a $G$-set. We have,
+%     \begin{equation*}
+%         F:\Cob\to\Rep G,[1]\mapsto\K.
+%     \end{equation*}
+%     In this case,
+%     \begin{align*}
+%         \phi=F\left(\text{cobordisms diagra}\right) = \q{\qmul{$\K X$}\n\qcomul{$\K X$}} ,\\
+%         & = (X\stackrel{\Delta}{\mapsto}X\otimes X\stackrel{\mu}{\mapsto}X) = \id, x\in X.
+%     \end{align*}
+%     So $u(X) = X-1$, we have,
+%     \begin{align*}
+%         \alpha_i & = F\left(\text{cobordism diagram}\right),\\
+%         & = F\left(\text{cobordism diagram}\right)F\left(\text{cobordism diagram}\right)F\left(\text{cobordism diagram}\right),\\
+%         & = \varepsilon\phi^i,\\
+%         \eta & \varepsilon\eta = (1\stackrel{\eta}{\mapsto}\sum_{x\in X}x\stackrel{\varepsilon}{\mapsto}X).
+%     \end{align*}
+%     So $\Cob\to\Rep G$ factors via 
+%     \begin{equation*}
+%         \Cob_{\underbrace{(\vert X\vert,\vert X\vert,\cdots)}_{=\alpha},\underbrace{x-1}_{u}}.
+%     \end{equation*}
+%     \begin{tikzpicture}
+%     \pic[tqft/cylinder, at={(1,0)}, fill=green, genus=1];
+% \end{tikzpicture}
+% \end{example}
+% \begin{definition}
+%     $\forall t\in\K$, we define,\begin{equation*}
+%         \underline{\Rep}S_t\defeq \Cob_{((t,t,\cdots),X-1)}
+%     \end{equation*}
+% \end{definition}
+
+% \begin{proposition}
+%     Assume $\chr(\K)=0$ and $n\in\Z_{\geq0}$. Then there is a $\K$-linear, $\otimes$ symmetric functor 
+%     \begin{equation*}
+%         \underline{\Rep}S_n\to\Rep S_n,
+%     \end{equation*}
+%     such that 
+%     \begin{equation*}
+%         [1]\mapsto V=\K^n=\K\{1,\cdots,n\},
+%     \end{equation*}
+%     which is full, essentially surjective and the semisimplification factor.
+% \end{proposition}
+% \begin{proof}
+%     For fullness, consider 
+%     \begin{align*}
+%         \Hom_{S_n}(V^{\otimes m},V^{\otimes n})&\cong \Hom_\K(\K X^m,\K X^n)^{S_n},\\
+%         & \cong \Hom_\K(\K,\K X^{m+n})^{S_n},\\
+%         & \cong (\K X^{m+n})^{S_n},\\
+%         & = \K\left\{\sum S_ny\sep y\in\K X^{m+n}\right\},\\
+%         & = \K\left\{\sum\right\}_{y\in \K X^{m+n}\sep\text{such that $y_i=y_j$ where $i,j$ (missing) in the same com of $P$}},
+%         &\cong\K\{\text{set partition of $\{1,\cdots,m+m'\}$}\}
+%     \end{align*}
+%     For essentially surjectivenes, as $S_n$ is a finite group, any irreducible representation $W$ of $S_n$ appears as a direct summand in $V^{\otimes m}$ (there exists such $m$) as $V$ is faithful then $W=(V^{\otimes m},e)$ where $e$ is an idempotent. As $F$ is full, $e$ is with image. $W$ is in the image.
+%     \par For the semisimplification, $\Rep S_n$ is semisimple, there is no negligible morphisms in $\Rep S_n$. This means the negligible morphisms in $\underline{\Rep}S_t$ must be contained in the kernel of $F$. Thus,
+%     \begin{center}
+%         \begin{tikzcd}
+% \underline{\Rep}S_t \arrow[rr] \arrow[rd] &          & \underline{\Rep}S_t/\mathcal{N} \arrow[ld, "\exists", dashed] \\
+%                                           & \Rep S_t &                                                              
+% \end{tikzcd}
+%     \end{center}
+%     Assume $\mathcal{N}\subsetneq\ker F$ then $\G$ is a proper quotinet. Thus $\underline{\Rep}_G/\mathcal{N}$ has a proper tensor ideal. This contradicts to the semisimplicity of the tensor category.
+% \end{proof}
+% \begin{remark}
+%     This is why we call $\Rep S_t$ interpolation category. For $t\not\in\Z_{\geq0}$ then $\underline{\Rep}S_t$ is semisimple and hence, a tensor category not of moderate growth.
+% \end{remark}
+% \subsection{Abelian realization}
+% Recall $\Cob_{\alpha,u}$ has a $(\otimes,\text{Sym},\K)$-functor to a tensor category only if those that factor via $\Cob_{\alpha,u}$ for some Frobenius algebra datum $(\alpha,u)$. In particular,
+% \begin{equation*}
+%     \forall j,\sum_{i\geq0}u_i\alpha_{i+j}=0.
+% \end{equation*}
+% \begin{definition}
+%     For all $\alpha=(\alpha_i)$ in $\K$, $u_\alpha\defeq$ monic polynomial of minimal degree such that $(\alpha,u)$ is a Frobenius datum that is 
+%     \begin{equation*}
+%         \forall j\geq0, \sum_{i\geq0}u_i\alpha_{i+j}=0.
+%     \end{equation*}
+%     We then define,
+%     \begin{equation*}
+%         \defeq\Cob_\alpha \defeq\Cob_{\alpha,u_\alpha}, \FA_{\ab} = \{\alpha\sep(\alpha,X^2(X_{r_1})\cdots(X_{r_k}))\}.
+%     \end{equation*}
+%     is a Frobenius algebra datum for distinct $r_1,\cdots,r_k\in\K$.
+% \end{definition}
+% In this subjection, we will assume $\K=\overline{\K}$ and $\chr\K=0$. 
+% \begin{theorem}
+%     For all $\alpha$ there is $\Cob_\alpha\to\cat$ where $\cat$ is a tensor category, if and only if $\alpha\in \FA_{\ab}$.
+% \end{theorem}
+% \begin{proof}$\:$
+%     \par\textbf{$\Rightarrow$} As before we take $\phi=F(\text{some cobordism diagram})$. As $\cat$ is a Hom-finite, there is $\hat{u}$ such that $\hat{u}(\phi)=0$. Set,
+%     \begin{equation*}
+%         u(x) = \prod_{\text{missing}}(x-r).
+%     \end{equation*}
+%     Then $u(\phi)$ is nilpotent. As $\cat$ is a tensor category, we have,
+%     \begin{equation*}
+%         0=\sum_{i\geq0}u_i,\underline{\tr(\phi)}_{\text{missing}} = \sum_{i\geq0}()_{i,\alpha_i}.
+%     \end{equation*}
+% \end{proof}
+% \begin{proposition}
+%     For all $\alpha\in\FA_{\ab}$, there exist $t_1,\cdots,t_k,\alpha_0,\alpha_1\in\K$ such that 
+%     \begin{equation*}
+%         \Cob_\alpha\cong \Cob({\alpha_0,\alpha_1,0,0,\cdots})\boxtimes\underline{\Rep}S_{t_1}\boxtimes\cdots\boxtimes\underline{\Rep}S_{t_k}.
+%     \end{equation*}
+%     where $\boxtimes$ is the tensor product of categories. Explicitly, 
+%     \begin{equation*}
+%         \cat\boxtimes\catd \defeq(\cat\fib{\K}\catd)^{\oplus,\summand}.
+%     \end{equation*}
+%     $\cat\boxtimes\catd$ has objects $X\boxtimes Y$ where $X\in\cat,Y\in\catd$ such that 
+%     \begin{equation*}
+%         \Hom(X\boxtimes Y,X'\boxtimes Y')\cong\Hom_\cat(X,X')\tens{\K}\Hom_\catd(Y,Y').
+%     \end{equation*}
+% \end{proposition}
+% \begin{proof}
+%     The idea is, each functor on the right hand side has a canonical commutative Frobenius algebra $A_i$. Set,
+%     \begin{equation*}
+%         A\defeq A_1\boxtimes1\boxtimes\cdots\boxtimes 1\oplus\cdots\oplus1\boxtimes\cdots\boxtimes 1\boxtimes A_{k+1}
+%     \end{equation*}
+%     is a commutatie Frobenius algebra. This $A$ is the correct Frobenius algebra datum $(\alpha,u_\alpha)$ so there is $\Cob_\alpha\to$ the right hand side.
+%     \par Then show this is an equivalence.
+% \end{proof}
+% \begin{proposition}
+%     There is a $\K$-linear symmetric tensor category functor $\Cob_{(\alpha_0,\alpha_1,0,\cdots,)}\to\cat$ where $\cat$ is a tensor category. For example,
+%     \begin{enumerate}[1).]
+%         \item $\alpha_0=\alpha_1=0$ then $\cat=\Vect$.
+%         \item $\alpha_1=0\not=\alpha_0$, then $\cat=\Rep\Grp(1|2)$. 
+%         \item $\alpha_1\not=0$, then 
+%         \begin{equation*}
+%             \cat = \begin{cases}
+%                 \underline{\Rep}O_t,\quad \alpha_1\not\in\Z_{\geq0},\\
+%                 \Rep O_n,\quad \alpha=n\in\Z_{\geq0},\\
+%                 \Rep \underbrace{O\Sp(m|2)}_{\text{\makebox[0pt][c]{Orthosymplectic supergroup}}},\quad \alpha_1=m-2n
+%             \end{cases}
+%         \end{equation*}
+%         The first one is an analogue of oriented Brauer category $\cat_t$ without the orientation.
+%     \end{enumerate}
+% \end{proposition}
+% \begin{corollary}
+%     $\Leftarrow$ of the theorem holds (mention).
+% \end{corollary}
+% \begin{remark}
+%     This provides a universal abelian version of the theory of TQFTs (functors from cobordisms).
+% \end{remark}
+% \begin{example}
+%     $\alpha_1=\alpha_0=0$, then $u_\alpha=1$. Then in $\Cob_\alpha$, any non-empty cobordism factors through cylinder. And cylinder is $0$. Thus any cobordism with a boundary circle is $0$. $\alpha_i=0$ for all $i$, thus all non-empty cobordism is $0$.
+%     Thus $\Cob_\alpha=\Vect$ where $[0]\leftrightarrow\K,(\id_{[0]}=\empty\not=0)$. 
+% \end{example}
+% \begin{example}
+%     $\alpha_1=0$, then $u_\alpha=X$ in $\Cob_\alpha$, $\text{cobordism diagram}=0$. Thus any cobordism of genus more than $1$ is isomorphic.
+% \end{example}
+% So we can represent morphisms by partition diagrams. Also any cobordism with at least one incoming and one outgoing boundary cycle is in $\mathcal{N}$.
+% \begin{example}
+%     For all $m,n\geq0$, consider,
+%     \begin{equation*}
+%         \gl(m|n) = \left\{\begin{pmatrix}
+%             A & B\\ C & D
+%         \end{pmatrix}
+%         \right\} = 1.
+%     \end{equation*}
+%     where $A$ is $m\times m$, $B$ is $m\times n$, $C$ is $n\times m$, and $D$ is $n\times n$. and,
+%     \begin{equation*}
+%        \gl(m|n)_D = \left\{\begin{pmatrix}
+%             A & \:\\ \: & D
+%         \end{pmatrix}
+%         \right\} = 1,\gl(m|n)_J = \left\{\begin{pmatrix}
+%             \: & B\\ C & \:
+%         \end{pmatrix}
+%         \right\} = 1.
+%     \end{equation*}
+%     $\gl(m|n)$ is a Lie super algebra with the (missing),
+%     \begin{equation*}
+%         [A,B] = AB-(-1)^{(A|B)}BA,
+%     \end{equation*}
+%     for all $A,B$ homogeneous in $\gl(m|n)$. 
+%     \par Consider,
+%     \begin{equation*}
+%         \g(1|2)\defeq\left\{\begin{pmatrix}
+%             0 & a & b \\
+%             b & \: & \:\\
+%             -a & \: & A
+%         \end{pmatrix}
+%         \:\Bigg{|}\:a,b\in\C,A\in \spl_2(\C)\right\}\subseteq\gl(1|2).
+%     \end{equation*}
+%     For $\Rep\mathfrak{osp}(1|2)\ni V=\K^{1|2}$ by matrix vector-multiplication.
+%     \par $\Rep\mathfrak{osp}(1|2)^+=\langle V\rangle_{\otimes,\oplus,\summand}\subseteq\Rep\mathfrak{osp}(1|2)$.
+% \end{example}
+% \begin{remark}
+%     $\Rep\mathfrak{osp}(1|2)^+$ is semisimple and any representation is determined by $X=X_{\chi_2}$. 
+%     \par For example $X(V) = q+1+q^{-1}$ as 
+%     \begin{equation*}
+%         \begin{pmatrix}
+%             0 & \: & \:\\
+%             \: & 1 & \:\\
+%             \: & \: & -1
+%         \end{pmatrix}
+%         \oplus\begin{pmatrix}
+%             x_0\\ x_+\\ x_-.
+%         \end{pmatrix}
+%     \end{equation*}
+%     \begin{align*}
+%         X(V^{\otimes 2}) &= (q+1+q^{-1}),\\
+%         & = q^2+2q+3+2q^{-1}+q^{-2},\\
+%         & = \underbrace{(1)}_{X(1)}+\underbrace{(q+f+q^{-1})}_{X(V)}+(q^{-2}+q^+f+q^{-1}+q^{})
+%     \end{align*}
+% \end{remark}
+\subsection{Braidings}
+\begin{definition}
+  A braiding/braided category is a pair $(\cat,c)$ where $\cat$ is a monoidal category and $c = (c_{X,Y}:X\otimes Y\to Y\otimes X)$ is a ntural isomorphism such that for any $X,Y,Z\in\cat$, we have the commudatie diagrams.
+  \begin{center}
+\begin{tikzcd}
+X\otimes Y\otimes Z \arrow[rr, "{c_{X,Y\otimes Z}}"] \arrow[rd, "{c_{X,Y}\otimes\id_Z}"']  &                                                           & Y\otimes Z\otimes X \\
+                                                                                           & Y\otimes X\otimes Z \arrow[ru, "{\id_Y\otimes c_{X,Z}}"'] &                     \\
+X\otimes Y\otimes Z \arrow[rr, "{c_{X\otimes Y,Z}}"] \arrow[rd, "{\id_X\otimes c_{Y,Z}}"'] &                                                           & Z\otimes X\otimes Y \\
+                                                                                           & X\otimes Z\otimes Y \arrow[ru, "{c_{X,Z}\otimes\id_Y}"']  &                    
+\end{tikzcd}
+  \end{center}
+  The braiding $c$ is called symmetric if $c^2=\id$. That is for any $X,Y\in\cat$ we hae,
+  \begin{equation*}
+    c_{X,Y} = c_{Y,X}^{-1}.
+  \end{equation*}
+\end{definition}
+\begin{lemma}
+    Let $(\cat,c)$ be a braided category. We have the following statements.
+    \begin{enumerate}[1).]
+        \item For $X\in\cat$, 
+        \begin{equation*}
+            c_{X,1}=\lambda_X^{-1}\rho_X,c_{1,X}=\rho_{X}^{-1}\lambda_X = c_{X,1}^{-1}.
+        \end{equation*}
+        \item Young-Baxter equation holds. That is,\begin{equation*}
+            (c\otimes\id)(\id\otimes c)(c\otimes\id) = (\id\otimes c)(c\otimes\id)(\id\otimes c).
+        \end{equation*}
+        This is represented in the commutative diagram as follows.
+        \begin{center}
+            \begin{tikzcd}
+Y\otimes X\otimes Z \arrow[rr, "\id\otimes c"]                          &  & Y\otimes Z\otimes X \arrow[d, "c\otimes\id"]   \\
+X\otimes Y\otimes Z \arrow[u, "c\otimes\id"] \arrow[d, "\id\otimes c"'] &  & Z\otimes Y\otimes X                            \\
+X\otimes Z\otimes Y \arrow[rr, "c\otimes \id"']                         &  & Z\otimes X\otimes Y \arrow[u, "\id\otimes c"']
+\end{tikzcd}
+        \end{center}
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    In the view of Theorem \ref{theorem_maclane_coherence}, and use $c$ is a natural isomorphism, one has,
+    \begin{center}
+        \begin{tikzcd}
+X\otimes(1\otimes 1) \arrow[rrrr, "\alpha^{-1}"] \arrow[rd, "\id_X\otimes\lambda" description] \arrow[dddd] &                                                  &                                                                               &   & (X\otimes 1)\otimes 1 \arrow[llld, "\rho" description] \arrow[d, "c\otimes\id_1"] \\
+                                                                                                            & X\otimes 1 \arrow[dd] \arrow[r, "c" description] & 1\otimes X \arrow[dd, "c^{-1}" description] \arrow[rd, "\lambda" description] &   & (1\otimes X)\otimes 1 \arrow[dd, "\alpha"] \arrow[ll, "\rho" description]         \\
+                                                                                                            &                                                  &                                                                               & X &                                                                                   \\
+                                                                                                            & 1\otimes X                                       & X\otimes 1 \arrow[l, "c" description] \arrow[ru, "\rho" description]          &   & 1\otimes(X\otimes1) \arrow[d, "\id_1\otimes c"] \arrow[ll, "\lambda" description] \\
+(1\otimes 1)\otimes X \arrow[ru, "\lambda\otimes\id_X" description] \arrow[rrrr, "\alpha"']                 &                                                  &                                                                               &   & 1\otimes(1\otimes X) \arrow[lllu, "\lambda" description]                         
+\end{tikzcd}
+    \end{center}
+    This proves the first assertion. For the second assertion, 
+    \begin{center}
+        \begin{tikzcd}
+Y\otimes X\otimes Z \arrow[rr, "{\id_Y\otimes c_{X,Z}}"]                                                                                  &  & Y\otimes Z\otimes X \arrow[d, "{c_{Y,Z}\otimes\id_X}"]   \\
+X\otimes Y\otimes Z \arrow[rru, "{c_{X,Y\otimes Z}}" description] \arrow[u, "{c_{X,Y}\otimes\id_Z}"] \arrow[d, "{\id_X\otimes c_{Y,Z}}"'] &  & Z\otimes Y\otimes X                                      \\
+X\otimes Z\otimes Y \arrow[rr, "{c_{X,Y}\otimes \id_Y}"'] \arrow[rru, "{c_{X,Z\otimes Y}}" description]                                   &  & Z\otimes X\otimes Y \arrow[u, "{\id_Z\otimes c_{X,Y}}"']
+\end{tikzcd}
+    \end{center}
+\end{proof}
+\begin{definition}
+    For $n\in\Z_{\geq0}$, we define,
+\end{definition}
+\begin{remark}
+  Let $\cat$ be a $\K$-linear category and $M$ be a set of objects. Then the full-subcategory of $\cat$ of $M$ is generally neither additive nor idempotent complete.
+  However, let $\langle M\rangle_{\oplus}$ be the full subcategory of $\cat$ on direct sums of objects from $M$. Then it is additive. Also $\langle M\rangle_{\stackrel{\subseteq}{\oplus}}$ the full subcategory of $\cat$ that 
+  consists of on direct summands of direct sums of objects in $M$. It's additive and idempotent complete.
+\end{remark}
+
+\begin{remark}
+    Let $\cat$ be an additive, idempotent complete $\K$-linear category. Let $M$ be a set of objects in $\cat$. Generally the full subcategory of $M$ is neither additive nor idempotent complete.
+\end{remark}
+
+\begin{definition}
+    Let $\cat$ be an additive, idempotent, $\K$-linear category and $M$ be a set of objects in $\cat$. We define,
+    \begin{enumerate}[1).]
+        \item $\langle M\rangle_{\oplus}$ as the full subcategory of $\cat$ with objects direct sums of objects from $M$.
+        \item $\langle M\rangle_{\oplus,\summand}$ as the full subcategory of $\cat$ with objects direct summands of direct sums of objects in $M$.
+    \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+    $\langle M\rangle_\oplus$ is additive and $\langle M\rangle_{\oplus,\summand}$ is additive and idempotent complete.
+\end{proposition}
+
+\begin{proof}
+    Additivity is clear in both cases. Let $X\in\langle M\rangle_{\oplus,\summand}$ and $e\in\End(X)$ be an idempotent. In $\cat$, we have 
+    \begin{equation*}
+        \varphi:X\stackrel{\cong}{\to} X_1\oplus X_2.
+    \end{equation*}
+    By definition, we can assume that $X_1,X_2\in\langle M\rangle_{\oplus,\summand}$. Thus it is idempotent complete.
+\end{proof}
+
+\begin{lemma}
+  Let $\cat$ be a $\K$-linear category, we have the following statements.
+  \begin{enumerate}[1).]
+    \item $\cat^{\oplus},\cat^{\oplus,\summand}$ are additive $\K$-linear.
+    \item $\cat^{\summand},\cat^{\oplus,\summand}$ are idempotent complete.
+    \item $\cat$ is additive then $\cat\cong \cat^{\oplus}$ as $\K$-linear category.
+    \item $\cat$ is idempotent complete then $\cat\cong \cat^{\summand}$ as $\K$-linear categories.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    For \textbf{1)}, the additiity is clear. For \textbf{2)}, let $(X,e)\in\cat^{\summand}$ and $efe\in\End((X,e))$ be an idempotent. Then $(X,efe)\in\cat^{\summand}$. Let
+    \begin{equation*}
+        p=efe\id_Xe\in\cat^{\summand}((X,e),(X,efe)),q=e\id_Xefe\in\cat^{\summand}((X,efe),(X,e)).
+    \end{equation*}
+    Then we have,
+    \begin{equation*}
+        pq = efeeeefe = efe \id_X efe = \id_{(X,efe)},qp = eefeefee = eefee=efe.
+    \end{equation*}
+    By Lemma \ref{lemma_idempotent_equivalent_condition}, this completes the proof.
+    \par\textbf{3)}. is clear by setting $F:\cat\to\cat^{\oplus}$ be such that $F((X,p_i,q_i)) = (X_i)$. Remains to show that $\cat\cong\cat^{\summand}$ for idempotent complete category $\cat$. 
+    Let $F:\cat\to\cat^{\summand}$ be such that $F(X)\to (X,\id_X)$. Clearly, this is fully-faithful. Remains to show this is essentially surjective. For $(X,e)\in\cat^{\summand}$, again by Lemma \ref{lemma_idempotent_equivalent_condition}, there is $Y\in\cat$ such that 
+    \begin{equation*}
+        \exists p:X\to Y,q:Y\to X, qp = e,pq = \id_Y.
+    \end{equation*}
+    Thus we have $pe\in\cat^{\summand}((X,e),(Y,\id_Y))$ and $eq\in\cat^{\summand}((Y,\id_Y),(X,e))$. Then 
+    \begin{align*}
+        peeq &= peq = pqpq = \id_Y=\id_{(Y,\id_Y)},\\
+        eqpe & = e = \id_{(X,e)}.
+    \end{align*}
+\end{proof}
+
+\end{document}

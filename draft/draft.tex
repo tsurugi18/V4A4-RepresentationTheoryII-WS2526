@@ -1,0 +1,686 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{stmaryrd}
+\usepackage{ mathrsfs }
+\usepackage{ mathtools}
+\usepackage{enumerate}
+\usepackage{bbm}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+\usepackage{stix}
+\usepackage{tikz-cd} 
+\tikzset{commutative diagrams/.cd,
+mysymbol/.style={start anchor=center,end anchor=center,draw=none}
+}
+\newcommand\comsymb[2][\circlearrowleft]{%
+  \arrow[mysymbol]{#2}[description]{#1}}
+
+\newtheorem{theorem}{Theorem} [section] 
+\newtheorem{proposition}{Proposition}[section] 
+\newtheorem{definition}{Definition}[section] 
+\newtheorem{lemma}{Lemma}[section] 
+\newtheorem{notation}{Notation}[section] 
+\newtheorem{remark}{Remark}[section] 
+\newtheorem{corollary}{Corollary} [section] 
+\newtheorem{terminology}{Terminology}[section] 
+\newtheorem{fact}{Fact}[section] 
+\newtheorem{claim}{Claim}[proposition]
+\newtheorem{example}{Example}[section] 
+\newtheorem{exercise}{Exercise}[section] 
+\numberwithin{equation}{theorem}
+
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Hilb}{Hilb}
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\FA}{FA}
+\DeclareMathOperator{\Cob}{Cob}
+\DeclareMathOperator{\rev}{rev}
+\DeclareMathOperator{\TQFT}{TQFT}
+\DeclareMathOperator{\st}{s.t.}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\chr}{char}
+\DeclareMathOperator{\alggrp}{alg-grp}
+\DeclareMathOperator{\Simple}{Simple}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\len}{len}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\triv}{triv}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Irr}{Irr}
+\DeclareMathOperator{\Map}{Map}
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Orth}{O}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Spin}{Spin}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\trdeg}{trdeg}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Homk}{Hom_{k-alg}}
+\DeclareMathOperator{\Ker}{ker}
+\DeclareMathOperator{\Image}{im}
+\DeclareMathOperator{\image}{im}
+\DeclareMathOperator{\Coker}{Coker}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\MaxSpec}{MaxSpec}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{id} 
+\DeclareMathOperator{\op}{op} 
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\Adj}{Adj}
+\DeclareMathOperator{\ConcAffVar}{ConcAffVar}
+\DeclareMathOperator{\AbsAffVar}{AbsAffVar}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Comod}{Comod}
+\DeclareMathOperator{\Free}{Free}
+\DeclareMathOperator{\indec}{indec}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Set}{Set}
+\DeclareMathOperator{\SVect}{SVect}
+\DeclareMathOperator{\FSet}{FSet}
+\DeclareMathOperator{\Top}{Top}
+\DeclareMathOperator{\Sk}{Sk}
+\DeclareMathOperator{\coev}{coev}
+\DeclareMathOperator{\Ver}{Ver}
+\DeclareMathOperator{\ComAlg}{ComAlg}
+\DeclareMathOperator{\Grp}{Grp}
+\DeclareMathOperator{\PGL}{PGL}
+%\newcommand*{\name}[\num_arguments][default values]{{\color{#1}\Large #2}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\norm}[1]{\Vert #1 \Vert}
+\newcommand{\opNorm}[2]{\norm{#1}_{#2\to#2}}
+\newcommand{\normL}[3]{\norm{#1}_{L^{#2}(#3)}}
+\newcommand{\N}[0]{\mathbb{N}}
+\newcommand{\m}[0]{\mathfrak{m}}
+\newcommand{\R}[0]{\mathbb{R}}
+\newcommand{\Ouv}[0]{\mathcal{O}}
+\newcommand{\Z}[0]{\mathbb{Z}}
+\newcommand{\C}[0]{\mathbb{C}}
+\newcommand{\bQ}[0]{\mathbb{Q}}
+\newcommand{\F}[0]{\mathbb{F}}
+\newcommand{\G}[0]{\mathbb{G}}
+\newcommand{\A}[0]{\mathbb{A}}
+\newcommand{\Para}[0]{\mathbb{P}}
+\newcommand{\K}[0]{\mathbb{K}}
+\newcommand{\cat}[0]{\mathscr{C}}
+\newcommand{\catd}[0]{\mathscr{D}}
+\newcommand{\M}[0]{\mathbb{M}}
+\newcommand{\Lie}[0]{\mathcal{L}}
+\newcommand{\torus}[0]{\mathbb{T}}
+\newcommand{\g}[0]{\mathfrak{g}}
+\newcommand{\tl}[0]{\mathfrak{t}}
+\newcommand{\gl}[0]{\mathfrak{gl}}
+\newcommand{\spl}[0]{\mathfrak{sl}}
+\newcommand{\so}[0]{\mathfrak{so}}
+\newcommand{\spg}[0]{\mathfrak{sp}}
+\newcommand{\sep}[0]{\:|\:}
+\newcommand{\card}[1]{\vert #1\vert}
+\newcommand{\smat}[1][n]{\Mat_{#1\times #1}}
+\newcommand{\I}[1][n]{\mathcal{I}}
+\newcommand{\disum}[1][n]{\stackrel{\subseteq}{\oplus}}
+\newcommand{\summand}[0]{\stackrel{\subseteq}{\oplus}}
+\newcommand{\fS}[0]{\mathfrak{S}}
+\newcommand{\fR}[0]{\mathfrak{R}}
+\newcommand{\fC}[0]{\mathfrak{C}}
+\newcommand{\fib}[1]{%
+  \mathbin{\mathop{\times}\limits_{#1}}%
+}
+\newcommand{\tens}[1]{%
+  \mathbin{\mathop{\otimes}\displaylimits_{#1}}%
+}
+
+\title{Representation Theory 2}
+\author{So Murata}
+\date{WiSe 25/26, University of Bonn}
+
+
+\begin{document}
+\maketitle
+\begin{remark}
+    For any ring $R$, we have a canonical isomorphism,
+    \begin{equation*}
+        R\tens{\Z}\Lambda_n \cong R\tens{\Z}\Z[T_1,\cdots,T_n]^{S_n}\cong R[T_1,\cdots,T_n]^{S_n}.
+    \end{equation*}
+    That is $m_\lambda$ where $\lambda$ is a partition at most $n$-parts form a basis of $R[T_1,\cdots,T_n]^{S_n}$.
+\end{remark}
+\begin{theorem}
+    The algebra $\Lambda_n$ is generated by the elementary symmetric polynomials $e_1,\cdots,e_n$. Moreover, they are algebraically independent hence 
+    \begin{equation*}
+        \Z[T_1,\cdots,T_n]^{S_n}\cong \Z[e_1,\cdots,e_n].
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    We prove it by induction on $n$. To avoid confusion, we will denote,
+    \begin{equation*}
+        e^{(n)}_i \defeq e_i\in\Lambda_n,
+    \end{equation*}
+    a $i$-th elementary symmetric polynomial in $n$ variables. For $n=1$, this is trivial. Suppose we have the statement for $n-1$ variables. Consider the following map,
+    \begin{equation*}
+        \Lambda_n\ni f(T_1,\cdots,T_n)\stackrel{\pi_n}{\to}f(T_1,\cdots,T_{n-1},0)\in\Lambda_{n-1}.
+    \end{equation*}
+    Under this morphism, we have,
+    \begin{equation*}
+        e_{i}^{(n)}\mapsto \begin{cases}
+            e_i^{(n-1)},\quad (i<n),\\
+            0,\quad (i=n).
+        \end{cases}
+    \end{equation*}
+    By the induction hypothesis, for any $f\in\Lambda_n$, there is $p\in\Lambda_{n-1}$ such that 
+    \begin{equation*}
+        \pi_n(f) = p(e_1^{(n-1)},\cdots,e_{n-1}^{(n-1)}).
+    \end{equation*}
+    Then,
+    \begin{align*}
+        \pi_n(f-p(e_1^{(n)},\cdots,e_{n}^{(n)})) & = \pi_n(f) - p(e_1^{(n-1)},\cdots,e_{n-1}^{(n-1)}) = 0.
+    \end{align*}
+    Since the kernel of $\pi_n$ is $(T_n)$, we conclude $T_n|f-p(e_1^{(n)},\cdots,e_n^{(n)})$. By symmetry of the argument, this holds for any $T_i$. Thus,
+    \begin{equation*}
+        e_n^{(n)}|f-p(e_1^{(n)},\cdots,e_{n}^{(n)}).
+    \end{equation*}
+    From this, set $f'\in\Lambda_n$ to be such that $(f',e_n^{(n)})=1$ and 
+    \begin{equation*}
+        f-p(e_1^{(n)},\cdots,e_{n}^{(n)}) = f'(e_n^{(n)})^k.
+    \end{equation*}
+    Apply the same argument to $f'$, we see 
+    \begin{equation*}
+        f' = p(e_1^{(n)},\cdots,e_n^{(n)}).
+    \end{equation*}
+    For the algebraic independence, suppose we have,
+    \begin{equation*}
+        p(e_1^{(n)},\cdots,e_n^{(n)})=0,
+    \end{equation*}
+    for some $p\in\Z[e_1^{(n)},\cdots,e_n^{(n)}]$ which is of minimal degree in $T_n$. Then $p\in\ker\pi_n$. Thus we have,
+    \begin{equation*}
+        p = q_0+q_1T_n+q_2T_n^2+\cdots,
+    \end{equation*}
+    Note that $q_0(e_1^{(n-1)},\cdots,e_{n-1}^{(n-1)})=0$. Iterate this step, we conclude 
+    \begin{equation*}
+        p = T_n^k\tilde{p}.
+    \end{equation*}
+    As $\Lambda_n$ is a domain $\tilde{p}(e_1^{(n)},\cdots,e_n^{(n)})=0$ but this contradicts to the minimality of $p$.
+\end{proof}
+\begin{theorem}
+    Recall Theorem \ref{theorem_restriction_along_torus} and under the setting of it, the induced injection is an isomorphism,
+    \begin{equation*}
+        \gamma:\Ouv(\GL_n)^{\GL_n}\stackrel{\sim}{\to}\Ouv(T)^{S_n}.
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    As the injectiity is already proven, we only need to show the surjectivity. Observe,
+    \begin{equation*}
+        \Ouv(T)^{S_n} = \C[T_1^{\pm1},\cdots,T_n^{\pm1}]^{S_n}=\C[T_1,\cdots,T_n,(T_1\cdots T_n)^{-1}].
+    \end{equation*}
+    Sufficient to show that $e_1,\cdots,e_n,(T_1\cdots T_n)^{-1}\in\image \gamma$. As $\det^{-1}$ is invariant under the conjugation, we have 
+    \begin{equation*}
+        \det^{-1}\in\Ouv(\GL_n)^{\GL_n}.
+    \end{equation*}
+    Clearly, we have,
+    \begin{equation*}
+        \gamma(\det^{-1})\begin{pmatrix}
+            t_1&\:&\:\\
+            \: & \ddots &\:\\
+            \: & \: & t_n
+        \end{pmatrix}=(t_1\cdots t_n)^{-1}.
+    \end{equation*}
+    Thus $\gamma(\det^{-1}) = (T_1\cdots T_n)^{-1}$. Let us denote the characteristic polynomial of $A\in\GL_n$ in the variable $T$ by,
+    \begin{equation*}
+        p(A;T) = \det(I_n-TA) = I_n+a_1(A)T+\cdots+a_{n-1}(A)T^{n-1}+a_n(A)T^n.
+    \end{equation*}
+    Note that $a_1,\cdots,a_n\in\Ouv(\GL_n)^{\GL_n}$ since $p$ is invariant of conjugation. Substituting a diagonal matrix into $A$, we get,
+    \begin{align*}
+        p(\diag(t_1,\cdots,t_n);T) &= \det(\diag(1-t_1T,\cdots,1-t_nT)),\\
+        &= \prod_{i=1}^n(1-t_iT) ,\\
+        &= 1+\sum_{i=1}^n(-1)^ne_i(t_1,\cdots,t_n)T^i.
+    \end{align*}
+    Thus $\gamma(a_i) = e_i$. We conclude $\gamma$ is surjective.
+\end{proof}
+\begin{definition}
+    A polynomial $f\in\Z[T_1,\cdots,T_n]$ is alternating if for any $\sigma\in S_n$, we have,
+    \begin{equation*}
+        f(T_{\sigma(1)},\cdots,T_{\sigma(n)}) = \sgn\sigma f(T_1,\cdots,T_n).
+    \end{equation*}
+\end{definition}
+\begin{definition}
+    The Vandermonde determinant is 
+    \begin{equation*}
+        V(T_1,\cdots,T_n) = \prod_{i<j}(T_i-T_j).
+    \end{equation*}
+    Clearly this is alternating. 
+\end{definition}
+\begin{proposition}
+    \label{proposition_alternating_polynomials}
+    Any alternating polynomial is of the form $gV$ where $g$ is a symmetric polynomial. That is to say the space of alternating polynomial is a free $\Lambda_n$-module of rank $1$.
+\end{proposition}
+\begin{proof}
+Let 
+\begin{equation*}
+    f = \sum_{\alpha\in\N^{n}}c_\alpha \underline{T}^\alpha\in\Z[T_1,\cdots,T_n],
+\end{equation*}
+be alternating. Then for any $(a_1,\cdots,a_n)$, we have,
+\begin{equation*}
+    c_{(a_1,\cdots,a_i\cdots,a_j,\cdots,a_n)} = -c_{(a_1,\cdots,a_j\cdots,a_i,\cdots,a_n)}.
+\end{equation*}
+Also note that,
+\begin{equation*}
+    (T_i-T_j)\mid T_1^{a_1}\cdots T_i^{a_i}\cdots T_j^{a_j}\cdots T_n^{a_n} - T_1^{a_1}\cdots T_i^{a_j}\cdots T_j^{a_i}\cdots T_n^{a_n}.
+\end{equation*}
+Therefore 
+\begin{equation*}
+    \forall 1\leq i<j\leq n, f\equiv 0\mod{(T_i-T_j)}\Rightarrow V\mid f.
+\end{equation*}
+Obviously ${\frac f V}$ is symmetric. The freeness follows from that $\Z[T_1,\cdots,T_n]$ being a domain.
+\end{proof}
+\begin{remark}
+    \label{remark_rank_1_module_symmetric}
+    The module of alternating polynomials is isomorphic to $\Lambda_n$ as $\Lambda_n$-modules.
+\end{remark}
+\begin{notation}
+For a descending chain $m_1>m_2>\cdots m_n>0$, we define,
+\begin{equation*}
+    A_{m_1>\cdots>m_n} = \sum_{\sigma\in S_n}\sgn\sigma \prod_{i=1}^nT_{\sigma(i)}^{m_i}.
+\end{equation*}
+Clearly, this is alternating.
+\end{notation}
+\begin{lemma}
+    \label{lemma_alternating_polynomials_basis}
+    $A_{m_1>\cdots>m_n}$-s form a basis of the space of alternating functions.
+\end{lemma}
+\begin{proof}
+    Let 
+\begin{equation*}
+    f = \sum_{\alpha\in\N^{n}}c_\alpha \underline{T}^\alpha\in\Z[T_1,\cdots,T_n],
+\end{equation*}
+be alternating. By the argument in Proposition \ref{proposition_alternating_polynomials}, we have,
+\begin{equation*}
+    c_{\alpha}\not=0\Rightarrow \exists\sigma\in S_n\st \alpha_{\sigma(1)}>\cdots>\alpha_{\sigma(n)}>0.
+\end{equation*}
+As $\sigma$ is generated by transposition, we conclude,
+\begin{equation*}
+    f = \sum_{m_1>\cdots>m_n>0}d_{m_1>\cdots>m_n}A_{m_1>\cdots>m_n}.
+\end{equation*}
+Explicitly,
+\begin{equation*}
+    d_{m_1>\cdots>m_n} = c_{(m_1,\cdots,m_n)}.
+\end{equation*}
+\end{proof}
+\begin{lemma}
+    \label{lemma_bijection_partitions}
+    Denote $\rho=(n-1,n-2,\cdots,2,1,0)\in\Z_{\geq0}^n$. Then we have a bijection between
+    \begin{center}
+        \begin{tikzcd}
+\{\text{partitions with at most $n$-parts}\} \arrow[r, "\lambda\mapsto\lambda+\rho", shift left] & \{\text{strictly decreasing sequences of length $n$}\} \arrow[l, "m-\rho\mapsfrom m", shift left]
+\end{tikzcd}
+    \end{center}
+\end{lemma}
+\begin{definition}
+    For any partition $\lambda$ with at most $n$-parts, we define,
+    \begin{equation*}
+        s_\lambda\defeq {\frac {A_{\lambda+\rho}} V}\in\Lambda_n.
+    \end{equation*}
+    We call polynomials of this form Schur polynomials.
+\end{definition}
+\begin{corollary}
+    \label{corollary_basis_symmetric_pols_schur}
+    Schur polynomials form a basis of $\Lambda_n$. 
+\end{corollary}
+\begin{proof}
+    By Remark \ref{remark_rank_1_module_symmetric} and Lemma \ref{lemma_alternating_polynomials_basis}, a basis element $\{A_{m_1>\cdots>m_n}\}$ is mapped to $\{s_\lambda\}$. By Lemma \ref{lemma_bijection_partitions}, this induces a bijection.
+\end{proof}
+\begin{definition}
+    Let $\lambda,\mu$ be partitions. The lexicographical order is defined as follows. $\lambda<\mu$ if there exist $N\in\N$ such that 
+    \begin{equation*}
+        \forall i<N, \lambda_i=\mu_i,\lambda_N<\mu_N.
+    \end{equation*}
+\end{definition}
+\begin{proposition}
+    Motivated by Remark \ref{remark_symmetric_polynomials_basis} and Corollary \ref{corollary_basis_symmetric_pols_schur}, we can consider the following base change,
+    \begin{equation*}
+        m_\lambda = \sum_{\substack{\mu\\\text{\makebox[0pt][c]{with at most}}\\\text{\makebox[0pt][c]{ $n$-parts}}}} p_{\lambda,\mu}s_\mu.
+    \end{equation*}
+    The matrix $P=(p_{\lambda,\mu})_{\substack{\lambda,\mu\\\text{\makebox[0pt][c]{with at most}}\\\text{\makebox[0pt][c]{ $n$-parts}}}}$ is lower unitriangular (i.e. the diagonals are all $1$) with respect to the lexicographical order.
+\end{proposition}
+\begin{proof}
+    For any $f\in\Z[T_1,\cdots,T_n]$ we set $l(f)$ to be the leading monomial of $f$ (i.e. the maximal monomial in the lexicographical order with non-zero coefficient). Then we have,
+    \begin{equation*}
+        l(fg) = l(f)l(g).
+    \end{equation*} 
+    Apply this to $A_{\mu+\rho}$, we get,
+    \begin{align*}
+        T_1^{\mu_1+n-1}\cdots T_n^{\mu_n} &= l(A_{\mu+\rho}),\\
+        & = l(s_\mu V),\\
+        & = l(s_\mu)l(V) = l(s_\mu)(T_1^{n-1}\cdots T_{n-1}^1T_n^0).\\
+        &\Rightarrow l(s_\mu) = T_1^{\mu_1}\cdots T_n^{\mu_n}.
+    \end{align*}
+    Thus $m_\mu,s_\mu$ have the same leading monomials. 
+\end{proof}
+\begin{remark}
+    Let $P$ be the base change matrix, then $Q=P^{-1}$ is also lower unitriangular. $Q_{\lambda,\mu}$ is called a Kostka number.
+\end{remark}
+\begin{lemma}
+    Consider,
+    \begin{equation*}
+        \Z\llbracket x_1,\cdots,x_n,y_1,\cdots,y_n\rrbracket^{\mathfrak{S}_n\times\mathfrak{S}_n}.
+    \end{equation*}
+    We have the following identity,
+    \begin{equation*}
+        \prod_{1\leq i,j\leq n}{\frac 1 {1-x_iy_j}} = \sum_{\substack{\lambda,\mu\\\text{\makebox[0pt][c]{with at most}}\\\text{\makebox[0pt][c]{ $n$-parts}}}}s_\lambda(x_1,\cdots,x_n)s_\mu(y_1,\cdots,y_n).
+    \end{equation*}
+\end{lemma}
+\subsection{Characters for the Symmetric Groups}
+\begin{definition}
+    Let $\lambda\vdash r$. A Young tableau of shape $\lambda$ is a filling of the Young diagram of $\lambda$ in such a way that each column and row are increasingly numbered by numbers from $1$ to $r$.
+    \par A Young tableau is superstandard if numbers are filled starting from the top left corner to the right consecutively. 
+\end{definition}
+\begin{example}
+  For $\lambda=(4,4,2,1)$, a Young tableau of shape $\lambda$ is 
+  \begin{center}
+\begin{tabular}{|c|ccc}
+\hline
+$1$  & \multicolumn{1}{c|}{$2$} & \multicolumn{1}{c|}{$4$} & \multicolumn{1}{c|}{$6$}  \\ \hline
+$3$  & \multicolumn{1}{c|}{$5$} & \multicolumn{1}{c|}{$8$} & \multicolumn{1}{c|}{$11$} \\ \hline
+$7$  & \multicolumn{1}{c|}{$9$} &                          &                           \\ \cline{1-2}
+$10$ &                          &                          &                           \\ \cline{1-1}
+\end{tabular}
+  \end{center}
+  The superstandard Young tableau of shape $\lambda$ is 
+    \begin{center}
+\begin{tabular}{|c|ccc}
+\hline
+$1$  & \multicolumn{1}{c|}{$2$} & \multicolumn{1}{c|}{$3$} & \multicolumn{1}{c|}{$4$}  \\ \hline
+$5$  & \multicolumn{1}{c|}{$6$} & \multicolumn{1}{c|}{$7$} & \multicolumn{1}{c|}{$8$} \\ \hline
+$9$  & \multicolumn{1}{c|}{$10$} &                          &                           \\ \cline{1-2}
+$11$ &                          &                          &                           \\ \cline{1-1}
+\end{tabular}
+  \end{center}
+\end{example}
+\begin{definition}
+    Fix a Young tableau $T$ of shape $\lambda\vdash r$. 
+    \begin{enumerate}[1).]
+        \item The row stabilizers is the subgroup $\mathfrak{R}_T$ of $\mathfrak{S}_r$ such that for any $\sigma\in\mathfrak{R}_T$ and $i=1,\cdots,r$, $\sigma(i)$ is in the same row.
+        \item The column stabilizers is the subgroup $\mathfrak{C}_T$ of $\mathfrak{S}_r$ such that for any $\sigma\in\mathfrak{C}_T$ and $i=1,\cdots,r$, $\sigma(i)$ is in the same column.
+    \end{enumerate}
+    We can then define an element of $\C[\mathfrak{S}_r]$,
+    \begin{align*}
+        a_T &\defeq \sum_{\sigma\in\mathfrak{R}_T}\sigma,\\
+        b_T &\defeq \sum_{\sigma\in\mathfrak{C}_T}\sgn\sigma\sigma,\\
+        c_T & \defeq a_Tb_T.
+    \end{align*}
+\end{definition}
+\begin{fact}
+    \label{fact_quasi_idempotent}
+Let $R$ be a ring. An element $e\in R$ is called a quasi-idempotent if there is $c\in R^\times$ such that $e^2 = ce$. Furthermore, we have the following isomorphism for any $R$-module $M$.
+\begin{equation*}
+    \Hom_R(Re,M)\mathrel{\substack{f\mapsto f(e)\\\cong\\ [re\mapsto rem]\mapsfrom em}}  eM.
+\end{equation*}
+\end{fact}
+\begin{definition}
+    Let $R$ be a ring and $G$ be a finite group. For $f\in R[G]$, where 
+    \begin{equation*}
+        f = \sum_{g\in G}f_g g,
+    \end{equation*}
+    we define,
+    \begin{equation*}
+        \tr_{R[G]}(f) = \vert G\vert f_e.
+    \end{equation*}
+\end{definition}
+\begin{remark}For $\sigma\in\fS_r$,
+    \begin{equation*}
+        \tr_{\C[\fS_r]}(\sigma) = \begin{cases}
+            0,\quad(\sigma\not=1),\\
+            n!,\quad(\sigma=1).
+        \end{cases}
+    \end{equation*}
+\end{remark}
+\begin{theorem}
+    \label{theorem_young_tableau_fundamental}
+    Let $T,U$ be Young tableaus of shape $\lambda,\mu\vdash r$, respectively.
+    \begin{enumerate}[1).]
+        \item \label{young_tableau:fir}$a_T\C[\fS_r]b_T = \C c_T$.
+        \item \label{young_tableau:sec}$\lambda >\mu\Rightarrow a_T\C[\fS_r]b_U = 0$.
+        \item \label{young_tableau:thi}$\C[\fS_r]c_T$ is a simple module and any simple module is isomorphic of a module of this form.
+        \item \label{young_tableau:fou}$\lambda=\mu\Leftrightarrow\C[\fS_r]c_T\cong\C[\fS_r]c_U$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    The first two are exercises and can be shown by direct calculation. We will show these two imply the last two. Consider the algebra anti-homomorphism,
+    \begin{equation*}
+        \iota:\C[\fS_r]\to\C[\fS_r] = [\sigma\mapsto \sigma^{-1}].
+    \end{equation*}
+    Note that $\iota(a_T)=a_T,\iota(b_T) = b_T$. Thus $b_Ta_T = \iota(c_T)$. Combining with \ref{young_tableau:fir}), we obtain,
+    \begin{align*}
+        \C b_Ta_t & = \C\iota(c_T) = \iota(a_T\C[\fS_r]b_T)=b_T\C[\fS_r]a_T.
+    \end{align*}
+    Also by \ref{young_tableau:sec}), we have,
+    \begin{equation*}
+        0 = \iota(a_T\C[\fS_r]b_U) = b_U\C[\fS_r]a_T.
+    \end{equation*}
+    Put them together, we have,
+    \begin{equation*}
+        c_T\C[\fS_r]c_T = a_T(b_T\C[\fS_r]a_T)b_T \subseteq a_T\C[\fS_r] b_T = \C c_T.
+    \end{equation*}
+    Hence $c_T^2 = p(T) c_T$ for some $p(T)\in\C$. If $p(T)=0$ then $c_T$ is nilpotent. Therefore $\tr_{\C[\fS_r]}(c_T)=0$. By definition,
+    \begin{equation*}
+        c_T=a_Tb_T = \sum_{\substack{\sigma\in\fR_T\\\tau\in\fC_T}}\sgn(\tau)\sigma\tau.
+    \end{equation*}
+    As $\fR_T\cap\fC_T=\{e\}$, in particular 
+    \begin{equation*}
+        c_T = 1+\sum_{\substack{\sigma\in\fS_r\\ \sigma\not=1}}a_\sigma\sigma.
+    \end{equation*}
+    We obtain $\tr_{\C[\fS_r]} = n!$. Thus $c_T$ is a quasi-idempotent. In particular,
+    \begin{equation*}
+        c_T\C[\fS_r]c_T = \C c_T.
+    \end{equation*}
+    Using Fact \ref{fact_quasi_idempotent}, we obtain,
+    \begin{equation*}
+        \Hom_{\C[\fS_r]}(\C[\fS_r]c_T,\C[\fS_r]c_T) \cong c_T\C[\fS_r]c_T \cong \C.
+    \end{equation*}
+    As $\fS_r$ is semisimple, $\C[\fS_r]c_T$ is simple. 
+    \par For \ref{young_tableau:fou}), if $T$ and $U$ are of the same shape then $T=\sigma U$ for some $\sigma\in\fS_r$. In this case, we have,
+    \begin{equation*}
+        \fR_T = \fR_{\sigma U} = \sigma\fR_U\sigma^{-1},\fC_T = \fC_{\sigma U} = \sigma\fC_U\sigma^{-1}.
+    \end{equation*}
+    In particular, $c_T = \sigma c_U\sigma^{-1}$. Using this, we see that the following map is and isomorphism.
+    \begin{equation*}
+        \C[\fS_r]\ni m\stackrel{\sim}{\mapsto}m\sigma \in \C[\fS_r]c_T\sigma = \C[\fS_r]\sigma\sigma^{-1}c_T\sigma = \C[\fS_r]c_U.
+    \end{equation*}
+    Assume $\lambda\not=\mu$. Without loss of genearlity, we assume $\lambda>\mu$. Then 
+    \begin{align*}
+        \Hom_{\C[\fS_r]}(\C[\fS_r]c_U,\C[\fS_r]c_T) & \cong c_U\C[\fS_r]c_T = a_U(b_U\C[\fS_r]a_T)b_T = \{0\}.
+    \end{align*}
+\end{proof}
+\begin{example}
+    Consider $\lambda = (2,1)$. Then consider 
+    \begin{equation*}
+        T=\begin{tabular}{|c|l}
+\hline
+$1$ & \multicolumn{1}{c|}{$3$} \\ \hline
+$2$ &                          \\ \cline{1-1}
+\end{tabular},\fR_T = \langle(13)\rangle,\fC_T = \langle(12)\rangle.
+    \end{equation*}
+    Thus we have,
+    \begin{equation*}
+        a_T = e+(13),b_T = e-(12),c_T = e-(12)+(13)-(123).
+    \end{equation*}
+\end{example}
+\begin{definition}
+    Let $\lambda\vdash r$ and pick a Young tableau $T$ of shape $\lambda$, we define the specht module $S^\lambda$ as,
+    \begin{equation*}
+        S^\lambda \defeq \C[\fS_r]c_T.
+    \end{equation*}
+    By Theorem \ref{theorem_young_tableau_fundamental} 4), this is independent of choice of a Young tableau up to isomorphisms.
+\end{definition}
+\begin{theorem}
+    \begin{equation*}
+        \{S^\lambda\sep\lambda\vdash r\}
+    \end{equation*}
+    is the complete set of irreducible $\fS_r$-representations.
+\end{theorem}
+\begin{notation}
+    Let $\lambda\vdash r$ with $k$-parts. We then define,
+    \begin{equation*}
+        \fS_\lambda = \prod_{i=1}^k\fS_{\lambda_i}.
+    \end{equation*}
+\end{notation}
+\begin{remark}
+    We have,
+    \begin{equation*}
+        \C[S_r/S_\lambda]\defeq \Ind_{S_\lambda}^{S_r}\triv = \C[S_r]\tens{\C[S_\lambda]}\triv.
+    \end{equation*}
+    The isomorphism can be explicitly written as,
+    \begin{equation*}
+        \C[S_r/S_\lambda]\ni[1]\mapsfrom 1\otimes 1\in\C[S_r]\tens{\C[S_\lambda]}\triv.
+    \end{equation*}
+\end{remark}
+\begin{theorem}[Frobenius Reciprocity]
+    Let $\K$ be a field and $G$ be a group. For a subgroup $H$, consider a $\K[H]$-module $M$ and $\K[G]$-module $N$, we have,
+    \begin{equation*}
+        \Hom_{\K[G]}(\K[G]\tens{\K[H]}M,N)\cong \Hom_{\K[H]}(M,\prescript{}{K[H]}{N}).
+    \end{equation*}
+    \label{theorem_frobenius}
+\end{theorem}
+\begin{lemma}
+    \label{lemma_frobenius_group_ring}
+    Let $T$ be a Young tableau of shape $\lambda$. We have,
+    \begin{equation*}
+        \C[\fS_r/\fS_\lambda] \cong \C[\fS_r]a_T.
+    \end{equation*}
+\end{lemma}
+\begin{proof}
+    Observe that $\R_T\cong \fS_\lambda$. Therefore for any $\sigma\in\fS_\lambda$, we have, $\sigma a_T=a_T$. This shows $\C a_T\cong\triv$ as $\fS_\lambda$-representations. By Theorem \ref{theorem_frobenius}, we obtain,
+    \begin{equation*}
+        \Ind_{\fS_\lambda}^{\fS_r}\triv \ni1\otimes 1\mapsto a_T\in\C[\fS_r]a_T.
+    \end{equation*}
+    This is surjective as $a_T$ generates $\C[\fS_r]a_T$ as a $\C[\fS_r]$-module. We have a basis 
+    \begin{equation*}
+        \{\sigma a_T\sep \sigma\in\fS_r/\fS_\lambda\}.
+    \end{equation*}
+    Therefore, by counting the dimension, we conclude the morphism is an isomorphism.
+\end{proof}
+\begin{lemma}
+    $S^\lambda$ appears in $\C[\fS_r,\fS_\lambda]$ with multiplicity $1$ and any other simple $S^\mu$ appearing in $\C[\fS_r/\fS_\lambda]$ satisfies $\mu\geq\lambda$.
+\end{lemma}
+\begin{proof}
+By Theorem \ref{theorem_young_tableau_fundamental}, we have,
+\begin{align*}
+    \Hom_{\C[\fS_r]}(\C[\fS_r]c_T,\C[\fS_r]a_T) & \cong c_T\C[\fS_r]a_T,\\
+    & \cong a_T(b_T\C[\fS_r]a_T),\\
+    & = \C a_Tb_Ta_T.
+\end{align*}
+Since $c_T$ is a quasi-idempotent and $c_T=(a_Tb_T)^2$, $a_Tb_Ta_T\not=0$. Thus 
+\begin{equation*}
+    \dim\Hom_{\C[\fS_r]}(S^\lambda,\C[\fS_r/\fS_\lambda])=1.
+\end{equation*}
+We have proven the first part. For the second part, 
+\begin{align*}
+    \Hom_{\C[\fS_r]}(\C[\fS_r]c_U,a_T) & \cong c_U\C[\fS_r]a_T a_U=\underbrace{(b_U\C[\fS_r]a_T)}_{\substack{\text{\makebox[0pt][c]{$=0$ if $\mu<\lambda$}}\\\text{\makebox[0pt][c]{by Theorem \ref{theorem_young_tableau_fundamental}}}}}.
+\end{align*}
+\end{proof}
+\begin{definition}
+    \begin{equation*}
+        \Ouv(\fS_r)^{\fS_r} = \Map(\{\text{conjugacy classes of $\fS_r$}\},\C).
+    \end{equation*}
+    For $f\in\Ouv(\fS_r)^{\fS_r}$ and $\lambda\vdash r$, we set,
+    \begin{equation*}
+        f(\lambda) = f(\sigma),
+    \end{equation*}
+    for any $\sigma\in\fS_r$ of cycle type $\lambda$.
+\end{definition}
+\begin{proposition}
+    Let $G$ be a finite group and $H$ be a subgroup of it. The character of permutation representation $\C[G/H]$ is 
+    \begin{equation*}
+        \chi_{\C[G/H]}(g) = \sum_{i\in I}{\frac {\vert C_G(g)\vert}{\vert C_H(h_i)}}.
+    \end{equation*}
+    where $\{h_i\}_{i\in I}$ is the complete set of representatives of the $H$-conjugacy classes in 
+    \begin{equation*}
+        H\cap (\{xgx^{-1}\sep x\in G\}).
+    \end{equation*}
+    More generally, for any $H$-representation $V$, we have,
+    \begin{equation*}
+        \chi_{\Ind_H^G(V)}(g) = \sum_{i\in I}{{\vert C_G(g)\vert}{\vert C_H(h_i)}}\chi_V(h_i).
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    Let $g_1,\cdots,g_m\in G$ be a complete list of coset representations $G/H$. Let $v_1,\cdots,v_n$ be a basis of $V$, then 
+    \begin{equation*}
+        \{g_i\otimes v_j\}_{\substack{1\leq i\leq m\\1\leq j\leq n}}
+    \end{equation*}
+    is a basis of $\Ind_H^G(V)$. For a vectorspace $W$ and a linear map $\varphi:W\to W$. Pick a basis $\{w_1,\cdots,w_k\}$, we have
+    \begin{equation*}
+        \tr(\varphi) = \sum_{i=1}^k \text{coefficient of $w_i$ in }\varphi(w_i).
+    \end{equation*}
+    Let $g\in G$ then $gg_i = g_lh$ for some $l$ and $h\in H$, thus,
+    \begin{equation*}
+        g(g_i\otimes v_j) = g_l\otimes hv_j.
+    \end{equation*}
+    If $i\not=l$ then the coefficient of $g_i\otimes v_j$ in $g_l\otimes hv_j$ is $0$. Thus this has no contribution to the equality,
+    \begin{equation*}
+        \chi_{\Ind_H^G(V)}(g) = \tr_{\Ind_H^G(V)}(g).
+    \end{equation*}
+    If $i=l$ then $g_i\otimes V$ is stable under $g$-action. Note that the trace of $g$ on $g_i\otimes V$ is the trace of $h=g^{-1}_igg_i$ on $V$ hence,
+    \begin{equation*}
+        \chi_{\Ind_H^G(V)}(g) = \sum_{xH\in (G/H)^g}\chi_V(x^{-1}gx) = {\frac 1 {\vert H\vert}}\sum_{\substack{x\in G\\ x^{-1}gx\in H}}\chi_V(x^{-1}gx).
+    \end{equation*}
+    Let 
+    \begin{equation*}
+        X_g\defeq \{x\in G\sep x^{-1}gx\in H\}.
+    \end{equation*}
+    Then there is a surjective map,
+    \begin{equation*}
+        X_g\ni x\stackrel{\pi}{\longmapsto}x^{-1}gx\in H\cap \{x^{-1}xg\sep x\in G\}.
+    \end{equation*}
+    Note that 
+    \begin{equation*}
+        x^{-1}gx=y^{-1}gy\Rightarrow (xy^{-1})g(xy^{-1}) = g.
+    \end{equation*}
+    Therefore each fiber of $\pi$ is of size $\vert C_G(g)$. In particular,
+    \begin{equation*}
+        \vert \pi^{-1}(\{\text{$H$-conjugacy class of $h_i$}\}) = \vert C_G(g)\vert {\frac {\vert H\vert}{\vert C_H(h_i)\vert}}.
+    \end{equation*}
+    Using this result, we hae,
+    \begin{align*}
+        \chi_{\Ind_H^G(V)}(g) & = {\frac 1 {\vert H\vert}}\sum_{x\in X_g}\chi_V(x^{-1}gx),\\
+        & = {\frac 1 {\vert H\vert}}\sum_{x\in X_g}\vert C_G(g)\vert {\frac {\vert H\vert} {\vert C_H(h_i)\vert}}\chi_V(h_i),\\
+        & = \sum_{i\in I}{\frac {\vert C_G(g)\vert} {\vert G_H(h_i)\vert}}\chi_V(h_i).
+    \end{align*}
+\end{proof}
+\begin{definition}
+    Let $\lambda = (1^{k_1}2^{k_2}\cdots)$, then we define,
+    \begin{align*}
+        a(\lambda) & = k_1!k_2!\cdots,\\
+        b(\lambda) & = 1^{k_1}2^{k_2}\cdots,\\
+        n(\lambda) = a(\lambda)b(\lambda).
+    \end{align*}
+\end{definition}
+\begin{lemma}
+    Let $\lambda\vdash r$ and $\sigma\in\fS_r$ be of cycle type $\lambda$, we then have,
+    \begin{equation*}
+        n(\lambda) = \vert C_{\fS_r}(\sigma)\vert.
+    \end{equation*}
+\end{lemma}
+\begin{proof}
+    By assumption, $\sigma$ is a product of disjoint cycles where it cotains $k_i$ 
+\end{proof}
+\end{document}

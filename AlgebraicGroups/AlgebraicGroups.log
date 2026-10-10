@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=latex 2025.10.19)  9 OCT 2026 01:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=latex 2025.10.19)  10 OCT 2026 02:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -665,17 +665,17 @@ Overfull \hbox (3.08902pt too wide) in paragraph at lines 361--363
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 909.
+(amsmath)                 on input line 911.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 918--920
+Underfull \hbox (badness 10000) in paragraph at lines 920--922
 
  []
 
 
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 944--945
+Underfull \hbox (badness 10000) in paragraph at lines 946--947
 
  []
 
@@ -684,7 +684,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 944--945
 [13]
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 1068--1069
+Underfull \hbox (badness 10000) in paragraph at lines 1070--1071
 
  []
 
@@ -697,14 +697,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 1068--1069
 [17]
 
 [18]
-Overfull \hbox (2.67836pt too wide) detected at line 1353
+Overfull \hbox (2.67836pt too wide) detected at line 1355
 \LS1/stix/m/it/10 b [] \LS1/stix/m/n/10 = \LS1/stix/m/it/10 b\LS1/stix/m/n/10 .[] \LS1/stix/m/it/10 D[]AD[]\LS1/stix/m/n/10 / = [] \LS1/stix/m/it/10 b\LS1/stix/m/n/10 .\LS1/stix/m/it/10 D[]AD[]\LS1/stix/m/n/10 / = [] \LS1/stix/m/it/10 b\LS1/stix/m/n/10 .\LS1/stix/m/it/10 A\LS1/stix/m/n/10 / = \LS1/stix/m/it/10 b\LS1/stix/m/n/10 .\LS1/stix/m/it/10 A\LS1/stix/m/n/10 / \LS2/stixcal/m/n/10 ë \LS1/stix/m/n/10 0\LS1/stix/m/it/10 :
  []
 
 
 
 [19]
-Overfull \hbox (3.01741pt too wide) in paragraph at lines 1368--1369
+Overfull \hbox (3.01741pt too wide) in paragraph at lines 1370--1371
 []\T1/stix/m/n/10 Any rep-re-sen-ta-tion ofa lin-early re-duc-tive group (such as $[][]\LS1/stix/m/n/10 .\LS1/stixbb/m/n/10 C\LS1/stix/m/n/10 /$ \T1/stix/m/n/10 or $\LS1/stix/m/it/10 T$\T1/stix/m/n/10 ) is uniquely
  []
 
@@ -719,115 +719,115 @@ Overfull \hbox (3.01741pt too wide) in paragraph at lines 1368--1369
 [23]
 
 [24]
-Overfull \hbox (73.52522pt too wide) detected at line 1671
+Overfull \hbox (73.52522pt too wide) detected at line 1673
 []
  []
 
 
 
 [25]
-Overfull \hbox (112.73444pt too wide) detected at line 1676
+Overfull \hbox (112.73444pt too wide) detected at line 1678
 []
  []
 
 
 
 [26]
-Underfull \hbox (badness 10000) in paragraph at lines 1745--1747
+Underfull \hbox (badness 10000) in paragraph at lines 1747--1749
 
  []
 
 
 
 [27]
-Underfull \hbox (badness 10000) in paragraph at lines 1763--1765
+Underfull \hbox (badness 10000) in paragraph at lines 1765--1767
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1784--1786
+Underfull \hbox (badness 10000) in paragraph at lines 1786--1788
 
  []
 
 
 
 [28]
-Underfull \hbox (badness 10000) in paragraph at lines 1853--1854
+Underfull \hbox (badness 10000) in paragraph at lines 1855--1856
 
  []
 
 
 
 [29]
-Underfull \hbox (badness 10000) in paragraph at lines 1863--1865
+Underfull \hbox (badness 10000) in paragraph at lines 1865--1867
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1868--1870
+Underfull \hbox (badness 10000) in paragraph at lines 1870--1872
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1879--1880
+Underfull \hbox (badness 10000) in paragraph at lines 1881--1882
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1891--1893
+Underfull \hbox (badness 10000) in paragraph at lines 1893--1895
 
  []
 
 
 
 [30]
-Underfull \hbox (badness 10000) in paragraph at lines 1923--1925
+Underfull \hbox (badness 10000) in paragraph at lines 1925--1927
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1927--1928
+Underfull \hbox (badness 10000) in paragraph at lines 1929--1930
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1940--1942
+Underfull \hbox (badness 10000) in paragraph at lines 1942--1944
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1945--1947
+Underfull \hbox (badness 10000) in paragraph at lines 1947--1949
 
  []
 
 
 
 [31]
-Underfull \hbox (badness 10000) in paragraph at lines 1970--1971
+Underfull \hbox (badness 10000) in paragraph at lines 1972--1973
 
  []
 
 
 
 [32]
-Overfull \hbox (73.56558pt too wide) detected at line 2053
+Overfull \hbox (73.56558pt too wide) detected at line 2055
 \LS2/stixcal/m/n/10 S[]\LS1/stix/m/n/10 .\LS1/stix/m/it/10 V\LS1/stix/m/n/10 / = [][].\LS1/stix/m/it/10 S[]; V[]\LS1/stix/m/n/10 / = [][].\LS1/stixbb/m/n/10 C\LS1/stix/m/n/10 [\LS1/stix/m/it/10 S[]\LS1/stix/m/n/10 ]\LS1/stix/m/it/10 a[]b[]; V[]\LS1/stix/m/n/10 / ˆ \LS1/stix/m/it/10 a[]b[]V[] [] a[]\LS1/stix/m/n/10 .·[]\LS1/stix/m/it/10 V ‰ \LS1/stix/m/n/10 ·[]\LS1/stix/m/it/10 V ‰ \LS1/stixscr/m/n/10 5\LS1/stix/m/n/10 /\LS1/stix/m/it/10 :
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2057--2059
+Underfull \hbox (badness 10000) in paragraph at lines 2059--2061
 
  []
 
 
 
 [33]
-Overfull \hbox (10.4534pt too wide) detected at line 2103
+Overfull \hbox (10.4534pt too wide) detected at line 2105
 []\LS1/stix/m/n/10 .\LS1/stix/m/it/10 W\LS1/stix/m/n/10 / ù [].\LS1/stix/m/it/10 W\LS1/stix/m/n/10 / \LS1/stixsf/m/n/10 ô []\LS1/stix/m/n/10 .\LS1/stix/m/it/10 W\LS1/stix/m/n/10 /\LS1/stix/m/it/10 ; \LS1/stix/m/n/10 .\LS1/stix/m/it/10 w ‰ w[]\LS1/stix/m/n/10 / ù .\LS1/stix/m/it/10 w ‰ w[]\LS1/stix/m/n/10 / \LS1/stixsf/m/n/10 ô \LS1/stix/m/it/10 w ‰ w[]; \LS1/stix/m/n/10 .\LS1/stix/m/it/10 v ‰ f; u ‰ g\LS1/stix/m/n/10 / \LS1/stixsf/m/n/10 ≠ \LS1/stix/m/it/10 f\LS1/stix/m/n/10 .\LS1/stix/m/it/10 u\LS1/stix/m/n/10 /\LS1/stix/m/it/10 v ‰ g:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2129--2130
+Underfull \hbox (badness 10000) in paragraph at lines 2131--2132
 
  []
 
@@ -836,38 +836,38 @@ Underfull \hbox (badness 10000) in paragraph at lines 2129--2130
 [34]
 
 [35]
-Underfull \hbox (badness 10000) in paragraph at lines 2225--2227
+Underfull \hbox (badness 10000) in paragraph at lines 2227--2229
 
  []
 
 
 
 [36]
-Underfull \hbox (badness 10000) in paragraph at lines 2306--2308
+Underfull \hbox (badness 10000) in paragraph at lines 2308--2310
 
  []
 
 
 
 [37]
-Underfull \hbox (badness 10000) in paragraph at lines 2312--2314
+Underfull \hbox (badness 10000) in paragraph at lines 2314--2316
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2314--2315
+Underfull \hbox (badness 10000) in paragraph at lines 2316--2317
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2322--2324
+Underfull \hbox (badness 10000) in paragraph at lines 2324--2326
 
  []
 
 
 
 [38]
-Underfull \hbox (badness 10000) in paragraph at lines 2362--2364
+Underfull \hbox (badness 10000) in paragraph at lines 2364--2366
 
  []
 
@@ -880,7 +880,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 2362--2364
 [41]
 
 [42]
-Overfull \hbox (83.28513pt too wide) detected at line 2656
+Overfull \hbox (83.28513pt too wide) detected at line 2658
 []
  []
 
@@ -891,7 +891,7 @@ Overfull \hbox (83.28513pt too wide) detected at line 2656
 [44]
 
 [45]
-Overfull \hbox (6.23076pt too wide) detected at line 2772
+Overfull \hbox (6.23076pt too wide) detected at line 2774
 []
  []
 
@@ -904,45 +904,45 @@ Overfull \hbox (6.23076pt too wide) detected at line 2772
 [48]
 
 [49]
-Underfull \hbox (badness 10000) in paragraph at lines 2989--2991
+Underfull \hbox (badness 10000) in paragraph at lines 2991--2993
 
  []
 
 
-Overfull \hbox (9.50793pt too wide) in paragraph at lines 3008--3009
+Overfull \hbox (9.50793pt too wide) in paragraph at lines 3010--3011
  [] 
  []
 
 
 
 [50]
-Underfull \hbox (badness 10000) in paragraph at lines 3051--3052
+Underfull \hbox (badness 10000) in paragraph at lines 3053--3054
 
  []
 
 
 
 [51]
-Underfull \hbox (badness 10000) in paragraph at lines 3128--3130
+Underfull \hbox (badness 10000) in paragraph at lines 3130--3132
 
  []
 
 
 
 [52]
-Overfull \hbox (19.89719pt too wide) detected at line 3159
+Overfull \hbox (19.89719pt too wide) detected at line 3161
 [][]\LS1/stix/m/n/10 .\LS1/stix/m/it/10 V; W\LS1/stix/m/n/10 / = .\LS1/stix/m/it/10 V[] ‰ W\LS1/stix/m/n/10 /[] [] \LS1/stix/m/it/10 d\LS1/stix/m/n/10 .\LS1/stix/m/it/10 V[] ‰ W\LS1/stix/m/n/10 / = .\LS1/stix/m/it/10 d\LS1/stix/m/n/10 .\LS1/stix/m/it/10 V\LS1/stix/m/n/10 /[] \LS1/stix/m/it/10 ‰ d\LS1/stix/m/n/10 .\LS1/stix/m/it/10 W\LS1/stix/m/n/10 //[] = [][].\LS1/stix/m/it/10 d\LS1/stix/m/n/10 .\LS1/stix/m/it/10 V\LS1/stix/m/n/10 /\LS1/stix/m/it/10 ; d\LS1/stix/m/n/10 .\LS1/stix/m/it/10 W\LS1/stix/m/n/10 //\LS1/stix/m/it/10 :
  []
 
 
-Overfull \hbox (3.89981pt too wide) in paragraph at lines 3176--3178
+Overfull \hbox (3.89981pt too wide) in paragraph at lines 3178--3180
 \T1/stix/m/it/10 nected. But we've shown in the ex-er-cise sheet that $[][]$ is con-nected. Thus $[][]\LS1/stix/m/it/10 ; [][]; [][]$
  []
 
 
 
 [53]
-Underfull \hbox (badness 10000) in paragraph at lines 3255--3257
+Underfull \hbox (badness 10000) in paragraph at lines 3257--3259
 
  []
 
@@ -953,12 +953,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 3255--3257
 [55]
 
 [56]
-Overfull \hbox (5.89513pt too wide) in paragraph at lines 3406--3407
+Overfull \hbox (5.89513pt too wide) in paragraph at lines 3408--3409
 []\T1/stix/m/it/10 The $\LS1/stix/m/it/10 d$ \T1/stix/m/it/10 re-stricts to an equiv-a-lence $\LS1/stix/m/it/10 d \LS1/stix/m/n/10 : [].\LS1/stix/m/it/10 G\LS1/stix/m/n/10 / \LS1/stixsf/m/n/10 ô \LS1/stix/m/n/10 ^\LS1/stix/m/it/10 V\LS2/stixex/m/n/10 \LS1/stix/m/it/10 in []\LS1/stix/m/n/10 .\LS1/stixfrak/m/n/10 g\LS1/stix/m/n/10 / \LS2/stixex/m/n/10  \LS1/stix/m/it/10 ^^_[] \LS1/stix/m/n/10 À \LS1/stix/m/it/10 k\LS1/stix/m/n/10 [\LS1/stix/m/it/10 d\LS1/stix/m/n/10 .\LS1/stix/m/it/10 X[]\LS1/stix/m/n/10 .\LS1/stix/m/it/10 T\LS1/stix/m/n/10 //]`$\T1/stix/m/it/10 . 
  []
 
 
-Overfull \hbox (2.28441pt too wide) in paragraph at lines 3424--3426
+Overfull \hbox (2.28441pt too wide) in paragraph at lines 3426--3428
 \T1/stix/m/it/10 is an equiv-a-lence. More-over, there is a sur-jec-tive mor-phism of al-ge-braic groups $[][] []
  []
 
@@ -984,4 +984,4 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  116i,16n,121p,562b,1053s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on AlgebraicGroups.dvi (57 pages, 332584 bytes).
+Output written on AlgebraicGroups.dvi (57 pages, 332536 bytes).
