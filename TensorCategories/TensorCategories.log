@@ -679,4 +679,246 @@ LaTeX Font Info:    Trying to load font information for LS1+stixsf on input line
  (/usr/local/texlive/2025/texmf-dist/tex/latex/stix/ls1stixsf.fd
 File: ls1stixsf.fd 2015/04/17 v1.1.2-latex STIX sans-serif LS1 font definitions
 )
-LaTeX Font Info:    Trying to 
+LaTeX Font Info:    Trying to load font information for LS2+stixtt on input line 169.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/stix/ls2stixtt.fd
+File: ls2stixtt.fd 2015/04/17 v1.1.2-latex STIX typewriter LS2 font definitions
+)
+
+LaTeX Font Warning: Font shape `U/stmry/m/n' in size <7.5> not available
+(Font)              size <7> substituted on input line 172.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <7.5> not available
+(Font)              size <7> substituted on input line 172.
+
+
+
+[1
+
+]
+
+[2]
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 346--347
+
+ []
+
+
+
+[4]
+
+[5]
+
+[6]
+
+[7]
+
+[8]
+
+[9]
+
+[10]
+
+[11]
+
+[12]
+
+[13]
+
+[14]
+
+[15]
+Overfull \hbox (12.00977pt too wide) in paragraph at lines 1094--1095
+[]\T1/stix/b/n/10 Example 2.9. []\T1/stix/m/it/10 Let $\LS1/stix/m/it/10 A; B$ \T1/stix/m/it/10 be $\LS1/stixbb/m/n/10 K$\T1/stix/m/it/10 -algebras and $[]\LS1/stix/m/n/10 .\LS1/stix/m/it/10 B; A\LS1/stix/m/n/10 /$ \T1/stix/m/it/10 be the cat-e-gory of $\LS1/stix/m/n/10 .\LS1/stix/m/it/10 B; A\LS1/stix/m/n/10 /$\T1/stix/m/it/10 -bimodules.
+ []
+
+
+
+[16]
+
+[17]
+Overfull \hbox (31.66287pt too wide) in paragraph at lines 1191--1192
+ [] 
+ []
+
+
+
+[18]
+Overfull \hbox (1.69226pt too wide) in paragraph at lines 1248--1249
+[]\T1/stix/b/n/10 Definition 3.3. []\T1/stix/m/it/10 Let $\LS1/stixscr/m/n/10 C\LS1/stix/m/it/10 ; \LS1/stixscr/m/n/10 D$ \T1/stix/m/it/10 be monoidal cat-e-gories. A monoidal func-tor is a tu-ple $\LS1/stix/m/n/10 .\LS1/stix/m/it/10 F; ^^Q; ^^V\LS1/stix/m/n/10 /$
+ []
+
+
+
+[19]
+Overfull \hbox (33.58592pt too wide) detected at line 1326
+\LS1/stix/m/it/10 f ä \LS1/stixscr/m/n/10 ^^L \LS1/stix/m/n/10 = \LS1/stix/m/it/10 g ä \LS1/stixscr/m/n/10 ^^L \LS1/stixsf/m/n/10 Ù \LS1/stix/m/it/10 f ä \LS1/stix/m/n/10 1 = \LS1/stix/m/it/10 g ä \LS1/stix/m/n/10 1 \LS1/stixsf/m/n/10 Ù \LS1/stix/m/it/10 ^^Z\LS1/stix/m/n/10 .\LS1/stix/m/it/10 f ä \LS1/stix/m/n/10 1/ = \LS1/stix/m/it/10 ^^Z\LS1/stix/m/n/10 .\LS1/stix/m/it/10 g ä \LS1/stix/m/n/10 1/ [] \LS1/stix/m/it/10 f^^Z \LS1/stix/m/n/10 = \LS1/stix/m/it/10 g^^Z [] f \LS1/stix/m/n/10 = \LS1/stix/m/it/10 g:
+ []
+
+
+
+[20]
+
+[21]
+Overfull \hbox (8.58984pt too wide) in paragraph at lines 1392--1393
+ [] 
+ []
+
+
+
+[22]
+
+[23]
+
+[24]
+
+[25]
+
+[26]
+
+[27]
+
+[28]
+Overfull \hbox (10.08467pt too wide) in paragraph at lines 1769--1770
+\T1/stix/m/it/10 has a left dual $\LS1/stix/m/n/10 .\LS1/stix/m/it/10 X[]; []; []\LS1/stix/m/n/10 /$\T1/stix/m/it/10 . Then $\LS1/stix/m/it/10 F\LS1/stix/m/n/10 .\LS1/stix/m/it/10 X\LS1/stix/m/n/10 /$ \T1/stix/m/it/10 has a left dual which is $\LS1/stix/m/n/10 .\LS1/stix/m/it/10 F\LS1/stix/m/n/10 .\LS1/stix/m/it/10 X[]\LS1/stix/m/n/10 /\LS1/stix/m/it/10 ; F\LS1/stix/m/n/10 .[]/\LS1/stix/m/it/10 ; F\LS1/stix/m/n/10 .[]//$\T1/stix/m/it/10 .
+ []
+
+
+
+[29]
+
+[30]
+Missing character: There is no , in font nullfont!
+
+
+[31]
+Overfull \hbox (4.20146pt too wide) in paragraph at lines 1875--1876
+[]\T1/stix/b/n/10 Corollary 4.4. []\T1/stix/m/it/10 The func-tors $\LS1/stix/m/n/10 .\LS1/stixscr/m/n/10 ^^L\LS1/stix/m/n/10 /[]\LS1/stix/m/it/10 ; [][][][]$ \T1/stix/m/it/10 send monomor-phisms to monomor-phisms in $\LS1/stixscr/m/n/10 C[]$
+ []
+
+
+
+[32]
+
+[33]
+
+[34]
+
+[35]
+
+[36]
+
+[37]
+
+[38]
+
+[39]
+
+[40]
+
+[41]
+Overfull \hbox (126.35144pt too wide) in paragraph at lines 2283--2284
+ [] 
+ []
+
+
+
+[42]
+Overfull \hbox (13.25385pt too wide) detected at line 2331
+[] \LS1/stix/m/n/10 = [][].\LS1/stix/m/it/10 S[]; V[]\LS1/stix/m/n/10 / = [][].\LS1/stixbb/m/n/10 C\LS1/stix/m/it/10 S[]e[]; V[]\LS1/stix/m/n/10 / ö \LS1/stix/m/it/10 e^^UV[] [] \LS1/stixbb/m/n/10 S[]\LS1/stix/m/n/10 .\LS1/stix/m/it/10 X\LS1/stix/m/n/10 /
+ []
+
+
+
+[43]
+
+[44]
+
+Package amsmath Warning: Foreign command \atopwithdelims;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 2420.
+
+
+
+[45]
+
+[46]
+
+[47]
+
+[48]
+
+[49]
+
+[50]
+
+[51]
+Overfull \hbox (4.4619pt too wide) in paragraph at lines 2869--2870
+[]\T1/stix/m/n/10 Generally $\LS1/stix/m/it/10 X \LS1/stix/m/n/10 = [][] \LS1/stix/m/it/10 n[]X[]$ \T1/stix/m/n/10 whrere each $\LS1/stix/m/it/10 X[]$ \T1/stix/m/n/10 are sim-ple and pair-wise non-isomorphic.
+ []
+
+
+
+[52]
+
+[53]
+
+[54]
+
+[55]
+
+[56]
+
+[57]
+
+[58]
+
+[59]
+
+[60]
+
+[61]
+
+[62]
+Overfull \hbox (164.25827pt too wide) detected at line 3514
+[]\LS1/stix/m/n/10 .[\LS1/stix/m/it/10 m\LS1/stix/m/n/10 ]\LS1/stix/m/it/10 ; \LS1/stix/m/n/10 [\LS1/stix/m/it/10 n\LS1/stix/m/n/10 ]/ = \LS1/stixbb/m/n/10 K\LS1/stix/m/n/10 ^[]`_.[]/\LS1/stix/m/it/10 :
+ []
+
+
+
+[63]
+Missing character: There is no = in font nullfont!
+Missing character: There is no = in font nullfont!
+
+Overfull \hbox (46.97115pt too wide) detected at line 3532
+\LS1/stix/m/n/10 .\LS1/stix/m/it/10 A \LS1/stix/m/n/10 Ë \LS1/stixscr/m/n/10 C\LS1/stix/m/it/10 ; ^^Q \LS1/stix/m/n/10 = [] = []\LS1/stix/m/it/10 ; ^^V \LS1/stix/m/n/10 = []\LS1/stix/m/it/10 ; " []\LS1/stix/m/n/10 = []\LS1/stix/m/it/10 ; \LS1/stix/m/n/10 ^^A = []/
+ []
+
+
+
+[64]
+
+[65]
+
+[66] (./TensorCategories.aux)
+ ***********
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
+ ***********
+
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 1.25pt have occurred.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 29744 strings out of 473191
+ 596377 string characters out of 5715825
+ 1232444 words of memory out of 5000000
+ 52578 multiletter control sequences out of 15000+600000
+ 648936 words of font info for 172 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 116i,22n,121p,659b,1535s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on TensorCategories.dvi (66 pages, 1148560 bytes).
