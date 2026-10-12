@@ -1,11 +1,11 @@
 # Fdb version 4
-["dvipdf"] 1791592665.85567 "AlgebraicGroups.dvi" "AlgebraicGroups.pdf" "AlgebraicGroups" 1791592666.14416 0
-  "AlgebraicGroups.dvi" 1791592665.82056 332536 60412e85a39c7bd2be808904642328ab "latex"
+["dvipdf"] 1791764244.85583 "AlgebraicGroups.dvi" "AlgebraicGroups.pdf" "AlgebraicGroups" 1791764245.14657 0
+  "AlgebraicGroups.dvi" 1791764244.81775 337520 48074fac521d56c5ecebac4b6a4ff2a8 "latex"
   (generated)
   "AlgebraicGroups.pdf"
   (rewritten before read)
-["latex"] 1791592664.83103 "/Users/tsurugi/Desktop/Universities/UniBonn/Semester3/V4A4/note/AlgebraicGroups/AlgebraicGroups.tex" "AlgebraicGroups.dvi" "AlgebraicGroups" 1791592666.14306 0
-  "/Users/tsurugi/Desktop/Universities/UniBonn/Semester3/V4A4/note/AlgebraicGroups/AlgebraicGroups.tex" 1791592664.65175 144200 6adfb931a577c7e0517ed5f03ca97bd7 ""
+["latex"] 1791764243.78755 "/Users/tsurugi/Desktop/Universities/UniBonn/Semester3/V4A4/note/AlgebraicGroups/AlgebraicGroups.tex" "AlgebraicGroups.dvi" "AlgebraicGroups" 1791764245.14547 0
+  "/Users/tsurugi/Desktop/Universities/UniBonn/Semester3/V4A4/note/AlgebraicGroups/AlgebraicGroups.tex" 1791764243.60182 147575 b4048b1aa06526e17e98e3314d01435d ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm" 1246382020 924 9904cf1d39e9767e7a3622f2a125a565 ""
@@ -157,8 +157,8 @@
   "/usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf" 1739380943 42148 61becc7c670cd061bb319c643c27fdd4 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/latex.fmt" 1760893821 3345650 f2179b917b551c7214098855962de784 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "AlgebraicGroups.aux" 1791592665.81993 3714 1e3781ad22df13f27178f43618ffed8c "latex"
-  "AlgebraicGroups.tex" 1791592664.65175 144200 6adfb931a577c7e0517ed5f03ca97bd7 ""
+  "AlgebraicGroups.aux" 1791764244.81707 3895 b23328f5c821433cfffeb572ece71199 "latex"
+  "AlgebraicGroups.tex" 1791764243.60182 147575 b4048b1aa06526e17e98e3314d01435d ""
   (generated)
   "AlgebraicGroups.aux"
   "AlgebraicGroups.dvi"

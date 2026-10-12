@@ -888,17 +888,16 @@ From now on, we will freely use both notions interchangebly.
   \begin{equation*}
     \rho(t) = \sum_{1\leq i,j\leq n} f_{ij}(t)E_{ij}
   \end{equation*}
-  for some polynomials $\{f_ij\}_{1\leq i,j\leq n}$. Order by the degree of the monomials we get 
-  %current Current
+  for some polynomials $\{f_{ij}\}_{1\leq i,j\leq n}$. Order by the degree of the monomials we get 
   \begin{equation*}
     \rho(t) = \sum_{i=0}^\infty t^i \varphi_i
   \end{equation*}
-  for soem $\{\varphi_n\}\subset\End(V)$, which is independent of the choice of element $t$. 
+  for some $\{\varphi_n\}\subset\End(V)$, which is independent of the choice of element $t$. 
   Note that for $n>>0$, $\varphi_n = 0$. By plugging in $t = 0\in G_a$, we get 
   \begin{equation*}
-    v = 0\cdot v = \varphi_0(v).
+    v = 0\cdot v = \varphi_0(v),
   \end{equation*}
-  Thus $\varphi_0=\id_V$. Let $s,t\in\G_a$, and consider 
+  hence $\varphi_0=\id_V$. Let $s,t\in\G_a$, and consider 
   \begin{equation*}
     s\cdot(t\cdot v) = s\cdot\left(\sum_{n=0}^\infty t^n\varphi_n(v)\right) = \sum_{n=0}^\infty t^ns\varphi_n(v) = \sum_{n,m=0}^\infty t^ns^m\varphi_m\circ\varphi_n(v). 
   \end{equation*}
@@ -914,27 +913,27 @@ From now on, we will freely use both notions interchangebly.
   \begin{equation*}
     {n+m \choose n}s^mt^n  \varphi_{m+n}(v) = t^ns^m\varphi_m\circ\varphi_n(v).
   \end{equation*}
-  THus for any $v\in V$, we have 
+  Thus for any $v\in V$, we have 
   \begin{equation*}
     {n+m \choose n}\varphi_{m+n}(v) = \varphi_m\circ\varphi_n(v).
   \end{equation*}
   We will use this fact to compute $(t-1)^kv$. We will prove the following assertion.\\
   \par $\forall l\geq 1$, we have 
     \begin{equation*}
-      (t-1)^kv = \sum_{n=l}^\infty p_n^{(l)}(t)\varphi_n(v),
+      (t-1)^lv = \sum_{n=l}^\infty p_n^{(l)}(t)\varphi_n(v),
     \end{equation*}
     where $p_n^{(l)}(t)\in k[t]$.
-    \par Indeed for $l=1$, we had $\varphi_0 = \id_V$.
-    \par For the induction part $l\to l+1$, we have 
+    \par Indeed for $l=1$, we had $\varphi_0 = \id_V$. For the induction part $l\to l+1$, we have 
     \begin{align*}
       (t-1)^{l+1}v & = (t-1)((t-1)^lv),\\
       & = (t-1)\left(\sum_{n=l}^\infty p^{(l)}_n(t)\varphi_n(v)\right),\\
-      & = \sum_{n=l}^\infty p_n^{(l)}(t),\\
-      & = \sum_{n=l}^\infty \sum_{m=1}^\infty p_n^{(l)}(t)t^m{m+n \choose n}\varphi_{m+n}(v),\\
-      & = \sum_{p=q+1}^\infty p_p^{(q+1)}(t)\varphi_l(v),
+      & = \left(\sum_{n=l}^\infty p^{(l)}_n(t)t^n\varphi_n(v)\right)-\left(\left(\sum_{n=l}^\infty p^{(l)}_n(t)\varphi_n(v)\right)\right),\\
+      %& = \sum_{n=l}^\infty p_n^{(l)}(t),\\
+      %& = \sum_{n=l}^\infty \sum_{m=1}^\infty p_n^{(l)}(t)t^m{m+n \choose n}\varphi_{m+n}(v),\\
+      & = \sum_{n=l+1}^\infty p_n^{(l+1)}(t)\varphi_l(v),
     \end{align*}
-    where $p_p^{(q+1)} = \sum_{\substack{m+n=p\\ n\geq q\\ m\geq 1}}{m+n \choose n}p_n^{(q)}t^m$.
-    \par Recall that $\varphi_n=0$ for $n>>0$. With the claim we have 
+    where $p_n^{(l+1)}(t) = p_n^{(l)}(t)(t^n-1)$.
+    \par Recall that $\varphi_n=0$ for $n>>0$. The above discussion shows us that
     \begin{equation*}
       n>>0\Rightarrow (t-1)^nv = 0.
     \end{equation*}
@@ -942,8 +941,8 @@ From now on, we will freely use both notions interchangebly.
     \begin{equation*}
       (t-1)w = 0\Rightarrow \forall t\in\ G_a, tw = w.
     \end{equation*}
-    In other words, $\langle w\rangle\subset V$ is a copy of the trivial representation.
-    \par Thus if $V$ is irreducible then $V$ is a trivial representation.\\
+    In other words, $\langle w\rangle\subset V$ is a copy of the trivial representation. Therefore any represenattion contains the trivial representation as a subrepresentation.
+    In particular, $V$ is irreducible if and only if it is the trivial representation.
     \par To see that $\G_a$ is not linearly reductive. Consider,
     \begin{equation*}
       \G_a\ni t\mapsto\begin{pmatrix}
@@ -955,8 +954,29 @@ From now on, we will freely use both notions interchangebly.
     \begin{equation*}
       \{0\},\langle e_1\rangle, k^2.
     \end{equation*}
-    But $\langle e_1\rangle$ does not admit a $\G_a$-stable complement in $k^2$. Thus $k^2$ is not semisimple.
+    But $\langle e_1\rangle$ does not admit a $\G_a$-stable complement in $k^2$. Hence $k^2$ is not semisimple.
 \end{proof}
+
+\begin{theorem}[Schur]
+  \label{theorem_schur_lemma}
+  Let $G$ be a group and $V,W$ be finite irreducible $G$-representations over a field $k$. 
+  \begin{enumerate}
+    \item $\Hom_G(V,W)$ is $1$-dimensional if $V\cong W$, otherwise it is $\{0\}$.
+    \item If $k$ is algebraically closed then $\End_G(V)\cong k\id_V$.
+  \end{enumerate}
+\end{theorem}
+\begin{theorem}[Artin-Wedderburn]
+  \label{theorem_artin_wedderburn}
+  For a group $G$, let $V=V_1\oplus\cdots V_r$ be a semisimple $G$-reprensetation. Then we have,
+  \begin{equation*}
+    \End_G(V)\cong\bigoplus_{i=1}^r \End_G(V_i).
+  \end{equation*}
+\end{theorem}
+\begin{theorem}[Burnside]
+  \label{theorem_burnside}
+  Let $k$ be an algebraically closed field, $V$ be a finite dimensional $k$-vectorspace and $A\subseteq\End_k(V)$ be a unital $k$-subalgebra.
+  If $V$ is an irreducible $A$-representation by the canonical matrix multiplication action to vectors, then $A=\End_k(V)$.
+\end{theorem}
 \begin{lemma}
   Let $G_1,G_2$ be affine algebraic groups then there exists a bijection between 
   \begin{equation*}
@@ -969,14 +989,34 @@ From now on, we will freely use both notions interchangebly.
   \label{irreducible_representation_bijection}
 \end{lemma}
 \begin{proof}
-  Exercise.
+  Let $A_1,A_2$ be the images of $G_1,G_2$ under the representation. By Theorem \ref{theorem_burnside}, they conincide with $\End_k(V_1),\End_k(V_2)$. Let $A$ be the image of $G_1\times G_2$ under the representation then $A_1\otimes A_2\subseteq A$. By counting the dimension, we conclude they are isomorphic. Thus $\rightarrow$ is justified.
+  \par For the other direction, let $V$ be an irreducible $G_1\times G_2$-representation. Let $V_1\subseteq V$ be an irreducible $G_1\cong G_1\times\{e_2\}$-subrepresentation of $V$. Since action by $G_1$ commutes with action by $G_2$, $hV_1$ is also an irreducible subrepresentation of $V$ where $h\in G_2$. Using the irreducibility of $V$,
+  \begin{equation*}
+    V = \sum_{h\in G_2}hV_1.
+  \end{equation*}
+  Let $V_2=\Hom_{G_1}(V_1,V)$ and define $G_2$-representation on $V_2$ by 
+  \begin{equation*}
+    G_2\times V_2\ni (h,f)\mapsto [v\mapsto hf(v)]\in M.
+  \end{equation*}
+  Again by the fact that $G_1$ and $G_2$ commute in $G_1\times G_2$, this is well-defined. Furthermore, $V_2$ is finite dimensional as it is contained in a finite dimensional space $\Hom_k(V_1,V)$.
+  The evaluation map,
+  \begin{equation*}
+    V_1\boxtimes V_2\ni v\otimes f\stackrel{\Phi}{\mapsto} f(v)\in V,
+  \end{equation*}
+  is then $G_1\times G_2$-equivariant. This is clearly non-zero hence by Theorem \ref{theorem_schur_lemma}, $\Phi$ is surjective. Furthermore, each $f\in V_2$ is injective unless it is $0$, hence $\Phi$ is injective.
+  We conclude $V_1\boxtimes V_2\cong V$. For any $G_2$-subrepresentation $W\subseteq V_2$ gives a subrepresentation $V_1\boxtimes W\subseteq V$. By the irreducibility of $V$, we see $W$ is trivial.
 \end{proof}
 \begin{lemma}
   If $G_1,G_2$ are linearly reductive so is $G_1\times G_2$.
   \label{produc_linearly_reductive}
 \end{lemma}
 \begin{proof}
-  Exercise.
+  Motivated by the proof of Lemma \ref{irreducible_representation_bijection}, let $V\in\Rep(G_1\times G_2)$ and consider,
+  \begin{equation*}
+    W=\bigoplus_{U\subseteq \Irr(G_1)}U\boxtimes \Hom_{G_1}(U,V).
+  \end{equation*}
+  In the proof of Lemma \ref{irreducible_representation_bijection}, we have seen that $U\boxtimes \Hom_{G_1}(U,V)$ is injective. Hence the evaluation map from $W$ to $V$ is injective as it is a direct sum of injective maps.
+  Therefore $W\cong V$. Using the linearly reductivity of $G_2$ on $\Hom_{G_1}(U,V)$, we have shown the statement.
 \end{proof}
 We have seen that all irreducible $\G_m$ representations are $1$-dimensional. Hence we have a bijection, 
 \begin{equation*}
@@ -995,14 +1035,14 @@ We have seen that all irreducible $\G_m$ representations are $1$-dimensional. He
     \lambda,\mu\in X^*(G), (\lambda\cdot\mu)(g) = \lambda(g)\mu(g).
   \end{equation*}
 \end{remark}
-Let $V$ be an irreducible representation of $\G_a$. Then for $t\in \G_a$, we have 
-\begin{equation*}
-  n>>0\Rightarrow (t-1)^nV = 0.
-\end{equation*}
-In particular, $(t-1)V$ is a proper $\G_a$-subrepresentation of $V$. But $V$ is irreducible thus 
-\begin{equation*}
-  (t-1)V = \{0\}\Rightarrow \forall t\in\G_a\forall v\in V, t\cdot v = v.
-\end{equation*}
+% Let $V$ be an irreducible representation of $\G_a$. Then for $t\in \G_a$, we have 
+% \begin{equation*}
+%   n>>0\Rightarrow (t-1)^nV = 0.
+% \end{equation*}
+% In particular, $(t-1)V$ is a proper $\G_a$-subrepresentation of $V$. But $V$ is irreducible thus 
+% \begin{equation*}
+%   (t-1)V = \{0\}\Rightarrow \forall t\in\G_a\forall v\in V, t\cdot v = v.
+% \end{equation*}
 \begin{lemma}
   Let $G_1,G_2$ be affine algebraic gruops. Then 
   \begin{equation*}
@@ -1018,6 +1058,7 @@ In particular, $(t-1)V$ is a proper $\G_a$-subrepresentation of $V$. But $V$ is 
   \begin{equation*}
     C_2:G_2\hookrightarrow(G_1\times G_2), g\mapsto (e_{G_1},g).
   \end{equation*}
+  %current Current
   Given a character $\chi:G_1\times G_2\to \G_m$, we get another character by 
   \begin{equation*}
     \chi\circ C_1:G_1\to\G_m,\quad \chi\circ C_2:G_2\to\G_m.
