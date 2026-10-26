@@ -236,7 +236,7 @@ $\Vect_\K^\infty=\Vect^\infty$ & $A-\Mod^\infty$ & $\Rep^\infty G= \Rep^\infty_\
   For $G$ a finite group, we have $\Rep(G) = \Mod(\K[G])$, and for $G$ algebraic we have $\Rep(G) = \Comod(\Ouv(G))$.
   \end{example}
   \begin{example}
-  A direct sum over the empty indexing set $I=\emptyset$ is a zero-object (i.e. initial and terminal) $0\in\mathscr{C}$. This can be seen that as,
+  A direct sum over the empty indexing set $I=\emptyset$ is a zero-object (i.e., initial and terminal) $0\in\mathscr{C}$. This can be seen that as,
   \begin{equation*}
   0 = \sum_{\emptyset}p_iq_i = \id_X.
   \end{equation*}
@@ -326,7 +326,7 @@ $\Vect_\K^\infty=\Vect^\infty$ & $A-\Mod^\infty$ & $\Rep^\infty G= \Rep^\infty_\
 
 \begin{definition}
   % A $\K$-linear category is idempotent complete if $\forall X\in\cat$ there is $e\in \End(X)$ such that $e^2 =e$ and $X_1,X_2\in\cat$ with there exists  $X_1\oplus X_2$ together with a morphism $\varphi:X\to  X_1\oplus X_2$ such that $\varphi e\varphi^{-1} = q_1p_1$.
-  A $\K$-linear category $\cat$ is called idempotent complete if for any $X\in\cat$, there is an idempotent $e\in \End(X)$ (i.e. $e^2= e$) and an isomorphism $\varphi:X\to X_1\oplus X_2$ for some $X_1,X_2\in\cat$ such that $\varphi e\varphi^{-1} = q_1p_1$. 
+  A $\K$-linear category $\cat$ is called idempotent complete if for any $X\in\cat$, there is an idempotent $e\in \End(X)$ (i.e., $e^2= e$) and an isomorphism $\varphi:X\to X_1\oplus X_2$ for some $X_1,X_2\in\cat$ such that $\varphi e\varphi^{-1} = q_1p_1$. 
 \end{definition}
 \begin{definition}
   A $\K$-linear category is additive if it admits all (finite) direct sums.
@@ -343,7 +343,7 @@ $\Vect_\K^\infty=\Vect^\infty$ & $A-\Mod^\infty$ & $\Rep^\infty G= \Rep^\infty_\
   \label{lemma_idempotent_equivalent_condition}
   $\cat$ is idempotent complete if and only if for any object $X\in\cat$ and an idempotent $e\in\End(X)$, there is $Y\in\cat$ with $p:X\to Y,q:Y\to X$ such that $qp=e, pq = \id_Y$.
 \end{lemma}
-\begin{proof}$\:$\\
+\begin{proof}$\:$
   \par For $\Rightarrow$, we set $Y = X$, $p=p_1\varphi,q=\varphi^{-1}q_1$. For the direction $\Leftarrow$, we have $(1-e)$ is also idempotent, thus applying the assumption on $(1-e)$ as well, we see that there are $Y_1,Y_2\in \cat$,
   \begin{center}
     \begin{tikzcd}
@@ -758,7 +758,14 @@ Y'          &
 \begin{corollary}
   Using the setting in Definition \ref{definition_image_factorization}, we have,
   \begin{enumerate}[1).]
-    \item $I,f_1,f_2$ are unique up to isomorphisms.
+    \item $I,f_1,f_2$ are unique up to isomorphisms. That is for any two image factorizations, we have a following commutative diagram,
+    \begin{equation*}
+      \begin{tikzcd}
+X \arrow[d, "\id_X"] \arrow[r, "f_1"] & I \arrow[d, "\varphi"] \arrow[r, "f_2"] & Y \arrow[d, "\id_Y"] \\
+X \arrow[r, "g_1"']                   & J \arrow[r, "g_2"']                     & Y                   
+\end{tikzcd}
+    \end{equation*}
+    where $\varphi:I\to J$ is an isomorphism.
     \item $f_1$ is an epimorphism and $f_2$ is a monomorphism.
   \end{enumerate}
   \label{corollary_image_factorization_uniqueness}
@@ -793,7 +800,7 @@ Y'          &
     $(\Vect)^\infty,\Mod^\infty(A),\Comod(C)$ are abelian categories.
   \end{example}
   \begin{lemma}
-    For an abelian category $\cat$ the following equalities hold for kernels.
+    For an abelian category $\cat$, the following equalities hold for kernels.
     \begin{align*}
       \{\text{kernels}\}& =\{\text{monomorphisms}\},\\
       &=\{f:X\to Y\sep \ker(f)= (0\to X)\},\\
@@ -809,126 +816,153 @@ Y'          &
     \begin{equation*}
       \{\text{monomorphisms}\}\cap\{\text{epimorphisms}\} = \{\text{isomorphisms}\}.
     \end{equation*}
+    \label{lemma_2_2_11}
   \end{lemma}
-  %current Current
   \begin{proof}
-    Suppose $f\in\Mor_\cat(X,Y)$.
-    \par $f$ is kernel then $f$ is unique up to isomorphism and $\ker f = 0$. Let $f=f_2f_1$ be a image factorization, we have,
+    Pick $f\in\Mor_\cat(X,Y)$ and  
     \begin{equation*}
-      f_1 \cong \coker\ker f = \coker 0 = \id.
+      f = (X\stackrel{f_1}{\to}I\stackrel{f_2}{\to}Y)
     \end{equation*}
-    Therefore, we conclude $f_2=f$. That is $f$ is an image factorization of $f$. Conversely 
+    be its image factorization.
+    \par\textbf{1.} If $f$ is a monomorphism by Lemma \ref{lemma_basic_properties_kernel_cokernel}.2, $\ker(f) = 0$. 
+    Hence by the definition of the image factorization, 
     \begin{equation*}
-      f = f_2 = \ker\coker f.
+      f_1 \cong \coker\ker f =\coker 0 \stackrel{\ztext{Lemma \ref{lemma_basic_properties_kernel_cokernel}.4}}{\cong} \id_X.
     \end{equation*}
-    Thus $f$ is a kernel.
-    \par For the second assertion use the previous part for $\cat^{\op}$. 
-    \par The inclusion of $\supseteq$ is clear. Suppose $f$ is in the intersection. Then 
+    % Thus $f =f_2 = \ker\coker f$. In other words, it is a kernel. Again by Lemma \ref{lemma_basic_properties_kernel_cokernel}_2,4, these equalities are proven.% then $f$ is unique up to isomorphism and $\ker f = 0$. Let $f=f_2f_1$ be a image factorization, we have,
+    % \begin{equation*}
+    %   f_1 \cong \coker\ker f = \coker 0 = \id.
+    % \end{equation*}
+    % Therefore, we conclude $f_2=f$. That is $f$ is an image factorization of $f$. Conversely 
+    % \begin{equation*}
+    %   f = f_2 = \ker\coker f.
+    % \end{equation*}
+    % Thus $f$ is a kernel.
+    \textbf{2.} follows by using the previous part for $\cat^{\op}$. 
+    \par\textbf{3.} The inclusion of $\supseteq$ is true in any categories as the inverse exists. Suppose $f$ is in the left hand side. Then 
     \begin{equation*}
       X\stackrel{\id}{\to} X\stackrel{f}{\to}Y,X\stackrel{f}{\to} Y\stackrel{\id}{\to}Y,
     \end{equation*}
-    are both image factorizations. Thus there exists $\phi:X\to Y$ such that $\phi\cong f$. $f$ is an isomorphism.
+    are both image factorizations. By Corollary \ref{corollary_image_factorization_uniqueness}, there is an isomorphism $\varphi:X\to Y$ such that
+    \begin{center}
+      \begin{tikzcd}
+X \arrow[r, "\id_X"] \arrow[d, "\id_X"] & X \arrow[r, "f"] \arrow[d, "\varphi"] & Y \arrow[d, "\id_Y"] \\
+X \arrow[r, "f"']                       & Y \arrow[r, "\id_Y"']                 & Y                   
+\end{tikzcd}
+    \end{center}
+    The commutativity of the diagram gives $f=\varphi$.
   \end{proof}
   \begin{corollary}
     Let $\cat$ be an abelian $\K$-linear category, then it is idempotent complete.
   \end{corollary}
   \begin{proof}
-    Let $X\in\cat$ and $e\in\End(X),e^2=e$. Using $\cat $ is abelian we have,
+    Let $X\in\cat$ and $e\in\End(X),e^2=e$. Using $\cat $ is abelian we have an image factorization of $e$,
     \begin{equation*}
       e = X\stackrel{p}{\to} Y\stackrel{q}{\to}X
     \end{equation*}
-    the image factorization of $e$. Then $e = qp, e^2=e$. Therefore 
+    We show that this satisfies the equivalent condition in Lemma \ref{lemma_idempotent_equivalent_condition}. We already have $e = qp$, hence it remains to show $\id_{Y} = pq$. Using $e$ being an idempotent,
     \begin{equation*}
-      qpqp = qp-q\id p.
+      qpqp = qp.
     \end{equation*}
-    Since $p$ is an epimorphism and $q$ is a monomorphism, we conclude $pq = e$.
+    Using $p$ being an epimorphism, $qpq = q$, using $q$ being a monomorphism, $pq=\id_Y$.
   \end{proof}
 
   \begin{corollary}
     \label{corollary_subobject_cokernel_correspondence}
-    Let $\cat$ be an abelian $\K$-linear category, and $X\in\cat$. We have,
-    \begin{equation*}
-      \{\text{subobjects of $X$}\}\stackrel{1:1}{\rightleftarrows} \{\text{cokernels of $X$}\},
-    \end{equation*}
-    with the maps given by 
-    \begin{align*}
-      (f:Y\hookrightarrow X)&\mapsto(\coker(f):X\twoheadrightarrow Y'),\\
-      (\ker(g):Y'\hookrightarrow X)&\mapsfrom (g:X\twoheadrightarrow Y).
-    \end{align*}
+    Let $\cat$ be an abelian $\K$-linear category. For arbitrary $X\in\sC$, there are following two assingment each of them inverse to one another.
+    \begin{center}
+      \begin{tikzcd}
+\{\text{subobjects of }X\} \arrow[r, "(f:Y\hookrightarrow X)\mapsto(\coker(f):X\twoheadrightarrow Y')", shift left=2] & \{\text{quotients of }X\} \arrow[l, "(\ker g:Y'\hookrightarrow X)\mapsfrom(g:X\twoheadrightarrow Y)", shift left=2]
+\end{tikzcd}
+    \end{center}
   \end{corollary}
-  \begin{proof}
+  \begin{proof}By the definition of subobject and Lemma \ref{lemma_2_2_11},
     \begin{equation*}
-      f:Y\hookrightarrow X\Rightarrow f= (Y\stackrel{\id}{\to}Y\stackrel{f}{\to}X),
+      f:Y\hookrightarrow X\iff f= (Y\stackrel{\id}{\to}Y\stackrel{f}{\to}X),
     \end{equation*}
-    which is the image factorization. We have $f \cong \ker\coker f$ Similarly, $g\cong\coker\ker g$.
+    We have $f \cong \ker\coker f$. Similarly, $g\cong\coker\ker g$. This shows that the assignments are indeed inverse to one another.
   \end{proof}
   \subsection{Extensions}
   Let $\cat$ be a $\K$-linear category.
   \begin{definition}
     A short exact sequence in $\cat$ is a diagram
-    \begin{center}
-      \begin{tikzcd}
-X \arrow[r, "f"] & Z \arrow[r, "g"] & Y
-\end{tikzcd}
-    \end{center}
-    such that $f$ is a monomorphism, and $g$ is an epimorphism and furthermore, $\Image f = \ker g$.
-    \par $Z$ is called the extension of $X$ by $Y$ if the above diagram exists.
+    \begin{equation*}
+      X\stackrel{f}{\to}Z\stackrel{g}{\to}Y
+    \end{equation*}
+    such that $f$ is a monomorphism, and $g$ is an epimorphism and furthermore, $\Image f = \ker g$. $Z$ is called the extension of $X$ by $Y$ if such diagram exists.
   \end{definition}
   \begin{definition}
-    Let $\cat$ be an abelian category. $X\in\cat$ is simple if $0,X$ are the only subobjects of $X$.
+    Let $\cat$ be an abelian category. $X\in\cat$ is simple if the only subobjects of $X$ are $0,X$.
   \end{definition}
   \begin{remark}
-    The above definition can be restated as follows.
+    The simplicity of objects has the following characterizations.
     \begin{enumerate}
-      \item $X$ is simple.
       \item $0,X$ are the only subobjects.
       \item $0,X$ are the only quotients.
       \item If there exist $X_1,X_2\in\cat$ such that the extension of $X_1$ by $X_2$ is isomorphic to $X$ then $X_1\cong 0$ or $X_2\cong 0$.
     \end{enumerate}
   \end{remark}
+  \begin{definition}
+    An extension 
+    \begin{equation*}
+      X\stackrel{i}{\to}Z\stackrel{p}{\to}Y
+    \end{equation*}
+    is split if there is an isomorphism $\varphi:Z\to X\oplus Y$ such that $i = \varphi\circ q_X$ and $p = p_Y\circ\varphi$.
+  \end{definition}
   \begin{example}
     Let $X_1,X_2\in\cat$ then 
-    \begin{center}
-      \begin{tikzcd}
-X_1 \arrow[r, "q_1"] & X_1\oplus X_2 \arrow[r, "p_2"] & X_2 \\
-X_2 \arrow[r, "q_1"] & X_1\oplus X_2 \arrow[r, "p_1"] & X_1
-\end{tikzcd}
-    \end{center}
-    are extensions (split). 
+    \begin{equation*}
+      X_1\stackrel{q_1}{\to}X_1\oplus X_2\stackrel{p_2}{\to}X_2, X_2\stackrel{q_2}{\to}X_1\oplus X_2\stackrel{p_1}{\to}X_1
+    \end{equation*}
+    are extensions which is split as we can take $\varphi = \id_{X\oplus Y}$.
   \end{example}
   \begin{example}
-    Suppose $\chr\K = 2$ and set $\cat = \Rep(\Z/2\Z)$. 
+    Suppose $\chr\K = 2$ and set $\cat = \Rep_\K(\Z/2\Z)$. Endow $\K$ with the trivial action and $\K^2$ with matrix multiplication by 
+    \begin{equation*}
+      g= \begin{pmatrix}
+      1 & 1 \\ 0 & 1
+    \end{pmatrix}.
+    \end{equation*}
+    Then the following sequence
     \begin{center}
       \begin{tikzcd}
-\K \arrow[r, "\substack{1\mapsto\begin{pmatrix} 0\\ 1\end{pmatrix}\\}"] & V \arrow[r, "\substack{\begin{pmatrix}a\\ b\end{pmatrix}\mapsto b\\\:}"] & \K
+\K \arrow[r, "\substack{1\mapsto\begin{pmatrix} 0\\ 1\end{pmatrix}\\}"] & \K^2 \arrow[r, "\substack{\begin{pmatrix}a\\ b\end{pmatrix}\mapsto b\\\:}"] & \K
 \end{tikzcd}
     \end{center}
-    is an exact sequence but this is not split.
+    is exact but this is not split. Indeed, if it were split, then we take a section $s$ of the second morphism. Then it must be of the form,
+    \begin{equation*}
+      s(b) \defeq\begin{pmatrix}
+        s_a(b)\\ b
+      \end{pmatrix}.
+    \end{equation*}
+    However, this is not $\Z/2\Z$-equivariant.
+    \label{example_non_split_extension_1}
   \end{example}
   \begin{example}
-    Let $G$ be a finite group. Then set 
+    For a finite group $G$, set 
     \begin{equation*}
       v = \sum_{g\in G}g \in \K G.
     \end{equation*}
-    we have an exact sequence 
+    The sequence  
     \begin{center}
       \begin{tikzcd}
 \K \arrow[r, "1\mapsto v"] & \K G \arrow[r] & \K G/\K v.
 \end{tikzcd}
     \end{center}
-    This is split if and only if $\chr\K\not\mid\vert G\vert$.
+    is exact and it is split if and only if $\chr\K\not\mid\vert G\vert$.
   \end{example}
   \begin{lemma}
-    Let $X\in\cat$ be simple. We have,
+    A simple object $X\in\sC$ has following properties.
     \begin{enumerate}
       \item $\End(X)$ is a division algebra over $\K$.
-      \item If $\K$ is algebraically closed and $\dim E(X)<\infty$ then $\dim E(X)\cong \K$.
+      \item If $\K$ is algebraically closed and $\dim \End(X)<\infty$ then $\End(X)\cong \K$.
       \item $X$ is idempotent complete.
     \end{enumerate}
   \end{lemma}
   \begin{proof}$\:$
-    \par For the first assertion, suppose $f\in\End(X)$, then $\ker f$ is a subobject of $X$ therefore $f=0$ or $f$ is an monomorphism. Similarly for $\coker f$, 
-    $f=0$ or $f$ is an epimorphism. That is $f$ is either $0$ or an isomorphism. For the second recall that any division algebra of finite dimension over an algebraically closed field is itself. Finally, any division algebra is a local algebra.
+    \par \textbf{1}. Suppose $f\in\End(X)$, then $\ker f$ is a subobject of $X$ therefore $f=0$ or $f$ is an monomorphism. Similarly for $\coker f$, 
+    $f=0$ or $f$ is an epimorphism. That is $f$ is either $0$ or an isomorphism. 
+    \par\textbf{2}. Recall that any division algebra of finite dimension over an algebraically closed field is itself. Finally, any division algebra is a local algebra.
   \end{proof}
   \begin{definition}
     An abelian category $\cat$ is semisimple if $\cat$ is Hom-finite and any indecomposable object is simple.
@@ -937,7 +971,7 @@ X_2 \arrow[r, "q_1"] & X_1\oplus X_2 \arrow[r, "p_1"] & X_1
     In a semisimple abelian category $\cat$, any non-simple object is an finite direct sum of simple objects.
   \end{remark}
   \begin{remark}
-    Sometimes simple is reffered as irreducible. There are more general notion of of semisimple categories(ie. hom-finiteness might not be assumed).
+    Sometimes simple is reffered as irreducible. There are more general notion of of semisimple categories(i.e., hom-finiteness might not be assumed).
   \end{remark}
   \begin{example}
     $(\Vect),\Rep_\K(G)$ with $\chr\K\not\mid\vert G\vert$ are all semi-simple.
@@ -962,9 +996,9 @@ X_2 \arrow[r, "q_1"] & X_1\oplus X_2 \arrow[r, "p_1"] & X_1
 \begin{definition}
   The length of an object $\len(X)$ is the length of its composition series.
 \end{definition}
-\begin{remark}
-  The length tells us how many simple objects we need to construct $X$ via repeated extensions.
-\end{remark}
+% \begin{remark}
+%   The length tells us how many simple objects we need to construct $X$ via repeated extensions.
+% \end{remark}
 \begin{definition}
   The abelian Grothendieck group is such that 
   \begin{equation*}
@@ -977,11 +1011,11 @@ X_2 \arrow[r, "q_1"] & X_1\oplus X_2 \arrow[r, "p_1"] & X_1
   where $X$ is the extension of $X_1$ by $X_2$.
 \end{definition}
 
-\begin{definition}
+\begin{notation}
   \begin{equation*}
     \Simple(\cat) = \{Y\in\cat\sep \text{$Y$ is simple}\}.
   \end{equation*}
-\end{definition}
+\end{notation}
 
 \begin{remark}
   If $X$ has a composition series $(X_i)_{i\in I}$ then 
@@ -990,7 +1024,7 @@ X_2 \arrow[r, "q_1"] & X_1\oplus X_2 \arrow[r, "p_1"] & X_1
   \end{equation*}
   If for any $X\in\cat$, $\len(X)$ exists then,
   \begin{equation*}
-    K^{\ab}(\cat)\stackrel{\cong}{\to}\Z^{\Simple(\cat)}, [X]\mapsto()
+    K^{\ab}(\cat)\ni [X]\stackrel{\cong}{\mapsto}(\text{multiplicity of $Y$})_{Y\in \Simple(\sC)}\in\Z^{\Simple(\cat)}.
   \end{equation*}
 \end{remark}
 
@@ -1007,17 +1041,17 @@ X_2 \arrow[r, "q_1"] & X_1\oplus X_2 \arrow[r, "p_1"] & X_1
   \begin{equation*}
     \chr(\K)\not\mid m\Rightarrow K^{\oplus}(\cat)\cong K^{\ab}(\cat)\cong\Z^m.
   \end{equation*}
-  Furthermore, if $\chr(\K)=m=2$, we have,
+  Suppose $\chr(\K)=m=2$. $K^\oplus(\sC)$ is generated by $[\K]$ and $[\K^2]$ with the trivial representation and multiplication by $g$ as seen in Example \ref{example_non_split_extension_1} hence
   \begin{equation*}
     K^\oplus(\cat)\cong \Z^2, 
   \end{equation*}
-  given by,
+  On the other hand,
   \begin{equation*}
     [\K]\mapsto[\K],[\K^2]\mapsto 2[\K].
   \end{equation*}
-  This also gives an isomorphism $K^{\ab}(\cat)\cong\Z$.
+  This also gives an isomorphism $K^{\ab}(\cat)\cong\Z$. We found a counter example to the previous claim without the assumption on the characteristic.
 \end{example}
-
+%current Current
 \begin{definition}
   A block in a Krull-Schmidt category $\cat$ is a (full) additive subcategory of $\cat$ generated by a single equivalence class of indecomposable objects in $\cat$ where 
   the equivalence relation is generated by the relation $X\sim Y$, if and only if $\cat(X,Y)\not=0$. 
@@ -1028,7 +1062,7 @@ X_2 \arrow[r, "q_1"] & X_1\oplus X_2 \arrow[r, "p_1"] & X_1
   \begin{equation*}
     X\sim Y\Leftrightarrow X\cong Y.
   \end{equation*}
-  (i.e. for any $Y\in \indec(\cat)$, $\cat(X,Y)\not=0$ or $\cat(Y,X)\not=0$ imply $X\cong Y$).
+  (i.e., for any $Y\in \indec(\cat)$, $\cat(X,Y)\not=0$ or $\cat(Y,X)\not=0$ imply $X\cong Y$).
 \end{definition}
 
 \begin{remark}
@@ -1304,7 +1338,7 @@ FX                                                            & F(1\otimes X) \a
 \end{example}
 
 \begin{example}
-  Similar to the previous example, we can define $\overline{\Vect}\subseteq\Vect$ the full subcategory of $\Vect$ which is a skelton of $\Vect$(ie. objects are $\K^n$ for $n\in\N$ or $\{0\}$). It turnes out hitis is a strict monoidal category and we have the monoidal equivalence sending $\K^n\to\K^n$.
+  Similar to the previous example, we can define $\overline{\Vect}\subseteq\Vect$ the full subcategory of $\Vect$ which is a skelton of $\Vect$(i.e., objects are $\K^n$ for $n\in\N$ or $\{0\}$). It turnes out hitis is a strict monoidal category and we have the monoidal equivalence sending $\K^n\to\K^n$.
 \end{example}
 
 \begin{remark}
@@ -2484,7 +2518,7 @@ Now let's assume $\cat$ is also rigid, then $\cat$ has a canonical pivotal struc
     \item $\K$-linear abelian, hom-finite, finite length,
     \item $\End(1) \cong \K$. 
   \end{enumerate}
-  A tensor functor is an exact linear symmetric(ie. braidings are preserved) monoidal functor between tensor categories.
+  A tensor functor is an exact linear symmetric(i.e., braidings are preserved) monoidal functor between tensor categories.
 \end{definition}
 
 We will assume that $\chr(\K)=0$. 
@@ -3024,7 +3058,7 @@ Thus this defines a $G$-representation on $\g$ as an abstract group.
      \iota&:\GL_n\to\GL_n, X\to X^{-1},\\
      \sigma,\tau&:\GL_n\to \GL_n, \sigma(A)X = AX,
   \end{align*}
-  (ie. the left and right multiplication maps, respectively). Then $\GL_n\to\GL(\gl_n)$ can be factored,
+  (i.e., the left and right multiplication maps, respectively). Then $\GL_n\to\GL(\gl_n)$ can be factored,
   \begin{center}
 \begin{tikzcd}
 \GL_n \arrow[r, "{(\id,\iota)}"] & \GL_n\times\GL_n \arrow[r, "{(\sigma,\tau)}"] \arrow[d, hook]        & \GL_n(\gl_n)\times\GL_n(\gl_n) \arrow[r, "\mu"] \arrow[d, hook] & \GL_n(\gl_n) \arrow[d, hook] \\
@@ -3049,7 +3083,7 @@ Thus this defines a $G$-representation on $\g$ as an abstract group.
 Let $T\subseteq G$ be a torus that is $T\cong\G_m^n$ for some $n\in\N$. The adjoint representation of $\g$ is semisimple at $T$-representation (recall any $T$-representation is semisimple). This shows that $\g$ is also semisimple as a $\mathfrak{t}$-representation. 
 We say $\mathfrak{t}\subseteq\g$ is a toral subalgebra. Recall a Cartan subalgebra in $\g$ is a maximal toral subalgebra.
 \begin{proposition}
-  Let $T\subseteq G$ be a maximal torus (ie. if $S\subseteq G$ is a torus and $T\subseteq S$ then $T=S$), then $\mathfrak{t}\subseteq\g$ is a Cartan subalgebra.
+  Let $T\subseteq G$ be a maximal torus (i.e., if $S\subseteq G$ is a torus and $T\subseteq S$ then $T=S$), then $\mathfrak{t}\subseteq\g$ is a Cartan subalgebra.
 \end{proposition}
 \begin{proof}
   See Humphreys
@@ -3565,7 +3599,7 @@ Goal is to determine a $\K$-linear monoidal symmetric functor $\Cob\to\cat$.
   In any symmetric monoidal category $\cat$, 
   \begin{enumerate}[1).]
     \item any Frobenius algebra $A$ is a self-dual with $\q[scale=0.3]{\qcomul[hlen=2]},\q[scale=0.3]{\qmul[hlen=2]}$.
-    \item $\Frob(\cat)$ is a groupoid (i.e. any morphism of Frobenius algebras $f:A\to A'$  is an isomorphism).
+    \item $\Frob(\cat)$ is a groupoid (i.e., any morphism of Frobenius algebras $f:A\to A'$  is an isomorphism).
   \end{enumerate}
 \end{lemma}
 \begin{proof}

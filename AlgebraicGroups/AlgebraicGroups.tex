@@ -1044,6 +1044,7 @@ We have seen that all irreducible $\G_m$ representations are $1$-dimensional. He
 %   (t-1)V = \{0\}\Rightarrow \forall t\in\G_a\forall v\in V, t\cdot v = v.
 % \end{equation*}
 \begin{lemma}
+  \label{lemma_1_1_30}
   Let $G_1,G_2$ be affine algebraic gruops. Then 
   \begin{equation*}
     X^*(G_1\times G_2) = X^*(G_1)\times X^*(G_2).
@@ -1058,7 +1059,6 @@ We have seen that all irreducible $\G_m$ representations are $1$-dimensional. He
   \begin{equation*}
     C_2:G_2\hookrightarrow(G_1\times G_2), g\mapsto (e_{G_1},g).
   \end{equation*}
-  %current Current
   Given a character $\chi:G_1\times G_2\to \G_m$, we get another character by 
   \begin{equation*}
     \chi\circ C_1:G_1\to\G_m,\quad \chi\circ C_2:G_2\to\G_m.
@@ -1071,19 +1071,19 @@ We have seen that all irreducible $\G_m$ representations are $1$-dimensional. He
   \begin{equation*}
     (\lambda,\mu)(g_1,g_2) = \lambda(g_1)\mu(g_2),
   \end{equation*}
-  this defines a map from $X^*(G_1)\times X^*(G_2)$ to $X^*(G_1\times G_2)$. The maps 
-  \begin{equation*}
-    [\chi\mapsto (\chi\circ C_1,\chi\circ C_2)],[(\lambda,\mu)\mapsto[(g_1,g_2)\mapsto \lambda(g_1)\mu(g_2)]]
-  \end{equation*}
-  are inverse to one another.
+  also defines a map from $X^*(G_1)\times X^*(G_2)$ to $X^*(G_1\times G_2)$. Clearly these maps are inverse to one another.%The maps 
+  % \begin{equation*}
+  %   [\chi\mapsto (\chi\circ C_1,\chi\circ C_2)],[(\lambda,\mu)\mapsto[(g_1,g_2)\mapsto \lambda(g_1)\mu(g_2)]]
+  % \end{equation*}
+  % are inverse to one another.
 \end{proof}
 \begin{definition}
-  An algebraic grup $T$ is a torus if $T\cong\G_m^n$ for some $n\geq 0$. 
+  An algebraic group $T$ is a torus if $T\cong\G_m^n$ for some $n\geq 0$. 
 \end{definition}
 \begin{corollary}
-  Let $T$ bea torus then $T$ is linearly reductive and we have a bijection
+  Let $T$ be a torus then $T$ is linearly reductive and we have a bijection
   \begin{equation*}
-    X^*(T)\ni\chi\mapsto k_\chi\in\Irr(T).
+    X^*(T)\ni\chi\mapsto (k,\chi)\in\Irr(T).
   \end{equation*}
 \end{corollary}
 \begin{proof}
@@ -1093,9 +1093,9 @@ We have seen that all irreducible $\G_m$ representations are $1$-dimensional. He
   \end{equation*}
 \end{proof}
 \begin{remark}
-  Since each irreducible representations of $\G_m$ are exactly its character. We have 
+  Since each irreducible representation of $\G_m$ is exactly its character. Due to Lemma \ref{irreducible_representation_bijection} and Lemma \ref{lemma_1_1_30}, we obtain
   \begin{equation*}
-    X^*(T) = X^*(\G_m)^n.
+    X^*(T) = X^*(\G_m)^n = \Irr(\G_m)^{n} = \Irr(T).
   \end{equation*}
   In other words, any $T$-representation $V$ has a canonical decomposition 
   \begin{equation*}
@@ -1103,25 +1103,52 @@ We have seen that all irreducible $\G_m$ representations are $1$-dimensional. He
   \end{equation*}
   where 
   \begin{equation*}
-    V_\lambda = \{v\in V\sep \forall t\in T, tv = \lambda(t)v\}.
+    V_\lambda = \{v\in V\sep \forall t\in T, tv = \lambda(t)v\}
   \end{equation*}
+  is the irreducible representation corresponding to $\lambda$.
 \end{remark}
-\begin{theorem}
-  Let $k=\C$, and $G\subset\GL_n$ be a closed subgroup. 
-  \par It is linearly reductive if it is stable under the involution $A\mapsto A^* \defeq \overline{A}^T$.\\
-  \par Let $V$ be an irreducible $G$-representation. Then for $N>>0$, $V\otimes \det^{\otimes N}$ is a direct summand of $V^{\otimes r}$ for some $r\geq0$ where $\det$ is the one dimensional $G$-representation,
+\begin{definition}
+  For $A\in\GL_n$, its involution is 
   \begin{equation*}
-  G\hookrightarrow\GL_n\stackrel{\det}{\to}\C,
+    A^* \defeq \overline{\prescript{t}{}{A}}.
   \end{equation*}
-  \and $V=k^n$ is the standard $GL_n$-representation (the action is the linear transform by a matrix).
+\end{definition}
+\begin{remark}
+  Any subgroup $G\subseteq\GL_n$ admits a character induced from $\det:\GL_n\to \C$ by precomposing the canonical inclusion.
+  With abuse of notation, we denote such character also as $\det:G\to \C$.
+\end{remark}
+\begin{lemma}
+  \label{lemma_theorem_1_1_30}
+  Let $G\hookrightarrow\GL_n(\C)$ be a closed subgroup stable under the involution and set 
+  \begin{equation*}
+    U(n)\defeq \{A\in\GL_n(\C)\sep A^*A = I\}.
+  \end{equation*}
+  Then $K\defeq G\cap U(n)$ is a compact Zariski dense in $G$.
+\end{lemma}
+% \begin{proof}
+%   Since $A\mapsto A^*A$ is a continuous map and $U(n)$ is the preimage of $\{I\}$, $U(n)$ is closed. Furthermore, $U(n)$ is also bounded since each entry is at most of aboslute value $1$. As $G$ is also closed, $K$ is compact.
+%   \par 
+% \end{proof}
+\begin{theorem}
+  Let $G\subset\GL_n(\C)$ be a closed subgroup. 
+  \begin{enumerate}[1.]
+    \item If $G$ is stable under the involution, then $G$ is linearly reductive.
+    \item For $G$ linearly reductive, let $V\in\Irr(G)$, then for $N\gg0$, $V\otimes \det^{\otimes N}$ is a direct summand of $(\C^n)^{\otimes r}$ for some $r\in\N$ where the representation $\C^n$ is of the standard matrix multiplication by $\GL_n(\C)$.
+  \end{enumerate}
+  % \par It is linearly reductive if it is stable under the involution $A\mapsto A^* \defeq \overline{A}^T$.\\
+  % \par Let $V$ be an irreducible $G$-representation. Then for $N>>0$, $V\otimes \det^{\otimes N}$ is a direct summand of $V^{\otimes r}$ for some $r\geq0$ where $\det$ is the one dimensional $G$-representation,
+  % \begin{equation*}
+  % G\hookrightarrow\GL_n\stackrel{\det}{\to}\C,
+  % \end{equation*}
+  % \and $V=k^n$ is the standard $GL_n$-representation (the action is the linear transform by a matrix).
 \end{theorem}
-\begin{proof}
-  (Foundation course).
-\end{proof}
-\begin{theorem}[Peter-Weyl]$\:$\\
+% \begin{proof}%later
+%   \par\textbf{1.} Let $V\in\Rep_k(G)$. Since $V$ is a finite dimensional $\C$-vectorspace, we can choose the standard inner product $\langle\cdot,\cdot\rangle:V\times V\to \C$. By Lemma \ref{lemma_theorem_1_1_30}, we may pick $K\subseteq G$ a compact subgroup.
+% \end{proof}
+\begin{theorem}[Peter-Weyl]
   Let $G$ be a linearly reductive algebrai group. Then we have 
   \begin{equation*}
-    \mathcal{O}(G) \cong\bigoplus_{V\Irr(G)}V^*\boxtimes V,
+    \mathcal{O}(G) \cong\bigoplus_{V\in\Irr(G)}V^*\boxtimes V,
   \end{equation*}
   where the inclusion $V^*\boxtimes V\hookrightarrow\Ouv(G)$ is given by,
   \begin{equation*}
@@ -1129,77 +1156,93 @@ We have seen that all irreducible $\G_m$ representations are $1$-dimensional. He
   \end{equation*}
   \label{peter_weyl}
 \end{theorem}
-\begin{proof}
-Foundation course.
-\end{proof}
+% \begin{proof}
+% Foundation course.
+% \end{proof} later
 \begin{example}
-Let $G= \G_m=\GL_1$ and the action of $G\times G$ on $\Ouv(G)=k[t,t^{-1}]$ is given by 
+Let $G= \G_m$ and the action of $G\times G$ on $\Ouv(G)=k[T,T^{-1}]$ is given by 
+\begin{equation*}
+  (t_1,t_2)f(g) = f(t_1^{-1}gt_2).
+\end{equation*}
+On monomials, this gives,
 \begin{equation*}
   (t_1,t_2)\cdot T^n = t_1^{-n}t_2^nT^n.
 \end{equation*}
-Then $k\cdot T^n$ is isomorphic to $k_{-n}\boxtimes k_n\cong k_n^*\boxtimes k_n$ as $\G_m\times \G_m$-representation.
+Recall that $\G_m$-irreducible representations are $k_n$ for $n\in\Z$. Observing the above phenomena, we see that $(\Ouv(G))_n\cong kT^n\cong k_{-n}\boxtimes k_n$. Hence by Peter-Weyl together with the identification that $k_n^*\cong k_{-n}$, we obtain %$k_{-n}\boxtimes k_n\cong k_n^*\boxtimes k_n$ as $\G_m\times \G_m$-representation.
 Therefore 
 \begin{equation*}
-  \Ouv(\G_m) = \bigoplus_{n\in\Z}k\cdot T^n \cong \bigoplus{n\in\Z}k_n^*\boxtimes k_n.
+  \Ouv(\G_m) = \bigoplus_{n\in\Z}kT^n \cong \bigoplus_{n\in\Z}k_n^*\boxtimes k_n,
 \end{equation*}
+where $t_1\mapsto t_1^{-n}$ corresponds to $k_n^*$ and $t_2\mapsto t_2^n$ corresponds to $k_n$.
 \end{example}
-\begin{example}
-  Let $G$ be an affine algebraic group and $V$ be a finite dimensional $G$-representation. Define a function,
+\begin{definition}
+  Let $G$ be an affine algebraic group and $V$ be a finite dimensional $G$-representation. We define a function,
   \begin{equation*}
-    \chi_V:G\to k, g\mapsto\tr(g|_V).
+    G\ni g\stackrel{\chi}{\mapsto}\tr(g|_V)\in k.
   \end{equation*}
   Explicity, this is the composition 
-  \begin{center}
-    \begin{tikzcd}
-G \arrow[r, "\rho"] & \GL(V) \arrow[r, "\tr"] & k
-\end{tikzcd}
-  \end{center}
-  This lies in $\mathcal{O}^G$, where $G$ acts on $\Ouv(G)$ via 
+    \begin{equation*}
+      G\stackrel{\rho}{\to}\GL_k(V)\stackrel{\tr}{\to}k.
+    \end{equation*}
+\end{definition}
+\begin{remark}
+    $\chi_V$ lies in $\mathcal{O}(G)^G$, where $G$ acts on $\Ouv(G)$ via 
   \begin{equation*}
     (gf)(x) = f(g^{-1}xg).
   \end{equation*}
-\end{example}
+\end{remark}
 \begin{example}
-  Let $V=k^n$ be the standard $\GL_n$-representation. Then we define 
+  Let $V=k^n$ be the standard $\GL_n$-representation. Then the above notion gives
   \begin{equation*}
-    \chi_{\det}(g) = \deg(g).
+    \chi_{\det}(g) = \det(g).
   \end{equation*}
 \end{example}
 \begin{lemma}
   Let $U,U_1,U_2$ be $G$-representations. We have 
-  \begin{enumerate}[1).]
-    \item $\chi_{U_1\oplus U_2} = \chi_{U_1}+\chi_{U_2}$
-    \item $\chi_{U_1\otimes U_2} = \chi_{U_1}\chi_{U_2}$
+  \begin{enumerate}[1.]
+    \item $\chi_{U_1\oplus U_2} = \chi_{U_1}+\chi_{U_2}$.
+    \item $\chi_{U_1\otimes U_2} = \chi_{U_1}\chi_{U_2}$.
+    \item $\chi_{U^*} = \chi_U\circ i$ where $i$ is the inverse map $G\ni g\stackrel{i}{\mapsto}g^{-1}\in G$.
+    \item If $G$ is a finite group and $k=\C$, then $\chi_{U^*}(g) = \overline{\chi_U(g)}$.
   \end{enumerate}
-  Let $C:G\to G$ be such that $i(g) = g^{-1}$ then 
-  \begin{equation*}
-    \chi_{U^*} = \chi_U\circ i.
-  \end{equation*}
-  If $G$ is a finite group and $k=\C$, then 
-  \begin{equation*}
-  \chi_{U^*}(g) = \overline{\chi_U(g)}.
-  \end{equation*}
+  % Let $C:G\to G$ be such that $i(g) = g^{-1}$ then 
+  % \begin{equation*}
+  %   \chi_{U^*} = \chi_U\circ i.
+  % % \end{equation*}
+  % If $G$ is a finite group and $k=\C$, then 
+  % \begin{equation*}
+  % \chi_{U^*}(g) = \overline{\chi_U(g)}.
+  % \end{equation*}
 \end{lemma}
 \begin{proof}
-  First two statements are assigned as exercises.
-  \par If $G$ is finite then we have 
-  \begin{equation}
-    g^{\vert G\vert} = e.
-  \end{equation}
-  Under the representation, we get $\pi(g)$ is a matrix whose minimal polynomial divides $T^{\ord(g)}-1$. 
-  In particular, $\pi(g)$ has distinct eigenvalues. In other words, it is diagonalizable.
+  Let $(U_1,\rho_1),(U_2,\rho_2)$ be $G$-representations, then $U_1\oplus U_2$ is endowed with
   \begin{equation*}
-  \pi(g)\sim\begin{pmatrix}
-    \lambda_1&0 &\cdots &0\\
-    0 & \lambda_2 & \cdots &0\\
-    \vdots & \vdots &\ddots & \vdots\\
-    0 & 0 & \cdots & \lambda_n
-  \end{pmatrix}.
+    g\mapsto \begin{pmatrix}
+      \rho_1(g) & \:\\ \: & \rho_2(g)
+    \end{pmatrix}
   \end{equation*}
-  For each $i$ we have $\lambda_i^{\ord(g)} = 1$. Therefore, 
-  \begin{equation}
+  and the equality is obtained. Similarly for the tensor product, use 
+  \begin{equation*}
+    \tr(A\otimes B) = \tr(A)\tr(B).
+  \end{equation*}
+  For the standard basis $\{e_1,\cdots,e_n\}$ of $k^n$, let us take the dual basis $\{e_1^*,\cdots,e_n^*\}$ of it. Then 
+  \begin{equation*}
+    g\cdot e_i^*(e_j) = e_i^*(g^{-1}\cdot e_j) = ((g^{-1})^Te_i)^*(e_j).
+  \end{equation*}
+  Hence the action is $\rho^*(g) = \rho(g^{-1})^T$. But $\tr$ is transpose-invariant hence we obtain the formula.
+  \par If $G$ is finite then we have 
+  \begin{equation*}
+    g^{\vert G\vert} = e.
+  \end{equation*}
+  Under the representation, we get $\pi(g)$ is a matrix whose minimal polynomial divides $T^{\ord(g)}-1$. 
+  In particular, $\pi(g)$ has distinct eigenvalues. In other words, it is diagonalizable, therefore
+  \begin{equation*}
+  \pi(g)\sim\mathrm{diag}(\lambda_1,\cdots,\lambda_n)
+  \end{equation*}
+  where for each $i$ we have $\lambda_i^{\ord(g)} = 1$. Hence, 
+  \begin{equation*}
     \lambda_i^{-1} = \overline{\lambda}_i.
-  \end{equation}
+  \end{equation*}
   Thus we obtain 
   \begin{equation*}
   \chi_{U^*}(g) = \chi(g^{-1})=\tr(g^{-1}) = \sum_{i=1}^n \lambda_i^{-1} = \overline{\sum_{i=1}^n \lambda_i} = \overline{\chi_U(g)}.
@@ -1213,18 +1256,22 @@ G \arrow[r, "\rho"] & \GL(V) \arrow[r, "\tr"] & k
   \begin{equation*}
     \Ouv(G)^G = \left(\bigoplus_{U\in\Irr(G)} U^*\boxtimes U\right)^G \cong\bigoplus_{U\in\Irr(G)}\Hom_G(U,U).
   \end{equation*}
-  By Schur's lemma, we get 
+  By Schur's lemma, each summand is generated by $\id_U$. Recall that the isomorphism in Theorem \ref{peter_weyl} is given by 
   \begin{equation*}
-    \Ouv(G)^G \cong \bigoplus_{U\in\Irr(G)}\Hom_G(U,U) = k\id_n.
+    U^*\otimes U\ni f\otimes u\mapsto (g\mapsto f(g\cdot u))\in\Ouv(G).
   \end{equation*}
-  Let $\{u_i\}_{i=1,\cdots,n}$ be a basis of $U$, then 
+  $\id_U$ is represented by 
   \begin{equation*}
-    tr(g|_U) = \chi_U(g) = (g\mapsto \sum_{i=1}^n u_i^*(g\cdot u_i))\mapsfrom \sum_{i=1}^n u_i^*\boxtimes u_i\mapsfrom u\id_u.
+    \sum_{i=1}^n u_i^*\otimes u_i.
+  \end{equation*}
+  where $\{u_1,\cdots,u_n\}$ is a basis of $U$. Let $\rho_U:G\to \Aut(U)$ be the representation of $U$ then
+  \begin{equation*}
+    \id_U\mapsto \sum_{i=1}^n u_i^*\otimes u_i\stackrel{\cong}{\mapsto}\left(g\mapsto \sum_{i=1}^n u_i^*(g\cdot u_i)\right) = \tr(\rho_U(g)) = \chi_U(g).
   \end{equation*}
   We conclude $\chi_U$ forms a basis of $\Ouv(G)^G$.
 \end{proof}
 \begin{corollary}
-  Let $V,V'$ be representation of a linearly reductive group $G$. Then we have 
+  Let $V,V'$ be representation of a linearly reductive group $G$. We have
   \begin{equation*}
     V\cong V' \Leftrightarrow \chi_U = \chi_{U'}.
   \end{equation*}
@@ -1240,18 +1287,17 @@ G \arrow[r, "\rho"] & \GL(V) \arrow[r, "\tr"] & k
   \end{equation*}
 \end{proof}
 
-Let $G$ be a finite group and $k=\C$, Note that $G$ is linearly reductive as we have $G\hookrightarrow\mathfrak{S}_N\hookrightarrow\GL_N$.
+Let $G$ be a finite group and $k=\C$. Note that $G$ is linearly reductive as we have $G\hookrightarrow\mathfrak{S}_N\hookrightarrow\GL_N$.
 Hence we get 
 \begin{equation*}
-  \vert\Irr(G)\vert = \dim\Ouv(G)^G = \dim\{\theta:X^*(G)\to\C\} = \vert X^*(G)\vert.
+  \vert\Irr(G)\vert = \dim\Ouv(G)^G = \dim X^*(G) = \vert\{\text{Conjugacy classes of $G$}\}\vert.
 \end{equation*}
 \begin{example}
-  Let $G=\mathfrak{S}_3$, then it has the following irreducible representations.
+  Let $G=\mathfrak{S}_3$ then it has three conjugacy classes represented by $0,1,2$-cycles. Hence it has three irreducible representations, namely
   \begin{equation*}
     \triv,\sgn,\nu=\C^3/\triv,
   \end{equation*}
-  Where $V_\nu = \{(x_1,x_2,x_3)\sep x_1+x_2+x_3 = 0\}$. And $\chi_{\C^3}$ is a trace. We have the following table,
-
+  where $V_\nu = \{(x_1,x_2,x_3)\sep x_1+x_2+x_3 = 0\}$. By definition, $\chi_{\C^3}$ is a trace and $\chi_{\C^3} = \chi_{\triv}+\chi_\nu$. Using this, we compute the following table,
   \begin{center}
 \centering
 \begin{tabular}{l|l|l|l}
@@ -1261,22 +1307,21 @@ $(12)$  & $1$            & $-1$          & $0$        \\ \hline
 $(123)$ & $1$            & $1$           & $-1$      
 \end{tabular}
 \end{center}
-Explicitly we have 
-\begin{equation*}
-  \chi_\nu = \chi_{\C^3}-\chi_{\triv}
-\end{equation*}
 \end{example}
-Let $G$ be finite and $k=\C$, we can define a hermitian inner product on $\Ouv(G)^G$ by 
+\begin{definition}
+  Let $G$ be finite and $k=\C$, we define a Hermitian inner product on $\Ouv(G)^G$ by 
 \begin{equation*}
   \langle b_1,b_2\rangle = {\frac 1 {\vert G\vert}}\sum_{g\in G}b_1(g)\overline{b_2(g)}.
 \end{equation*}
+\end{definition}
 
 \begin{lemma}
-  If $G$ is finite and $k=\C$, Let $V$ be a finite dimensional representation. Then we have 
+  If $G$ is finite and $k=\C$, $V$ is a finite dimensional representation. Then we have 
   \begin{equation*}
     \dim V^G = \langle \chi_\nu,\chi_{\triv}\rangle.
   \end{equation*}
 \end{lemma}
+%current Current
 \begin{proof}
   Let $\pi:V\to V$ be such that 
   \begin{equation*}
